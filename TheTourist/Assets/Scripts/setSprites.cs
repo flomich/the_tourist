@@ -17,8 +17,8 @@ public class setSprites : MonoBehaviour
     public Transform bone10;
     public Transform bone11;
     public GameObject rLeg;
-    public GameObject rLegSprite1;
-    public GameObject rLegSprite2;
+    public Sprite rLegSprite1;
+    public Sprite rLegSprite2;
 
     // Start is called before the first frame update
     void Start()
@@ -33,12 +33,12 @@ public class setSprites : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.H))
         {
-            rLeg.GetComponent<SpriteRenderer>().sprite = rLegSprite1.GetComponent<SpriteRenderer>().sprite;
+            rLeg.GetComponent<SpriteRenderer>().sprite = rLegSprite1;
         }
         if (Input.GetKeyDown(KeyCode.J))
         {
 
-            rLeg.GetComponent<SpriteRenderer>().sprite = rLegSprite2.GetComponent<SpriteRenderer>().sprite;
+            rLeg.GetComponent<SpriteRenderer>().sprite = rLegSprite2;
         }
     }
 

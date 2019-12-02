@@ -5,20 +5,7 @@ using UnityEngine.Experimental.U2D.Animation;
 
 public class setSprites : MonoBehaviour
 {
-    public Transform bone1;
-    public Transform bone2;
-    public Transform bone3;
-    public Transform bone4;
-    public Transform bone5;
-    public Transform bone6;
-    public Transform bone7;
-    public Transform bone8;
-    public Transform bone9;
-    public Transform bone10;
-    public Transform bone11;
-    public GameObject rLeg;
-    public Sprite rLegSprite1;
-    public Sprite rLegSprite2;
+    public GameObject lLeg;
 
     // Start is called before the first frame update
     void Start()
@@ -33,12 +20,12 @@ public class setSprites : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.H))
         {
-            rLeg.GetComponent<SpriteRenderer>().sprite = rLegSprite1;
+            lLeg.GetComponent<SpriteResolver>().SetCategoryAndLabel("LeftLeg", "Cop");
         }
         if (Input.GetKeyDown(KeyCode.J))
         {
 
-            rLeg.GetComponent<SpriteRenderer>().sprite = rLegSprite2;
+            lLeg.GetComponent<SpriteResolver>().SetCategoryAndLabel("LeftLeg", "Purple");
         }
     }
 

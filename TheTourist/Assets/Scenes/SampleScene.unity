@@ -499,6 +499,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 537538914}
   y_offset: 8
+  camera_position: {x: 0, y: 0, z: 0}
+  follow_strength: 50
+  follow_drag: 5
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0

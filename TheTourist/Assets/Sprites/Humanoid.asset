@@ -34,12 +34,20 @@ MonoBehaviour:
       m_Hash: 1073605855
       m_Sprite: {fileID: -7276718518513021985, guid: 188ae14918653974f857285bbe509074,
         type: 3}
+    - m_Name: Purple
+      m_Hash: -316049456
+      m_Sprite: {fileID: -5736811254254627996, guid: 3064e74dcc5ce744e980189ce86b2de4,
+        type: 3}
   - m_Name: RightArm
     m_Hash: 1806956327
     m_CategoryList:
     - m_Name: Cop
       m_Hash: 1073605855
       m_Sprite: {fileID: 5264116805346474522, guid: 188ae14918653974f857285bbe509074,
+        type: 3}
+    - m_Name: Purple
+      m_Hash: -316049456
+      m_Sprite: {fileID: 2780095619296022600, guid: 3064e74dcc5ce744e980189ce86b2de4,
         type: 3}
   - m_Name: LeftLeg
     m_Hash: 101577729
@@ -50,11 +58,16 @@ MonoBehaviour:
         type: 3}
     - m_Name: Purple
       m_Hash: -316049456
-      m_Sprite: {fileID: 21300000, guid: 101fdac5c2445874caec7ca11b513c8b, type: 3}
+      m_Sprite: {fileID: 5852180946995085961, guid: 3064e74dcc5ce744e980189ce86b2de4,
+        type: 3}
   - m_Name: RightLeg
     m_Hash: -2042820100
     m_CategoryList:
     - m_Name: Cop
       m_Hash: 1073605855
       m_Sprite: {fileID: 8999840445049346799, guid: 188ae14918653974f857285bbe509074,
+        type: 3}
+    - m_Name: Purple
+      m_Hash: -316049456
+      m_Sprite: {fileID: -7797329357586986947, guid: 3064e74dcc5ce744e980189ce86b2de4,
         type: 3}

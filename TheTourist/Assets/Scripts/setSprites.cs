@@ -6,6 +6,9 @@ using UnityEngine.Experimental.U2D.Animation;
 public class setSprites : MonoBehaviour
 {
     public GameObject lLeg;
+    public GameObject rLeg;
+    public GameObject lArm;
+    public GameObject rArm;
 
     // Start is called before the first frame update
     void Start()
@@ -21,11 +24,16 @@ public class setSprites : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.H))
         {
             lLeg.GetComponent<SpriteResolver>().SetCategoryAndLabel("LeftLeg", "Cop");
+            rLeg.GetComponent<SpriteResolver>().SetCategoryAndLabel("RightLeg", "Cop");
+            lArm.GetComponent<SpriteResolver>().SetCategoryAndLabel("LeftArm", "Cop");
+            rArm.GetComponent<SpriteResolver>().SetCategoryAndLabel("RightArm", "Cop");
         }
         if (Input.GetKeyDown(KeyCode.J))
         {
-
-            lLeg.GetComponent<SpriteResolver>().SetCategoryAndLabel("LeftLeg", "Purple");
+            lLeg.GetComponent<SpriteResolver>().SetCategoryAndLabel("LeftLeg",  "Purple");
+            rLeg.GetComponent<SpriteResolver>().SetCategoryAndLabel("RightLeg", "Purple");
+            lArm.GetComponent<SpriteResolver>().SetCategoryAndLabel("LeftArm",  "Purple");
+            rArm.GetComponent<SpriteResolver>().SetCategoryAndLabel("RightArm", "Purple");
         }
     }
 

@@ -18,7 +18,7 @@ public class movePlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float speed = 0.2f * mult;
+        float speed = 0.5f * mult;
 
         float moveHorizontal = Input.GetAxis("Horizontal");
         if (moveHorizontal < 0.0)

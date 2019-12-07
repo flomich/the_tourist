@@ -26,7 +26,6 @@ public class PuntigamerScript : MonoBehaviour
             InventoryScript inventory = collison.gameObject.GetComponent<InventoryScript>();
             if(inventory != null)
             {
-                Debug.Log("Add puntigamer!");
                 inventory.addPuntigamerCount(1);
                 Destroy(gameObject);
 

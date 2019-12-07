@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class PuntigamerScript : MonoBehaviour
 {
     // Start is called before the first frame update
@@ -28,6 +29,7 @@ public class PuntigamerScript : MonoBehaviour
         {
             if(collison.relativeVelocity.magnitude > 5.0f)
             {
+                SoundEffectScript.Instance.playBreakingGlass(gameObject.transform.position);
                 Destroy(gameObject);
                 Collider2D collider = gameObject.GetComponent<Collider2D>();
                 Vector3 offset = new Vector3(0.0f, collider.bounds.max.y, 0.0f);

@@ -50,3 +50,6 @@ TagManager:
   - name: Gameplay
     uniqueID: 3255601365
     locked: 0
+  - name: Hud
+    uniqueID: 3783484757
+    locked: 0

@@ -34,3 +34,9 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+
+
+# Polaroid Gallery
+# No need to persist highscores and screenshots
+gallery_data
+gallery_data.meta

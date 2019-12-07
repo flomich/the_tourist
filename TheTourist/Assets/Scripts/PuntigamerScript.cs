@@ -16,6 +16,7 @@ public class PuntigamerScript : MonoBehaviour
             InventoryScript inventory = collison.gameObject.GetComponent<InventoryScript>();
             if(inventory != null)
             {
+                SoundEffectScript.Instance.playUpgradeSound(gameObject.transform.position);
                 inventory.addPuntigamerCount(1);
                 Destroy(gameObject);
 

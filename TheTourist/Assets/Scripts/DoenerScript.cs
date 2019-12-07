@@ -15,6 +15,7 @@ public class DoenerScript : MonoBehaviour
             InventoryScript inventory = collison.gameObject.GetComponent<InventoryScript>();
             if (inventory != null)
             {
+                SoundEffectScript.Instance.playUpgradeSound(gameObject.transform.position);
                 inventory.addDoenerCount(1);
                 Destroy(gameObject);
 

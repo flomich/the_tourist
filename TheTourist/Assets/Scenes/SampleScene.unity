@@ -712,6 +712,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   breaking_glass_audio_source: {fileID: 4741872597630769002, guid: a53cb2fc4313db64685be96cda2de1ff,
     type: 3}
+  upgrade_audio_source: {fileID: 7011990516229101551, guid: 24de1ce35fa4b344c9476c4eb3bc7fe4,
+    type: 3}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0

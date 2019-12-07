@@ -10,6 +10,7 @@ public class SoundEffectScript : MonoBehaviour
     public static SoundEffectScript Instance;
 
     public AudioSource breaking_glass_audio_source;
+    public AudioSource upgrade_audio_source;
 
     void Awake()
     {
@@ -28,6 +29,11 @@ public class SoundEffectScript : MonoBehaviour
         instantiate(breaking_glass_audio_source, position);
     }
 
+    public void playUpgradeSound(Vector3 position)
+    {
+        instantiate(upgrade_audio_source, position);
+    }
+
     private AudioSource instantiate(AudioSource prefab, Vector3 position)
     {
         AudioSource new_audio_source = Instantiate(
@@ -39,7 +45,7 @@ public class SoundEffectScript : MonoBehaviour
         new_audio_source.Play();
 
         // Destroy Particle System when lifetime is over
-        Destroy(new_audio_source.gameObject, 0.5f);
+        Destroy(new_audio_source.gameObject, 1.0f);
 
         return new_audio_source;
     }

@@ -46,17 +46,26 @@ public class InventoryScript : MonoBehaviour
 
     public void addDoenerCount(uint count)
     {
-        Mathf.Min(doener_count + count, max_doener_count);
+        if(doener_count + count <= max_doener_count)
+        {
+            doener_count += count;
+        }
     }
 
     public void addPuntigamerCount(uint count)
     {
-        Mathf.Min(puntigamer_count + count, max_puntigamer_count);
+        if (puntigamer_count + count <= max_puntigamer_count)
+        {
+            puntigamer_count += count;
+        }
     }
 
     public void addFrankfurterCount(uint count)
     {
-        Mathf.Min(frankfurter_count + count, max_frankfurter_count);
+        if (frankfurter_count + count <= max_frankfurter_count)
+        {
+            frankfurter_count += count;
+        }
     }
 
     public uint getDoenerCount()

@@ -23,7 +23,14 @@ public class PuntigamerScript : MonoBehaviour
         movePlayer move_script = collison.otherCollider.gameObject.GetComponent<movePlayer>();
         if(collison.gameObject.tag.Contains("Player"))
         {
-            //Debug.Log("Collision with Player");
+            InventoryScript inventory = collison.gameObject.GetComponent<InventoryScript>();
+            if(inventory != null)
+            {
+                Debug.Log("Add puntigamer!");
+                inventory.addPuntigamerCount(1);
+                Destroy(gameObject);
+
+            }
         }
         else
         {

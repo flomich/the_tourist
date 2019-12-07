@@ -5,7 +5,7 @@ using UnityEngine;
 public class CameraNavigator : MonoBehaviour
 {
     public GameObject target;
-    public float y_offset = 8.0f;
+    public float y_offset = 3.0f;
 
     public Vector3 camera_position = new Vector3(0.0f, 0.0f, 0.0f);
     private Vector3 camera_velocity = new Vector3(0.0f, 0.0f, 0.0f);

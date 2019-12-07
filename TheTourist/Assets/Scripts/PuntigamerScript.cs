@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class PuntigamerScript : MonoBehaviour
 {
     // Start is called before the first frame update
@@ -22,12 +23,20 @@ public class PuntigamerScript : MonoBehaviour
         movePlayer move_script = collison.otherCollider.gameObject.GetComponent<movePlayer>();
         if(collison.gameObject.tag.Contains("Player"))
         {
-            //Debug.Log("Collision with Player");
+            InventoryScript inventory = collison.gameObject.GetComponent<InventoryScript>();
+            if(inventory != null)
+            {
+                Debug.Log("Add puntigamer!");
+                inventory.addPuntigamerCount(1);
+                Destroy(gameObject);
+
+            }
         }
         else
         {
             if(collison.relativeVelocity.magnitude > 5.0f)
             {
+                SoundEffectScript.Instance.playBreakingGlass(gameObject.transform.position);
                 Destroy(gameObject);
                 Collider2D collider = gameObject.GetComponent<Collider2D>();
                 Vector3 offset = new Vector3(0.0f, collider.bounds.max.y, 0.0f);

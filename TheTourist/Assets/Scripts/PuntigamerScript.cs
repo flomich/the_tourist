@@ -26,7 +26,7 @@ public class PuntigamerScript : MonoBehaviour
         }
         else
         {
-            if(collison.relativeVelocity.magnitude > 15.0f)
+            if(collison.relativeVelocity.magnitude > 5.0f)
             {
                 Destroy(gameObject);
                 Collider2D collider = gameObject.GetComponent<Collider2D>();

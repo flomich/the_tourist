@@ -28,11 +28,12 @@ public class InventoryScript : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha1) && doener_count > 0)
         {
             //consume doener (increase damager)
+            doener_count--;
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha2) && puntigamer_count > 0)
         {
-            frankfurter_count--;
+            puntigamer_count--;
             move_script.activateBoost(5.0f);
         }
 

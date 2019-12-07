@@ -2148,6 +2148,8 @@ Transform:
   - {fileID: 1875775013}
   - {fileID: 1732743502}
   - {fileID: 2141098180}
+  - {fileID: 1290209198}
+  - {fileID: 1445322180}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2535,7 +2537,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1145368618
 GameObject:
@@ -2597,6 +2599,12 @@ Transform:
   m_Father: {fileID: 838116535}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -104.02801}
+--- !u!4 &1290209198 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2023214608098046140, guid: 0ff8db1da29044742bd6371250d5093f,
+    type: 3}
+  m_PrefabInstance: {fileID: 2023214607106553618}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1318122724
 GameObject:
   m_ObjectHideFlags: 0
@@ -3219,12 +3227,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1445322178}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 2.71, y: 3.41, z: -1.1702464}
   m_LocalScale: {x: 0.15, y: 0.15, z: 0.15}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_Father: {fileID: 897273623}
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!70 &1445322181
 CapsuleCollider2D:
@@ -3275,6 +3283,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4844307acc4ff04d9e7c1c8460e5920, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  max_impact: 7
 --- !u!1 &1466083824
 GameObject:
   m_ObjectHideFlags: 0
@@ -4192,7 +4201,7 @@ RectTransform:
   - {fileID: 1389183285}
   - {fileID: 184097718}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -4549,22 +4558,27 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 897273623}
     m_Modifications:
     - target: {fileID: 2023214608098046136, guid: 0ff8db1da29044742bd6371250d5093f,
         type: 3}
       propertyPath: m_Name
       value: Doener
       objectReference: {fileID: 0}
+    - target: {fileID: 2023214608098046137, guid: 0ff8db1da29044742bd6371250d5093f,
+        type: 3}
+      propertyPath: m_Mass
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 2023214608098046140, guid: 0ff8db1da29044742bd6371250d5093f,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.48
+      value: 1.52
       objectReference: {fileID: 0}
     - target: {fileID: 2023214608098046140, guid: 0ff8db1da29044742bd6371250d5093f,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.95
+      value: 2.14
       objectReference: {fileID: 0}
     - target: {fileID: 2023214608098046140, guid: 0ff8db1da29044742bd6371250d5093f,
         type: 3}
@@ -4574,17 +4588,17 @@ PrefabInstance:
     - target: {fileID: 2023214608098046140, guid: 0ff8db1da29044742bd6371250d5093f,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 2023214608098046140, guid: 0ff8db1da29044742bd6371250d5093f,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 2023214608098046140, guid: 0ff8db1da29044742bd6371250d5093f,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 2023214608098046140, guid: 0ff8db1da29044742bd6371250d5093f,
         type: 3}
@@ -4594,7 +4608,7 @@ PrefabInstance:
     - target: {fileID: 2023214608098046140, guid: 0ff8db1da29044742bd6371250d5093f,
         type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 2023214608098046140, guid: 0ff8db1da29044742bd6371250d5093f,
         type: 3}

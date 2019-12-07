@@ -2727,8 +2727,8 @@ GameObject:
   - component: {fileID: 1445322180}
   - component: {fileID: 1445322179}
   - component: {fileID: 1445322182}
-  - component: {fileID: 1445322181}
   - component: {fileID: 1445322183}
+  - component: {fileID: 1445322181}
   m_Layer: 0
   m_Name: Puntigamer
   m_TagString: Untagged
@@ -2794,14 +2794,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1445322178}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.79, y: 2.78, z: -1.1702464}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
+  m_LocalPosition: {x: 5.62, y: 0.02, z: -1.1702464}
+  m_LocalScale: {x: 0.15, y: 0.15, z: 0.15}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &1445322181
-BoxCollider2D:
+--- !u!70 &1445322181
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -2809,23 +2809,13 @@ BoxCollider2D:
   m_GameObject: {fileID: 1445322178}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 6c9618293dba1f14397921f0b60de38f, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.33450943, y: 1.2259455}
-  m_SpriteTilingProperty:
-    border: {x: 2.04, y: 2.6, z: 1.3199999, w: 0.21}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 5.12, y: 9.16}
-    newSize: {x: 2.86, y: 5.11}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1.7386836, y: 6.2733164}
-  m_EdgeRadius: 0
+  m_Offset: {x: 0.33264637, y: 1.2570238}
+  m_Size: {x: 2.0892048, y: 7.0896053}
+  m_Direction: 0
 --- !u!50 &1445322182
 Rigidbody2D:
   serializedVersion: 4
@@ -2838,7 +2828,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 0.5
+  m_Mass: 0.8
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1

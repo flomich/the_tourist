@@ -43,9 +43,17 @@ public class movePlayer : MonoBehaviour
     //flag that indicates if jump is pressed
     private bool jump_button_down = false;
 
+    private float boost_time = 0.0f;
+
     void Start()
     {
         rigidbody_2d = GetComponent<Rigidbody2D>();
+    }
+
+    private void Update()
+    {
+        //decrease the boost time
+        boost_time = Mathf.Max(boost_time - Time.deltaTime, 0.0f);
     }
 
     private void FixedUpdate()
@@ -83,8 +91,11 @@ public class movePlayer : MonoBehaviour
             //normalize the direction
             direction.Normalize();
 
+            //compute boost scale
+            float boost_scale = boost_time > 0.001f ? 1.5f : 1.0f;
+
             //compute scaling value to cancel out force on max speed
-            float x = Mathf.Clamp(rigidbody_2d.velocity.magnitude - move_max_velocity, 0.0f, move_max_velocity_stride);
+            float x = Mathf.Clamp(rigidbody_2d.velocity.magnitude - move_max_velocity * boost_scale, 0.0f, move_max_velocity_stride);
             x /= move_max_velocity_stride;
             x = -(x * x) + 1.0f;
 
@@ -128,6 +139,11 @@ public class movePlayer : MonoBehaviour
 
         //add the force to the physics object
         rigidbody_2d.AddForce(current_movement_force);
+    }
+
+    public void activateBoost(float time)
+    {
+        boost_time = Mathf.Clamp(time, 0.0f, 1000.0f);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

@@ -617,7 +617,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: 0.652, y: -0.093, z: -10}
   m_LocalScale: {x: 0.41244, y: 0.41244, z: 0.41244}
   m_Children: []
   m_Father: {fileID: 0}
@@ -741,9 +741,11 @@ GameObject:
   m_Component:
   - component: {fileID: 537538916}
   - component: {fileID: 537538915}
-  - component: {fileID: 537538917}
-  - component: {fileID: 537538919}
   - component: {fileID: 537538918}
+  - component: {fileID: 537538920}
+  - component: {fileID: 537538917}
+  - component: {fileID: 537538921}
+  - component: {fileID: 537538919}
   m_Layer: 0
   m_Name: PlayerObject
   m_TagString: Untagged
@@ -803,32 +805,20 @@ MonoBehaviour:
   rLeg: {fileID: 278522024}
   lArm: {fileID: 2137816475}
   rArm: {fileID: 1716619026}
---- !u!61 &537538918
-BoxCollider2D:
+--- !u!114 &537538918
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 537538914}
   m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.12073663, y: 2.5651238}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 2.0959558, y: 4.8847528}
-  m_EdgeRadius: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fbda95752f13594e87b347699387c3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 90
+  max_health: 100
 --- !u!50 &537538919
 Rigidbody2D:
   serializedVersion: 4
@@ -850,6 +840,40 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &537538920
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 537538914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff8e2ff9eddcb8e43a2c785b0a645e84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doener_count: 5
+  puntigamer_count: 5
+  frankfurter_count: 5
+  max_doener_count: 10
+  max_puntigamer_count: 10
+  max_frankfurter_count: 10
+--- !u!70 &537538921
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 537538914}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 6200000, guid: d50d026449a88dd479033f792b2097e0, type: 2}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.116426796, y: 2.6421}
+  m_Size: {x: 1.6284468, y: 4.7433705}
+  m_Direction: 0
 --- !u!1 &547384167
 GameObject:
   m_ObjectHideFlags: 0

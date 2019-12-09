@@ -13,12 +13,6 @@ public class SelfiePose : MonoBehaviour
     public float posY = -3.2f;
     public float offsetCenter = 0.1f;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     public void GeneratePose() {
         float orient = Mathf.Sign(Random.Range(-1, 1));
         float posX = Random.Range(offsetCenter, 1.0f) * orient;
@@ -27,13 +21,5 @@ public class SelfiePose : MonoBehaviour
         Vector3 pos = new Vector3(posX * width / 2, posY, 0);
         player.transform.localPosition = pos;
         player.transform.rotation = Quaternion.Euler(rotation);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space)) {
-            GeneratePose();
-        }
     }
 }

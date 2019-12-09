@@ -14,12 +14,16 @@ public class ScreenShot : MonoBehaviour
     private bool wasEnabled;
     private string screenShotName;
 
+    public delegate void ScreenShotTaken(string path);
+
+    private ScreenShotTaken callback = null;
+
     private void Awake()
     {
         cam = GetComponent<Camera>();
     }
 
-    public void TakeScreenShot(string name) {
+    public void TakeScreenShot(string name, ScreenShotTaken callback) {
         if (captureScreenShot) {
             // Already flagged to screenshot this renderpass
             return;
@@ -33,6 +37,7 @@ public class ScreenShot : MonoBehaviour
         cam.targetTexture = RenderTexture.GetTemporary((int)width, (int)height, 16);
         captureScreenShot = true;
         cam.aspect = width / height;
+        this.callback = callback;
         this.screenShotName = name;
     }
 
@@ -54,23 +59,19 @@ public class ScreenShot : MonoBehaviour
         }
     }
 
-    private void SaveImage(byte[] data, string imageName) {
+    private void SaveImage(byte[] data, string levelName) {
         string directoryPath = Application.dataPath + directoryName;
         if (!Directory.Exists(directoryPath))
         {
             Directory.CreateDirectory(directoryPath);
         }
 
-        string imagePath = directoryPath + "/" + imageName;
-        System.IO.File.WriteAllBytes(imagePath, data);
+        string imagePath = directoryPath + "/" + levelName + ".png";
+        File.WriteAllBytes(imagePath, data);
         Debug.Log("Saved image under: " + imagePath);
 
+        callback?.Invoke(imagePath);
     }
 
-    public void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.S)) {
-            TakeScreenShot("screenshot01.png");
-        }
-    }
+
 }

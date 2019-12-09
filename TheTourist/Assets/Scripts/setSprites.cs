@@ -5,10 +5,12 @@ using UnityEngine.Experimental.U2D.Animation;
 
 public class setSprites : MonoBehaviour
 {
-    public GameObject lLeg;
-    public GameObject rLeg;
-    public GameObject lArm;
-    public GameObject rArm;
+    public GameObject head;
+    public GameObject body;
+    public GameObject armL;
+    public GameObject armR;
+    public GameObject legL;
+    public GameObject legR;
 
     // Start is called before the first frame update
     void Start()
@@ -23,17 +25,21 @@ public class setSprites : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.H))
         {
-            lLeg.GetComponent<SpriteResolver>().SetCategoryAndLabel("LeftLeg", "Cop");
-            rLeg.GetComponent<SpriteResolver>().SetCategoryAndLabel("RightLeg", "Cop");
-            lArm.GetComponent<SpriteResolver>().SetCategoryAndLabel("LeftArm", "Cop");
-            rArm.GetComponent<SpriteResolver>().SetCategoryAndLabel("RightArm", "Cop");
+            head.GetComponent<SpriteResolver>().SetCategoryAndLabel("head",      "def");
+            body.GetComponent<SpriteResolver>().SetCategoryAndLabel("body",      "def");
+            armL.GetComponent<SpriteResolver>().SetCategoryAndLabel("arm_left",  "def");
+            armR.GetComponent<SpriteResolver>().SetCategoryAndLabel("arm_right", "def");
+            legL.GetComponent<SpriteResolver>().SetCategoryAndLabel("leg_left",  "def");
+            legR.GetComponent<SpriteResolver>().SetCategoryAndLabel("leg_right", "def");
         }
         if (Input.GetKeyDown(KeyCode.J))
         {
-            lLeg.GetComponent<SpriteResolver>().SetCategoryAndLabel("LeftLeg",  "Purple");
-            rLeg.GetComponent<SpriteResolver>().SetCategoryAndLabel("RightLeg", "Purple");
-            lArm.GetComponent<SpriteResolver>().SetCategoryAndLabel("LeftArm",  "Purple");
-            rArm.GetComponent<SpriteResolver>().SetCategoryAndLabel("RightArm", "Purple");
+            head.GetComponent<SpriteResolver>().SetCategoryAndLabel("head",      "jobs");
+            body.GetComponent<SpriteResolver>().SetCategoryAndLabel("body",      "jobs");
+            armL.GetComponent<SpriteResolver>().SetCategoryAndLabel("arm_left",  "jobs");
+            armR.GetComponent<SpriteResolver>().SetCategoryAndLabel("arm_right", "jobs");
+            legL.GetComponent<SpriteResolver>().SetCategoryAndLabel("leg_left",  "jobs");
+            legR.GetComponent<SpriteResolver>().SetCategoryAndLabel("leg_right", "jobs");
         }
     }
 

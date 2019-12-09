@@ -10,7 +10,7 @@ public class SelfiePose : MonoBehaviour
 
     public float tiltZ = 24.0f;
     public float width = 3.4f;
-    public float posY = -3.2f;
+    public float posY = -4.0f;
     public float offsetCenter = 0.1f;
 
     public void GeneratePose() {

@@ -15,6 +15,8 @@ public class GalleryView : MonoBehaviour
     int itemsPerRow = 5;
     int objectsCreated = 0;
 
+    public GameObject emptyPlaceHolder;
+
     void Start()
     {
         var bottomLeft = Camera.main.ScreenToWorldPoint(new Vector3(0, 0));
@@ -24,15 +26,10 @@ public class GalleryView : MonoBehaviour
         height = topRight.y - bottomLeft.y;
 
         var entries = GalleryManager.Instance.LoadEntries();
-        if (entries.Count > 0)
-        {
-            //for (int i = 0; i < 10; i++) //Debug stuff
-            entries.ForEach(CreatePolaroidGameObject);
-        }
-        else
-        {
-            ShowGalleryEmpty();
-        }
+        emptyPlaceHolder.SetActive(entries.Count == 0);
+  
+        //for (int i = 0; i < 10; i++) //Debug stuff
+        entries.ForEach(CreatePolaroidGameObject);
     }
 
     void CreatePolaroidGameObject(GalleryEntry entry)
@@ -52,12 +49,6 @@ public class GalleryView : MonoBehaviour
             x * size - width / 2.0f + 0.4f,
             y * size - height / 2.0f + 0.4f);
     } 
-
-    void ShowGalleryEmpty()
-    {
-        // TODO: Implement placeholder;
-    }
-
 
     public Sprite CreateSprite(string filePath, float ppu = 100.0f)
     {

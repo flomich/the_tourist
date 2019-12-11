@@ -12,6 +12,9 @@ public class SoundEffectScript : MonoBehaviour
     public AudioSource breaking_glass_audio_source;
     public AudioSource breaking_doener_audio_source;
     public AudioSource breaking_frankfurter_audio_source;
+    public AudioSource consume_puntigamer_audio_source;
+    public AudioSource consume_doener_audio_source;
+    public AudioSource consume_frankfurter_audio_source;
     public AudioSource upgrade_audio_source;
 
     void Awake()
@@ -39,6 +42,21 @@ public class SoundEffectScript : MonoBehaviour
     public void playBreakingFrankfurter(Vector3 position)
     {
         instantiate(breaking_frankfurter_audio_source, position);
+    }
+
+    public void playConsumePuntigamer(Vector3 position)
+    {
+        instantiate(consume_puntigamer_audio_source, position);
+    }
+
+    public void playConsumeDoener(Vector3 position)
+    {
+        instantiate(consume_doener_audio_source, position);
+    }
+
+    public void playConsumeFrankfurter(Vector3 position)
+    {
+        instantiate(consume_frankfurter_audio_source, position);
     }
 
     public void playUpgradeSound(Vector3 position)

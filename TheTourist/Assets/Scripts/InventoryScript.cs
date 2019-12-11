@@ -28,17 +28,20 @@ public class InventoryScript : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha1) && doener_count > 0)
         {
             //consume doener (increase damager)
+            SoundEffectScript.Instance.playConsumeDoener(gameObject.transform.position);
             doener_count--;
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha2) && puntigamer_count > 0)
         {
+            SoundEffectScript.Instance.playConsumePuntigamer(gameObject.transform.position);
             puntigamer_count--;
             move_script.activateBoost(5.0f);
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha3) && frankfurter_count > 0 && !health_script.hasFullHealth())
         {
+            SoundEffectScript.Instance.playConsumeFrankfurter(gameObject.transform.position);
             frankfurter_count--;
             health_script.addHealth(health_script.getMaxHealth() * 0.25f);
         }

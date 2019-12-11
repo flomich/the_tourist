@@ -10,6 +10,8 @@ public class SoundEffectScript : MonoBehaviour
     public static SoundEffectScript Instance;
 
     public AudioSource breaking_glass_audio_source;
+    public AudioSource breaking_doener_audio_source;
+    public AudioSource breaking_frankfurter_audio_source;
     public AudioSource upgrade_audio_source;
 
     void Awake()
@@ -27,6 +29,16 @@ public class SoundEffectScript : MonoBehaviour
     public void playBreakingGlass(Vector3 position)
     {
         instantiate(breaking_glass_audio_source, position);
+    }
+
+    public void playBreakingDoener(Vector3 position)
+    {
+        instantiate(breaking_doener_audio_source, position);
+    }
+
+    public void playBreakingFrankfurter(Vector3 position)
+    {
+        instantiate(breaking_frankfurter_audio_source, position);
     }
 
     public void playUpgradeSound(Vector3 position)

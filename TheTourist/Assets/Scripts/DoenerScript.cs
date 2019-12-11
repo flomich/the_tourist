@@ -25,7 +25,7 @@ public class DoenerScript : MonoBehaviour
         {
             if (collison.relativeVelocity.magnitude > max_impact)
             {
-                //SoundEffectScript.Instance.playBreakingGlass(gameObject.transform.position);
+                SoundEffectScript.Instance.playBreakingDoener(gameObject.transform.position);
                 Collider2D collider = gameObject.GetComponent<Collider2D>();
                 Vector3 offset = new Vector3(0.0f, collider.bounds.max.y, 0.0f);
                 ParticleEffectsScript.Instance.doenerExplosion(transform.position + offset);

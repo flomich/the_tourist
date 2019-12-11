@@ -840,6 +840,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   breaking_glass_audio_source: {fileID: 4741872597630769002, guid: a53cb2fc4313db64685be96cda2de1ff,
     type: 3}
+  breaking_doener_audio_source: {fileID: 787941289010338638, guid: 1adc3515f0780fc46a0b801c6ae5fa62,
+    type: 3}
+  breaking_frankfurter_audio_source: {fileID: 5211625983208061518, guid: 3cbccbcf7301ae3428ce4a894fe4822c,
+    type: 3}
   upgrade_audio_source: {fileID: 7011990516229101551, guid: 24de1ce35fa4b344c9476c4eb3bc7fe4,
     type: 3}
 --- !u!1 &519420028
@@ -4495,12 +4499,12 @@ PrefabInstance:
     - target: {fileID: 1147070253474658739, guid: 95919da36c00750419908f385331ae3a,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.91
+      value: -2.61
       objectReference: {fileID: 0}
     - target: {fileID: 1147070253474658739, guid: 95919da36c00750419908f385331ae3a,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.16
+      value: -0.04
       objectReference: {fileID: 0}
     - target: {fileID: 1147070253474658739, guid: 95919da36c00750419908f385331ae3a,
         type: 3}
@@ -4569,12 +4573,12 @@ PrefabInstance:
     - target: {fileID: 2023214608098046140, guid: 0ff8db1da29044742bd6371250d5093f,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.07
+      value: -4.2
       objectReference: {fileID: 0}
     - target: {fileID: 2023214608098046140, guid: 0ff8db1da29044742bd6371250d5093f,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.68
+      value: 9.77
       objectReference: {fileID: 0}
     - target: {fileID: 2023214608098046140, guid: 0ff8db1da29044742bd6371250d5093f,
         type: 3}

@@ -9,7 +9,12 @@ public class ParticleEffectsScript : MonoBehaviour
     /// </summary>
     public static ParticleEffectsScript Instance;
 
-    public ParticleSystem beerExplosion;
+    public ParticleSystem beer_explosion;
+    public ParticleSystem beer_explosion_1;
+    public ParticleSystem doener_explosion;
+    public ParticleSystem doener_explosion_1;
+    public ParticleSystem frankfurter_explosion;
+    public ParticleSystem frankfurter_explosion_1;
 
     void Awake()
     {
@@ -23,9 +28,21 @@ public class ParticleEffectsScript : MonoBehaviour
     }
 
 
-    public void BeerExplosion(Vector3 position)
+    public void beerExplosion(Vector3 position)
     {
-        instantiate(beerExplosion, position);
+        instantiate(beer_explosion, position);
+        instantiate(beer_explosion_1, position);
+    }
+
+    public void doenerExplosion(Vector3 position)
+    {
+        instantiate(doener_explosion, position);
+        instantiate(doener_explosion_1, position);
+    }
+    public void frankfurterExplosion(Vector3 position)
+    {
+        instantiate(frankfurter_explosion, position);
+        instantiate(frankfurter_explosion_1, position);
     }
 
     private ParticleSystem instantiate(ParticleSystem prefab, Vector3 position)
@@ -36,7 +53,6 @@ public class ParticleEffectsScript : MonoBehaviour
           Quaternion.identity
         ) as ParticleSystem;
 
-        newParticleSystem.playbackSpeed = 3.0f;
 
         // Destroy Particle System when lifetime is over
         Destroy(newParticleSystem.gameObject,

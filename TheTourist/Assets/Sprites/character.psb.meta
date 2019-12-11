@@ -641,14 +641,14 @@ ScriptedImporter:
     internalID: 0
     spriteBone:
     - name: bone_5
-      position: {x: 183.8473, y: 0.00009794705, z: 0}
-      rotation: {x: 0, y: 0, z: -0.102713525, w: 0.994711}
-      length: 209.56067
+      position: {x: 182.2762, y: -0.00005139666, z: 0}
+      rotation: {x: 0, y: 0, z: -0.12751217, w: 0.991837}
+      length: 209.5607
       parentId: 1
     - name: bone_4
-      position: {x: 29.638641, y: 414.55627, z: 0}
-      rotation: {x: 0, y: 0, z: -0.6609639, w: 0.75041777}
-      length: 183.8474
+      position: {x: 20.841248, y: 411.62384, z: 0}
+      rotation: {x: 0, y: 0, z: -0.6420255, w: 0.76668334}
+      length: 182.27628
       parentId: -1
     spriteOutline: []
     vertices:
@@ -1513,7 +1513,7 @@ ScriptedImporter:
       length: 199.20453
       parentId: 0
     - name: bone_3
-      position: {x: 199.20456, y: -0.00003581982, z: 0}
+      position: {x: 199.20454, y: -0.0000053403155, z: 0}
       rotation: {x: 0, y: 0, z: -0.00038618932, w: 0.99999994}
       length: 391.78558
       parentId: 1
@@ -2097,14 +2097,14 @@ ScriptedImporter:
     internalID: 0
     spriteBone:
     - name: bone_7
-      position: {x: 190.86067, y: 0.000024411016, z: 0}
-      rotation: {x: 0, y: 0, z: 0.05407406, w: 0.998537}
-      length: 212.3233
+      position: {x: 179.32591, y: -0.00013691165, z: 0}
+      rotation: {x: 0, y: 0, z: 0.08342405, w: 0.99651414}
+      length: 212.32329
       parentId: 1
     - name: bone_6
-      position: {x: 73.2569, y: 410.5041, z: 0}
-      rotation: {x: 0, y: 0, z: 0.7546486, w: -0.6561292}
-      length: 190.86064
+      position: {x: 82.05408, y: 397.3083, z: 0}
+      rotation: {x: 0, y: 0, z: 0.77362305, w: -0.63364613}
+      length: 179.32599
       parentId: -1
     spriteOutline: []
     vertices:
@@ -3309,13 +3309,13 @@ ScriptedImporter:
     spriteBone:
     - name: bone_9
       position: {x: 145.93875, y: -0.000014237786, z: 0}
-      rotation: {x: 0, y: 0, z: -0.009038131, w: 0.9999592}
-      length: 162.61603
+      rotation: {x: 0, y: 0, z: -0.009038133, w: 0.9999592}
+      length: 162.616
       parentId: 1
     - name: bone_8
       position: {x: 78.52338, y: 328.85583, z: 0}
       rotation: {x: 0, y: 0, z: -0.71509343, w: 0.6990289}
-      length: 145.93874
+      length: 145.93875
       parentId: -1
     spriteOutline: []
     vertices:
@@ -3839,38 +3839,38 @@ ScriptedImporter:
       length: 199.20453
       parentId: 0
     - name: bone_3
-      position: {x: 199.20456, y: -0.000027417762, z: 0}
+      position: {x: 199.20456, y: 0.0000030617414, z: 0}
       rotation: {x: 0, y: 0, z: -0.00038617814, w: 0.99999994}
       length: 391.78558
       parentId: 1
     - name: bone_4
-      position: {x: 170.5574, y: -157.47598, z: 0}
-      rotation: {x: 0, y: -0, z: -0.9961063, w: 0.088159956}
-      length: 183.84744
+      position: {x: 167.18932, y: -148.83601, z: 0}
+      rotation: {x: 0, y: -0, z: -0.99359524, w: 0.11299798}
+      length: 182.27628
       parentId: 1
     - name: bone_5
-      position: {x: 183.84746, y: 0.00006950382, z: 0}
-      rotation: {x: 0, y: 0, z: -0.102713525, w: 0.99471104}
+      position: {x: 182.27625, y: 0.000018544793, z: 0}
+      rotation: {x: 0, y: 0, z: -0.12751219, w: 0.9918371}
       length: 209.56068
       parentId: 3
     - name: bone_6
-      position: {x: 165.09315, y: 151.0178, z: 0}
-      rotation: {x: 0, y: -0, z: 0.9989993, w: 0.044726424}
-      length: 190.86066
+      position: {x: 152.35312, y: 141.57265, z: 0}
+      rotation: {x: 0, y: -0, z: 0.9972513, w: 0.07409412}
+      length: 179.326
       parentId: 1
     - name: bone_7
-      position: {x: 190.86064, y: -0.000008475442, z: 0}
-      rotation: {x: 0, y: 0, z: 0.054074, w: 0.99853694}
+      position: {x: 179.32603, y: -0.0000595425, z: 0}
+      rotation: {x: 0, y: 0, z: 0.083424054, w: 0.99651414}
       length: 212.3233
       parentId: 5
     - name: bone_8
       position: {x: -1.8642786, y: 59.657642, z: 0}
-      rotation: {x: 0, y: -0, z: -0.999991, w: 0.004260245}
-      length: 145.9387
+      rotation: {x: 0, y: -0, z: -0.99999094, w: 0.004260245}
+      length: 145.93875
       parentId: 0
     - name: bone_9
-      position: {x: 145.93872, y: -0.000014869424, z: 0}
-      rotation: {x: 0, y: 0, z: -0.009038133, w: 0.99995923}
+      position: {x: 145.93877, y: -0.000011710631, z: 0}
+      rotation: {x: 0, y: 0, z: -0.00903813, w: 0.99995923}
       length: 162.616
       parentId: 7
     - name: bone_10

@@ -29,18 +29,6 @@ public class SoundEffectScript : MonoBehaviour
         }
 
         Instance = this;
-        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
-        if(players[0] != null)
-        {
-            player = players[0];
-            instantiate(ambient_audio_source, player.gameObject.transform.position);
-        }
-        
-    }
-
-    private void Update()
-    {
-        ambient_audio_source.transform.position = player.transform.position;
     }
 
 

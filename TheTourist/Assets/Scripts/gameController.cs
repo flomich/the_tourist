@@ -8,6 +8,7 @@ public class gameController : MonoBehaviour
 {
     public int health;
     public int coins;
+    public string lastScene;
 
     public int numOutfits;
 
@@ -17,6 +18,7 @@ public class gameController : MonoBehaviour
     void Start()
     {
         DontDestroyOnLoad(this.gameObject);
+        lastScene = "Menu";
         coins = 0;
         health = 100;
         outfit = new int[3];
@@ -31,31 +33,16 @@ public class gameController : MonoBehaviour
         Application.Quit();
     }
 
-    public void LoadCredits()
-    {
-        SceneManager.LoadScene("Credits");
-    }
-
-    public void LoadCharSelect()
-    {
-        SceneManager.LoadScene("Char");
-    }
-
-    public void LoadLvlSelect()
+    public void LoadScene(string name)
     {
         health = 100;
-        SceneManager.LoadScene("Map");
-    }
-
-    public void LoadLvl(string name)
-    {
-        health = 100;
+        lastScene = SceneManager.GetActiveScene().name;
         SceneManager.LoadScene(name);
     }
 
-    public void LoadMainMenu()
+    public void LoadLastScene()
     {
-        SceneManager.LoadScene("Menu");
+        SceneManager.LoadScene(lastScene);
     }
 
     public void IncBodyPart(int body_part, int inc)

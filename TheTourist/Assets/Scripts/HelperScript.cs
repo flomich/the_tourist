@@ -15,9 +15,14 @@ public class HelperScript : MonoBehaviour
 
     public void LoadScene(string name)
     {
-        sceneManager.LoadLvl(name);
+        sceneManager.LoadScene(name);
     }
 
+    public void LoadLastScene()
+    {
+        sceneManager.LoadLastScene();
+    }
+    
     public void incHead(int inc)
     {
         sceneManager.IncBodyPart(0, inc);

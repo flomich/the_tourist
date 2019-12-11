@@ -844,6 +844,12 @@ MonoBehaviour:
     type: 3}
   breaking_frankfurter_audio_source: {fileID: 5211625983208061518, guid: 3cbccbcf7301ae3428ce4a894fe4822c,
     type: 3}
+  consume_puntigamer_audio_source: {fileID: 4976640486978856574, guid: 1e1ae716165bb33428dfa59cc2e81791,
+    type: 3}
+  consume_doener_audio_source: {fileID: 3155480278869993959, guid: 52a0c3e0f664d8b4993bfb1cca4eef60,
+    type: 3}
+  consume_frankfurter_audio_source: {fileID: 5660626670224535347, guid: 0668a8191d2f8454d9a443e2b2a6fbaf,
+    type: 3}
   upgrade_audio_source: {fileID: 7011990516229101551, guid: 24de1ce35fa4b344c9476c4eb3bc7fe4,
     type: 3}
 --- !u!1 &519420028
@@ -4573,12 +4579,12 @@ PrefabInstance:
     - target: {fileID: 2023214608098046140, guid: 0ff8db1da29044742bd6371250d5093f,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.2
+      value: 6.54
       objectReference: {fileID: 0}
     - target: {fileID: 2023214608098046140, guid: 0ff8db1da29044742bd6371250d5093f,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 9.77
+      value: 5.81
       objectReference: {fileID: 0}
     - target: {fileID: 2023214608098046140, guid: 0ff8db1da29044742bd6371250d5093f,
         type: 3}

@@ -43,7 +43,14 @@ public class movePlayer : MonoBehaviour
     //flag that indicates if jump is pressed
     private bool jump_button_down = false;
 
+    //the timer used for speed boost
     private float boost_time = 0.0f;
+
+    //holds the current movement to apply (ranges from -1 to +1)
+    private float move_input = 0.0f;
+
+    //holds the current jump input
+    private bool jump_input = false;
 
     void Start()
     {
@@ -62,10 +69,8 @@ public class movePlayer : MonoBehaviour
         Vector2 current_movement_force = new Vector2(0.0f, 0.0f);
 
         //get the horizontal input
-        float moveHorizontal = Input.GetAxis("Horizontal");
-
-        //get the vertical input
-        float moveVertical = Input.GetAxis("Vertical");
+        //float moveHorizontal = Input.GetAxis("Horizontal");
+        float moveHorizontal = move_input;
 
         //compute direction (only horizontal input)
         Vector3 direction = new Vector3(moveHorizontal, 0.0f, 0.0f);
@@ -88,14 +93,14 @@ public class movePlayer : MonoBehaviour
         }
         else
         {
-            //normalize the direction
-            direction.Normalize();
+            //scale max velocity to allow walking
+            float walk_Scale = Mathf.Abs(direction.x);
 
             //compute boost scale
             float boost_scale = boost_time > 0.001f ? 1.5f : 1.0f;
 
             //compute scaling value to cancel out force on max speed
-            float x = Mathf.Clamp(rigidbody_2d.velocity.magnitude - move_max_velocity * boost_scale, 0.0f, move_max_velocity_stride);
+            float x = Mathf.Clamp(rigidbody_2d.velocity.magnitude - move_max_velocity * boost_scale * walk_Scale, 0.0f, move_max_velocity_stride);
             x /= move_max_velocity_stride;
             x = -(x * x) + 1.0f;
 
@@ -106,12 +111,12 @@ public class movePlayer : MonoBehaviour
             current_movement_force = direction * move_force * x;
 
             //set the animation state
-            animator.SetInteger("WalkState", (int)direction.x);
+            animator.SetInteger("WalkState", (int)direction.normalized.x);
             animator.speed = 0.1f + Mathf.Abs(rigidbody_2d.velocity.x) * animation_speed_scale;
         }
 
         //jumping
-        if (Input.GetKey(KeyCode.Space) && !jump_cooldown && !jump_button_down)
+        if (jump_input && !jump_cooldown && !jump_button_down)
         {
             //increment the jump time
             current_jump_time += Time.deltaTime;
@@ -126,7 +131,8 @@ public class movePlayer : MonoBehaviour
             }
         }
         
-        if(!Input.GetKey(KeyCode.Space))
+        //if jump input is not set then release jump flag
+        if(!jump_input)
         {
             jump_button_down = false;
         }
@@ -144,6 +150,16 @@ public class movePlayer : MonoBehaviour
     public void activateBoost(float time)
     {
         boost_time = Mathf.Clamp(time, 0.0f, 1000.0f);
+    }
+
+    public void setMoveInput(float input)
+    {
+        move_input = Mathf.Clamp(input, -1.0f, 1.0f);
+    }
+
+    public void setJumpInput(bool state)
+    {
+        jump_input = state;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

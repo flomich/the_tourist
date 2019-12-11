@@ -16,6 +16,9 @@ public class SoundEffectScript : MonoBehaviour
     public AudioSource consume_doener_audio_source;
     public AudioSource consume_frankfurter_audio_source;
     public AudioSource upgrade_audio_source;
+    public AudioSource ambient_audio_source;
+
+    private GameObject player;
 
     void Awake()
     {
@@ -26,6 +29,18 @@ public class SoundEffectScript : MonoBehaviour
         }
 
         Instance = this;
+        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+        if(players[0] != null)
+        {
+            player = players[0];
+            instantiate(ambient_audio_source, player.gameObject.transform.position);
+        }
+        
+    }
+
+    private void Update()
+    {
+        ambient_audio_source.transform.position = player.transform.position;
     }
 
 

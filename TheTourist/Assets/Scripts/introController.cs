@@ -18,6 +18,7 @@ public class introController : MonoBehaviour
     {
         if (Input.anyKey && Time.time > delay)
         {
+            PlayerPrefs.SetString("LastScene", "Menu");
             SceneManager.LoadScene("Menu");
         }
     }

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class introController : MonoBehaviour
+public class IntroController : MonoBehaviour
 {
     private float delay;
     // Start is called before the first frame update

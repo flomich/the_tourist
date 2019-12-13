@@ -51,6 +51,15 @@ public class ParticleEffectsScript : MonoBehaviour
         instantiate(frankfurter_explosion_1, position);
     }
 
+    public void createParticleSystem(ParticleSystem particle_system, Vector3 position, float lifetime)
+    {
+        if(particle_system != null)
+        {
+            instantiate(particle_system, position, lifetime);
+        }
+        
+    }
+
     private ParticleSystem instantiate(ParticleSystem prefab, Vector3 position)
     {
         ParticleSystem newParticleSystem = Instantiate(
@@ -63,6 +72,26 @@ public class ParticleEffectsScript : MonoBehaviour
         // Destroy Particle System when lifetime is over
         Destroy(newParticleSystem.gameObject,
           newParticleSystem.main.duration) ;
+
+        return newParticleSystem;
+    }
+
+    private ParticleSystem instantiate(ParticleSystem prefab, Vector3 position, float lifetime)
+    {
+        ParticleSystem newParticleSystem = Instantiate(
+          prefab,
+          position,
+          Quaternion.identity
+        ) as ParticleSystem;
+
+        var main = newParticleSystem.main;
+        main.duration = lifetime;
+
+
+
+        // Destroy Particle System when lifetime is over
+        Destroy(newParticleSystem.gameObject,
+          newParticleSystem.main.duration);
 
         return newParticleSystem;
     }

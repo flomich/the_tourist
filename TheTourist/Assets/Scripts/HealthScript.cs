@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class HealthScript : MonoBehaviour
 {
@@ -13,8 +14,7 @@ public class HealthScript : MonoBehaviour
         //check health and destroy game object (or other stuff)
         if(health <= 0)
         {
-            SceneLoaderScript scene_loader_script = new SceneLoaderScript();
-            scene_loader_script.loadScene("GameOver");
+            SceneManager.LoadScene("GameOver");
         }
     }
 

@@ -8,9 +8,16 @@ public class PlayerFlagCollision : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Finish") {
-            Debug.Log("Collision with FinalFlag!");
+        if (collision.gameObject.tag.Contains("Player"))
+        {
+            SceneLoaderScript scene_loader = GetComponent<SceneLoaderScript>();
+
             scene_loader.loadScene("LevelComplete");
         }
+
+        //if (collision.tag == "Finish") {
+        //    Debug.Log("Collision with FinalFlag!");
+        //    scene_loader.loadScene("LevelComplete");
+        //}
     }
 }

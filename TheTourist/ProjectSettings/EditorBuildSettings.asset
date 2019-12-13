@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GalleryView.unity
     guid: 646b080d3b03c4cc9b8c2970d4d87fc3
+  - enabled: 1
+    path: Assets/Scenes/LevelComplete.unity
+    guid: 8dbef83d1efe64fa6abc22ccf1084ef9
   m_configObjects: {}

@@ -8,6 +8,8 @@ public class LevelComplete : MonoBehaviour
     public SelfiePose selfie;
     public ScreenShot screenShot;
 
+    public GameObject flashCanvas;
+
     public TextMeshPro dateField;
     public TextMeshPro levelNameField;
     public TextMeshPro levelDurationField;
@@ -50,6 +52,7 @@ public class LevelComplete : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        flashCanvas.SetActive(true);
         string levelName = "Schloßberg - Uhrturm";
         DateTime time = DateTime.UtcNow.Date;
         dateField.text = time.ToShortDateString();

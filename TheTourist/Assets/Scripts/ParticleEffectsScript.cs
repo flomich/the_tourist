@@ -15,6 +15,7 @@ public class ParticleEffectsScript : MonoBehaviour
     public ParticleSystem doener_explosion_1;
     public ParticleSystem frankfurter_explosion;
     public ParticleSystem frankfurter_explosion_1;
+    public ParticleSystem poop_effect;
 
     void Awake()
     {
@@ -32,6 +33,11 @@ public class ParticleEffectsScript : MonoBehaviour
     {
         instantiate(beer_explosion, position);
         instantiate(beer_explosion_1, position);
+    }
+
+    public void stinkClouds(Vector3 position)
+    {
+        instantiate(poop_effect, position);
     }
 
     public void doenerExplosion(Vector3 position)

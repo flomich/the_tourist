@@ -60,7 +60,7 @@ public class ScreenShot : MonoBehaviour
     }
 
     private void SaveImage(byte[] data, string levelName) {
-        string directoryPath = Application.dataPath + directoryName;
+        string directoryPath = Application.persistentDataPath + directoryName;
         if (!Directory.Exists(directoryPath))
         {
             Directory.CreateDirectory(directoryPath);

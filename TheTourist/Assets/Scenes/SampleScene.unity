@@ -2973,7 +2973,6 @@ GameObject:
   - component: {fileID: 537538917}
   - component: {fileID: 537538921}
   - component: {fileID: 537538919}
-  - component: {fileID: 537538923}
   m_Layer: 0
   m_Name: PlayerObject
   m_TagString: Player
@@ -3116,19 +3115,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 652a8cd752570884bb3ccbe1e3b10df7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &537538923
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 537538914}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ede9cbb4de974d9c9db5026b4ba3d76, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scene_loader: {fileID: 0}
 --- !u!1001 &547153739
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3979,7 +3965,7 @@ PrefabInstance:
     - target: {fileID: 2283984945732243458, guid: ea5dd7af7a2237a4f93802278a8ac07f,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 243.16
+      value: 243.2
       objectReference: {fileID: 0}
     - target: {fileID: 2283984945732243458, guid: ea5dd7af7a2237a4f93802278a8ac07f,
         type: 3}
@@ -14500,7 +14486,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1cfc967a0abcb7f418056947f307f3f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  head: {fileID: 3232750934537097779, guid: 0c5a1f737e2e1e44f9af95382443a2a3, type: 3}
+  head: {fileID: 1277038630}
   body: {fileID: 1870491806}
   armL: {fileID: 488432671}
   armR: {fileID: 1124054359}

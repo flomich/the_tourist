@@ -4,13 +4,13 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class IntroController : MonoBehaviour
+public class IntroScript : MonoBehaviour
 {
     private float delay;
     // Start is called before the first frame update
     void Start()
     {
-        delay = Time.time + 5.0f;
+        delay = Time.time + 1.0f;
     }
 
     // Update is called once per frame

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class introController : MonoBehaviour
+public class IntroController : MonoBehaviour
 {
     private float delay;
     // Start is called before the first frame update
@@ -18,6 +18,7 @@ public class introController : MonoBehaviour
     {
         if (Input.anyKey && Time.time > delay)
         {
+            PlayerPrefs.SetString("LastScene", "Menu");
             SceneManager.LoadScene("Menu");
         }
     }

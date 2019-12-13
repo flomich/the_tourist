@@ -17,6 +17,7 @@ public class SoundEffectScript : MonoBehaviour
     public AudioSource consume_frankfurter_audio_source;
     public AudioSource upgrade_audio_source;
     public AudioSource ambient_audio_source;
+    public AudioSource step_in_poop_audio_source;
 
     private GameObject player;
 
@@ -35,6 +36,11 @@ public class SoundEffectScript : MonoBehaviour
     public void playBreakingGlass(Vector3 position)
     {
         instantiate(breaking_glass_audio_source, position);
+    }
+
+    public void playStepInPoop(Vector3 position)
+    {
+        instantiate(step_in_poop_audio_source, position);
     }
 
     public void playBreakingDoener(Vector3 position)

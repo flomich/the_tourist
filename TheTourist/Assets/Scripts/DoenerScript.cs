@@ -9,7 +9,6 @@ public class DoenerScript : MonoBehaviour
     public float max_impact = 10.0f;
     void OnCollisionEnter2D(Collision2D collison)
     {
-        movePlayer move_script = collison.otherCollider.gameObject.GetComponent<movePlayer>();
         if (collison.gameObject.tag.Contains("Player"))
         {
             InventoryScript inventory = collison.gameObject.GetComponent<InventoryScript>();

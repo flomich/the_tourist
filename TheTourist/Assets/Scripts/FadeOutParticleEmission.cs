@@ -21,7 +21,7 @@ public class FadeOutParticleEmission : MonoBehaviour
             float f = 1.0f - (timer / main.duration);
             float scale = Mathf.SmoothStep(0.0f, 1.0f, f);
             var emission_module = particle_system.emission;
-            emission_module.rateOverTimeMultiplier = f;
+            emission_module.rateOverTime = main.maxParticles * f;
         }
     }
 }

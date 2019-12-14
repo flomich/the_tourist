@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6937462064767606982}
   - component: {fileID: 6937462064767606985}
   - component: {fileID: 6937462064767606984}
-  - component: {fileID: 6937462064767606983}
+  - component: {fileID: 5221294454845373168}
   m_Layer: 0
   m_Name: dogPoop
   m_TagString: Untagged
@@ -131,7 +131,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 12.8, y: 8.217102}
   m_EdgeRadius: 0
---- !u!114 &6937462064767606983
+--- !u!114 &5221294454845373168
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -140,6 +140,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 6937462064767606986}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dde788b02cf5c484a8de4bc706b2b373, type: 3}
+  m_Script: {fileID: 11500000, guid: 34e8bdac2e0123c4d9043f17d87db3ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  particle_system: {fileID: 5137825316561125734, guid: f504fb5beaa47914ca501a8665eabe65,
+    type: 3}
+  audio_source: {fileID: 7090717780152196820, guid: 21abb833f6164614990de0703e172427,
+    type: 3}
+  damage: 10

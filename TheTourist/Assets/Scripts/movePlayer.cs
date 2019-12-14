@@ -19,6 +19,9 @@ public class movePlayer : MonoBehaviour
     //a stride to smoothly stop moving when approaching max speed
     public float move_max_velocity_stride = 1.0f;
 
+    //a stride to smoothly stop moving when approaching max speed
+    public float air_max_velocity = 1.0f;
+
     //scales the movement force when in air
     public float move_air_scale = 0.25f;
 
@@ -67,6 +70,12 @@ public class movePlayer : MonoBehaviour
     {
         //accumulates movement forces (walk, jump)
         Vector2 current_movement_force = new Vector2(0.0f, 0.0f);
+
+        //clamp velocity
+        if(rigidbody_2d.velocity.magnitude > air_max_velocity)
+        {
+            rigidbody_2d.velocity *= (1.0f / rigidbody_2d.velocity.magnitude) * air_max_velocity;
+        }
 
         //get the horizontal input
         //float moveHorizontal = Input.GetAxis("Horizontal");

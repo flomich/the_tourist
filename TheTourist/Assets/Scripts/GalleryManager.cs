@@ -15,7 +15,7 @@ public class GalleryManager
         get { return instance ?? (instance = new GalleryManager()); }
     }
 
-    private string directoryPath { get { return Application.dataPath + "/" + directoryName; } }
+    private string directoryPath { get { return Application.persistentDataPath + "/" + directoryName; } }
     private string fullPath { get { return directoryPath + "/" + fileName; }}
 
     public List<GalleryEntry> LoadEntries() {

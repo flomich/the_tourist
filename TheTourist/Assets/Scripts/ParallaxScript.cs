@@ -20,7 +20,7 @@ public class ParallaxScript : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
         //make sure that there was a reference set
         if (!reference) return;

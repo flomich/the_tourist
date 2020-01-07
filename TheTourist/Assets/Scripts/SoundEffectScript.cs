@@ -73,6 +73,14 @@ public class SoundEffectScript : MonoBehaviour
         instantiate(upgrade_audio_source, position);
     }
 
+    public void playAudioSource(AudioSource audio_source, Vector3 position)
+    {
+        if(audio_source != null)
+        {
+            instantiate(audio_source, position);
+        }
+    }
+
     private AudioSource instantiate(AudioSource prefab, Vector3 position)
     {
         AudioSource new_audio_source = Instantiate(

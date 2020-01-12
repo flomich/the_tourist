@@ -49,6 +49,12 @@ public class LevelComplete : MonoBehaviour
         return tagsString;
     }
 
+    void SetLevelDuration() {
+        float duration = SceneLoaderScript.getDurationOfLastScene();
+        int minutes = (int)(duration / 60.0f);
+        int seconds = (int)(duration % 60.0f);
+        levelDurationField.text = $"{minutes}:{seconds} Minutes";
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -57,10 +63,13 @@ public class LevelComplete : MonoBehaviour
         DateTime time = DateTime.UtcNow.Date;
         dateField.text = time.ToShortDateString();
 
+        SetLevelDuration();
+
         levelNameField.text = levelName;
         selfie.GeneratePose();
         tagsField.text = GetRandomTagsText();
         Debug.Log(tagsField.text);
+
 
         string levelNameForPath = levelName.Replace(' ', '_');
         screenShot.TakeScreenShot(levelNameForPath, path => {

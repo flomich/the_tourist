@@ -7,14 +7,12 @@ public class LevelComplete : MonoBehaviour
 {
     public SelfiePose selfie;
     public ScreenShot screenShot;
-
     public GameObject flashCanvas;
-
     public TextMeshPro dateField;
     public TextMeshPro levelNameField;
     public TextMeshPro levelDurationField;
     public TextMeshPro tagsField;
-
+    public SpriteRenderer backgroundImage;
     public int tagsPerPolaroid = 5;
     private string[] allTags = {
         "Graz", "2019", "instagraz",
@@ -70,6 +68,7 @@ public class LevelComplete : MonoBehaviour
         tagsField.text = GetRandomTagsText();
         Debug.Log(tagsField.text);
 
+        backgroundImage.sprite = Resources.Load<Sprite>("Images/uhrturm");
 
         string levelNameForPath = levelName.Replace(' ', '_');
         screenShot.TakeScreenShot(levelNameForPath, path => {

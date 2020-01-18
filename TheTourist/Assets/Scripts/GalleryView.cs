@@ -2,53 +2,48 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GalleryView : MonoBehaviour
 {
+    public GameObject leftPage;
+    public GameObject rightPage;
 
-    public GameObject prefabGalleryPolaroid;
-
-    float width = 0.0f;
-    float height = 0.0f;
-    float size = 3.5f;
-
-    int itemsPerRow = 5;
-    int objectsCreated = 0;
-
-    public GameObject emptyPlaceHolder;
+    private int polaroidsPerPage = 9;
 
     void Start()
     {
-        var bottomLeft = Camera.main.ScreenToWorldPoint(new Vector3(0, 0));
-        var topRight = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height));
 
-        width = topRight.x - bottomLeft.x;
-        height = topRight.y - bottomLeft.y;
+        SetProperCellSize(leftPage);
+        SetProperCellSize(rightPage);
 
         var entries = GalleryManager.Instance.LoadEntries();
-        emptyPlaceHolder.SetActive(entries.Count == 0);
-  
-        //for (int i = 0; i < 10; i++) //Debug stuff
-        entries.ForEach(CreatePolaroidGameObject);
+
+        for(int i = 0; i < entries.Count; i++) {
+            var entry = entries[i];
+            if(i < polaroidsPerPage) {
+                SetPolaroid(entry, leftPage, i);
+            }
+            else {
+                SetPolaroid(entry, rightPage, i - polaroidsPerPage);
+            }
+        }
     }
 
-    void CreatePolaroidGameObject(GalleryEntry entry)
-    {
-        var polaroid = Instantiate(prefabGalleryPolaroid);
-        Sprite sprite = CreateSprite(entry.path);
-        polaroid.GetComponent<SpriteRenderer>().sprite = sprite;
-        polaroid.transform.position = GetVectorPosition(objectsCreated);
-        objectsCreated++;
+    private void SetProperCellSize(GameObject page){
+        float fullWidth = page.GetComponent<RectTransform>().rect.width;
+        float targetWidth = (fullWidth / 3) - page.GetComponent<GridLayoutGroup>().spacing.x;
+        float targetHeight = targetWidth * 1.45f;
+        Vector2 targetCellSize = new Vector2(targetWidth, targetHeight);
+        page.GetComponent<GridLayoutGroup>().cellSize = targetCellSize;
     }
 
-    Vector3 GetVectorPosition(int index) {
-
-        int x = index % itemsPerRow;
-        int y = index / itemsPerRow;
-        return new Vector3(
-            x * size - width / 2.0f + 0.4f,
-            y * size - height / 2.0f + 0.4f);
-    } 
+    private void SetPolaroid(GalleryEntry entry, GameObject page, int index) {
+        var go = page.transform.GetChild(index);
+        var image = go.GetComponent<Image>();
+        image.sprite = CreateSprite(entry.path);
+        image.color = new Color(1, 1, 1, 1);
+    }
 
     public Sprite CreateSprite(string filePath, float ppu = 100.0f)
     {

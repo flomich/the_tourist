@@ -8,6 +8,7 @@ public class RandomRotation : MonoBehaviour
     void Start()
     {
         float rotZ = Random.Range(-maxRotation, maxRotation);
-        transform.rotation = Quaternion.Euler(0, 0, rotZ);
+        transform.RotateAroundLocal(transform.forward, rotZ);
+        
     }
 }

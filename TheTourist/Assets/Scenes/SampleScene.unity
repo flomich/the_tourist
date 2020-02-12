@@ -1266,6 +1266,8 @@ MonoBehaviour:
     type: 3}
   jump_audio_source: {fileID: 5551487489574558158, guid: efe90c77c3034c745bf229371cca26b5,
     type: 3}
+  step_audio_source: {fileID: 2146709679052000572, guid: 9741b76160c03e14dbac5e484fc9b23a,
+    type: 3}
 --- !u!1001 &300826181
 PrefabInstance:
   m_ObjectHideFlags: 0

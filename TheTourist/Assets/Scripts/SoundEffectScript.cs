@@ -20,6 +20,7 @@ public class SoundEffectScript : MonoBehaviour
     public AudioSource step_in_poop_audio_source;
     public AudioSource punch_audio_source;
     public AudioSource jump_audio_source;
+    public AudioSource step_audio_source;
 
     private GameObject player;
 
@@ -83,6 +84,11 @@ public class SoundEffectScript : MonoBehaviour
     public void playJumpSound(Vector3 position)
     {
         instantiate(jump_audio_source, position);
+    }
+
+    public void playStepSound(Vector3 position)
+    {
+        instantiate(step_audio_source, position);
     }
 
     public void playAudioSource(AudioSource audio_source, Vector3 position)

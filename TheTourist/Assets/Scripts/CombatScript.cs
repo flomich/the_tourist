@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class CombatScript : MonoBehaviour
 {
+    //the animator of the player
+    public Animator animator;
+
     // punch force in newton
     public float punch_force = 250.0f;
     public float punch_cooldown = 2.0f;
@@ -31,12 +34,18 @@ public class CombatScript : MonoBehaviour
             punch();
             punch_timer = punch_cooldown;
         }
+
+        if (punch_timer < 0.9)
+            animator.SetInteger("PunchState", 0);
     }
 
     private void punch()
     {
         // play punch sound
         SoundEffectScript.Instance.playPunchSound(gameObject.transform.position);
+
+        // animate punch
+        animator.SetInteger("PunchState", 1);
 
         // get player forward vector from scale
         Vector3 forward_vector;
@@ -78,6 +87,7 @@ public class CombatScript : MonoBehaviour
                 rigid_body.AddForce(forward_vector * punch_force);
             }
         }
+
     }
 
     public void setPunchState(bool state)

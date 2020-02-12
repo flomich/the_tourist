@@ -1902,6 +1902,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e063772f39200fc4fa83cc50de9d19cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 1111276429}
   punch_force: 250
   punch_cooldown: 1
   punch_damage: 90

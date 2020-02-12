@@ -148,12 +148,13 @@ public class movePlayer : MonoBehaviour
         if(!jump_input)
         {
             jump_button_down = false;
+            animator.SetInteger("JumpState", 0);
         }
 
         //play jump animation (to be added)
         if (current_jump_time > 0.01f)
         {
-            animator.speed = 1.0f;
+            animator.SetInteger("JumpState", 1);
         }
 
         //add the force to the physics object

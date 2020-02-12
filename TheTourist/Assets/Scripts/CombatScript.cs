@@ -49,14 +49,11 @@ public class CombatScript : MonoBehaviour
             forward_vector = new Vector3(-1.0f, 0.0f, 0.0f);
         }
 
-        Debug.Log("Forward Vector: " + forward_vector);
 
         foreach (GameObject o in objects_in_range)
         {
-            Debug.Log("Gameobject in range!");
-
+            // dont apply damage or force to self
             if (gameObject.Equals(o)) continue;
-
 
             // only apply forces and damage to objects in front of player
             Vector3 vec_to_other = (o.transform.position - gameObject.transform.position);
@@ -71,8 +68,6 @@ public class CombatScript : MonoBehaviour
             HealthScript health_script = o.GetComponent<HealthScript>();
             if(health_script != null)
             {
-                // apply damage
-                Debug.Log("Deal Punch Damage " + o.name);
                 health_script.takeHealth(punch_damage);
             }
 
@@ -80,7 +75,6 @@ public class CombatScript : MonoBehaviour
             Rigidbody2D rigid_body = o.GetComponent<Rigidbody2D>();
             if(rigid_body != null)
             {
-                Debug.Log("Add Punch Force" + o.name);
                 rigid_body.AddForce(forward_vector * punch_force);
             }
         }

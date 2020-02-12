@@ -39,6 +39,7 @@ public class PlayerCommander : MonoBehaviour
     {
         Rigidbody2D other_rigid_body = other_collider.gameObject.GetComponent<Rigidbody2D>();
 
+        // add objects that overlap the hitbox to objects in range
         if (other_rigid_body != null)
         {
             combat_script.addObjectInRange(other_collider.gameObject);
@@ -47,7 +48,7 @@ public class PlayerCommander : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other_collider)
     {
-
+        // object left the hitbox, remove from objects in range
         combat_script.removeObjectInRange(other_collider.gameObject);
 
     }

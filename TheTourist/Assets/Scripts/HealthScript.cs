@@ -8,6 +8,7 @@ public class HealthScript : MonoBehaviour
     public float health = 100.0f;
     public float max_health = 100.0f;
 
+
     private float game_over_timer = 2.0f;
 
     public void Start()

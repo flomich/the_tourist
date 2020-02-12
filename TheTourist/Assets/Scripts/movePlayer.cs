@@ -131,6 +131,12 @@ public class movePlayer : MonoBehaviour
         //jumping
         if (jump_input && !jump_cooldown && !jump_button_down)
         {
+            // play jump sound
+            if (gameObject.tag == "Player")
+            {
+                SoundEffectScript.Instance.playJumpSound(gameObject.transform.position);
+            }
+            
             //increment the jump time
             current_jump_time += Time.fixedDeltaTime;
 

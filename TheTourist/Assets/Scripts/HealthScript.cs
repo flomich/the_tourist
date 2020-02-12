@@ -12,7 +12,7 @@ public class HealthScript : MonoBehaviour
     void Update()
     {
         //check health and destroy game object (or other stuff)
-        if(health <= 0)
+        if(health <= 0 && gameObject.tag == "Player")
         {
             SceneManager.LoadScene("GameOver");
         }

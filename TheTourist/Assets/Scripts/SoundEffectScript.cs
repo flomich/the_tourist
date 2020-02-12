@@ -18,6 +18,7 @@ public class SoundEffectScript : MonoBehaviour
     public AudioSource upgrade_audio_source;
     public AudioSource ambient_audio_source;
     public AudioSource step_in_poop_audio_source;
+    public AudioSource punch_audio_source;
 
     private GameObject player;
 
@@ -71,6 +72,11 @@ public class SoundEffectScript : MonoBehaviour
     public void playUpgradeSound(Vector3 position)
     {
         instantiate(upgrade_audio_source, position);
+    }
+
+    public void playPunchSound(Vector3 position)
+    {
+        instantiate(punch_audio_source, position);
     }
 
     public void playAudioSource(AudioSource audio_source, Vector3 position)

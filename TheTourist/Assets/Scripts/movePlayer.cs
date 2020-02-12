@@ -174,15 +174,13 @@ public class movePlayer : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         // ignore collision between characters 
-        if (collision.gameObject.tag.Contains("Player") || 
+        if (collision.gameObject.tag.Contains("Player") ||
             collision.gameObject.tag.Contains("Enemy"))
         {
             Physics2D.IgnoreCollision(collision.otherCollider, collision.collider);
         }
-
-
-            //only enable jumping if contact with ground
-            for (int i = 0; i < collision.contactCount; i++)
+        //only enable jumping if contact with ground
+        for (int i = 0; i < collision.contactCount; i++)
         {
             //get contact point normal
             Vector2 normal = collision.GetContact(i).normal;

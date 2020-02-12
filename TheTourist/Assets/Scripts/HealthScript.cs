@@ -11,6 +11,8 @@ public class HealthScript : MonoBehaviour
 
     private float game_over_timer = 2.0f;
 
+    public GameObject damage_icon;
+
     public void Start()
     {
         game_over_timer = 2.0f;
@@ -56,12 +58,46 @@ public class HealthScript : MonoBehaviour
         health = Mathf.Min(health + health_increment, max_health);
     }
 
-    public void takeHealth(float health_decrement)
+    private void playDamageEffects()
     {
-        if(gameObject.tag == "Player")
+
+        // Instantiate damage icon
+        Quaternion rotation = Quaternion.identity;
+        rotation.z = Random.Range(0.0f, 0.7f);
+        Vector3 position = gameObject.transform.position + new Vector3(0.0f, 2.0f, 0.0f);
+
+        CapsuleCollider2D collider = gameObject.GetComponent<CapsuleCollider2D>();
+
+        if (collider != null)
         {
+            position.y += 1.0f;
+        }
+
+        if (gameObject.tag == "Player")
+        {
+            // spawn damage paticle effect
+            ParticleEffectsScript.Instance.playerDamageEffect(position);
+
+            // spawn sound effect
             SoundEffectScript.Instance.playDamageSound(gameObject.transform.position);
         }
+        else
+        {
+            // spawn enemy damage paticle effect
+            ParticleEffectsScript.Instance.enemyDamageEffect(position);
+        }
+
+        // spwan damage icon
+        GameObject icon = Instantiate(damage_icon, position, rotation);
+        icon.transform.SetParent(gameObject.transform);
+
+        
+    }
+
+    public void takeHealth(float health_decrement)
+    {
+        playDamageEffects();
+
         health = Mathf.Max(health - health_decrement, 0.0f);
     }
 

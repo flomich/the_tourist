@@ -26,6 +26,15 @@ public class EnemyCommander : MonoBehaviour
                 Debug.Log("Unfreeze rotation");
                 rigidbody.freezeRotation = false;
             }
+
+            // disable movement
+            movePlayer move_script = gameObject.GetComponent<movePlayer>();
+            if (move_script != null)
+            {
+                Debug.Log("Disable movement and stop animations");
+                move_script.animator.SetInteger("WalkState", 0);
+                move_script.enabled = false;
+            }
         }
         else
         {

@@ -11,6 +11,9 @@ public class GalleryView : MonoBehaviour
 
     private int polaroidsPerPage = 9;
 
+    public Image detailView;
+    public GameObject detailCanvas;
+
     void Start()
     {
 
@@ -41,8 +44,14 @@ public class GalleryView : MonoBehaviour
     private void SetPolaroid(GalleryEntry entry, GameObject page, int index) {
         var go = page.transform.GetChild(index);
         var image = go.GetComponent<Image>();
-        image.sprite = CreateSprite(entry.path);
+        var sprite = CreateSprite(entry.path);
+        image.sprite = sprite;
         image.color = new Color(1, 1, 1, 1);
+
+        Button button = go.gameObject.AddComponent(typeof(Button)) as Button;
+        button.onClick.AddListener(() => {
+            showDetailCanvas(sprite);
+        });
     }
 
     public Sprite CreateSprite(string filePath, float ppu = 100.0f)
@@ -62,4 +71,23 @@ public class GalleryView : MonoBehaviour
         }
         return null;
     }
+
+    public void showDetailCanvas(Sprite image) {
+        detailView.sprite = image;
+        detailCanvas.SetActive(true);
+    }
+
+    public void hideDetailCanvas() {
+        detailCanvas.SetActive(false);
+    }
+
+    void Update()
+    {
+        // Hide detail view with escape if open
+        if (Input.GetKeyDown(KeyCode.Escape) && detailCanvas.activeSelf)
+        {
+            hideDetailCanvas();
+        }
+    }
+
 }

@@ -16,6 +16,8 @@ public class ParticleEffectsScript : MonoBehaviour
     public ParticleSystem frankfurter_explosion;
     public ParticleSystem frankfurter_explosion_1;
     public ParticleSystem poop_effect;
+    public ParticleSystem player_damage_effect;
+    public ParticleSystem enemy_damage_effect;
 
     void Awake()
     {
@@ -49,6 +51,16 @@ public class ParticleEffectsScript : MonoBehaviour
     {
         instantiate(frankfurter_explosion, position);
         instantiate(frankfurter_explosion_1, position);
+    }
+
+    public void playerDamageEffect(Vector3 position)
+    {
+        instantiate(player_damage_effect, position);
+    }
+
+    public void enemyDamageEffect(Vector3 position)
+    {
+        instantiate(enemy_damage_effect, position);
     }
 
     public void createParticleSystem(ParticleSystem particle_system, Vector3 position, float lifetime)

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlatformAnimator : MonoBehaviour
 {
+    private Rigidbody2D rigid_body;
+
     public float x_frequency = 1.0f;
     public float y_frequency = 1.0f;
     public float x_phase = 0.0f;
@@ -11,24 +13,46 @@ public class PlatformAnimator : MonoBehaviour
     public float x_scale = 1.0f;
     public float y_scale = 1.0f;
 
-    private Vector3 origin;
+    public float stiffness = 5000.0f;
+    public float damping = 10.0f;
+    public float power = 2.0f;
+
+    private Vector2 origin;
 
     // Start is called before the first frame update
     void Start()
     {
         origin = transform.position;
+
+        rigid_body = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void FixedUpdate()
     {
-        float x = 1.0f;
-        float y = 1.0f;
-        float t = Time.time;
+        float t = Time.fixedTime;
 
-        Vector3 position = origin + 
-            new Vector3(Mathf.Sin(x_frequency * t + x_phase * Mathf.PI) * x_scale, Mathf.Sin(y_frequency * t + y_phase * Mathf.PI) * y_scale, 0.0f);
+        Vector2 target = origin +
+            new Vector2(Mathf.Sin(x_frequency * t + x_phase * Mathf.PI) * x_scale, Mathf.Sin(y_frequency * t + y_phase * Mathf.PI) * y_scale);
 
-        transform.position = position;
+        Vector2 rigid_position = new Vector2(rigid_body.position.x, rigid_body.position.y);
+
+        Vector2 force = new Vector2();
+
+        force = getSpringForce(target, rigid_position);
+
+        rigid_body.AddForce(force);
+
+        rigid_body.AddForce(-rigid_body.velocity * damping);
+    }
+
+    private Vector2 getSpringForce(Vector2 target, Vector2 origin)
+    {
+        Vector2 vec2target = new Vector2();
+
+        vec2target = target - origin;
+
+        vec2target = vec2target * Mathf.Pow(vec2target.magnitude, power);
+
+        return vec2target * stiffness;
     }
 }

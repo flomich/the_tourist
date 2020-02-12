@@ -37,5 +37,4 @@ public class PlatformScript : MonoBehaviour
             effector.rotationalOffset = 0.0f;
         }
     }
-
 }

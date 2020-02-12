@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2300241665152970713}
   - component: {fileID: 2300241665152970712}
   - component: {fileID: 2300241665152970711}
-  - component: {fileID: 2300241665152970710}
+  - component: {fileID: 3280573011195061701}
   m_Layer: 0
   m_Name: car_gray
   m_TagString: Untagged
@@ -104,8 +104,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!61 &2300241665152970710
-BoxCollider2D:
+--- !u!70 &3280573011195061701
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -117,16 +117,6 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.032733917, y: -0.42563915}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 6.84, y: 3.47}
-    newSize: {x: 6.84, y: 3.47}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 6.447212, y: 2.4222722}
-  m_EdgeRadius: 0
+  m_Offset: {x: 0.030546809, y: -0.5497479}
+  m_Size: {x: 5.740561, y: 2.4421444}
+  m_Direction: 1

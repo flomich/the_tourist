@@ -21,6 +21,7 @@ public class SoundEffectScript : MonoBehaviour
     public AudioSource punch_audio_source;
     public AudioSource jump_audio_source;
     public AudioSource step_audio_source;
+    public AudioSource damage_audio_source;
 
     private GameObject player;
 
@@ -91,6 +92,11 @@ public class SoundEffectScript : MonoBehaviour
         instantiate(step_audio_source, position);
     }
 
+    public void playDamageSound(Vector3 position)
+    {
+        instantiate(damage_audio_source, position);
+    }
+
     public void playAudioSource(AudioSource audio_source, Vector3 position)
     {
         if(audio_source != null)
@@ -98,6 +104,8 @@ public class SoundEffectScript : MonoBehaviour
             instantiate(audio_source, position);
         }
     }
+
+
 
     private AudioSource instantiate(AudioSource prefab, Vector3 position)
     {

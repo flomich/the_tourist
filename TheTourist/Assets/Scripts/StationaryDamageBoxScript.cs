@@ -51,13 +51,13 @@ public class StationaryDamageBoxScript : MonoBehaviour
         {
             // play Damage Sound
             SoundEffectScript.Instance.playAudioSource(audio_source, gameObject.transform.position);
+        }
 
-            //get health script and apply damage to player
-            HealthScript health_script = player_game_object.GetComponent<HealthScript>();
-            if (health_script != null)
-            {
-                health_script.takeHealth(damage);
-            }
+        //get health script and apply damage character
+        HealthScript health_script = player_game_object.GetComponent<HealthScript>();
+        if (health_script != null)
+        {
+            health_script.takeHealth(damage);
         }
     }
 }

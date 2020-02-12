@@ -131,7 +131,6 @@ public class movePlayer : MonoBehaviour
         //jumping
         if (jump_input && !jump_cooldown && !jump_button_down)
         { 
-            
             //increment the jump time
             current_jump_time += Time.fixedDeltaTime;
 

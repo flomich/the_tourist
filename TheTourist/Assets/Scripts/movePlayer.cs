@@ -186,6 +186,8 @@ public class movePlayer : MonoBehaviour
             return;
         }
 
+        animator.SetInteger("JumpState", 0);
+
         //only enable jumping if contact with ground
         for (int i = 0; i < collision.contactCount; i++)
         {

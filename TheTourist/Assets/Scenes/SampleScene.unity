@@ -2020,11 +2020,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 1111276429}
   move_force: 100
-  move_slowdown_force: 8
+  move_slowdown_force: 15
   move_max_velocity: 8
   move_max_velocity_stride: 1
   air_max_velocity: 18
-  move_air_scale: 0.25
+  move_air_scale: 1
   jumping_force: 100
   jumping_max_time: 0.12
   animation_speed_scale: 0.3

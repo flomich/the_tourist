@@ -78,7 +78,6 @@ public class movePlayer : MonoBehaviour
         }
 
         //get the horizontal input
-        //float moveHorizontal = Input.GetAxis("Horizontal");
         float moveHorizontal = move_input;
 
         //compute direction (only horizontal input)
@@ -109,9 +108,14 @@ public class movePlayer : MonoBehaviour
             float boost_scale = boost_time > 0.001f ? 1.5f : 1.0f;
 
             //compute scaling value to cancel out force on max speed
-            float x = Mathf.Clamp(rigidbody_2d.velocity.magnitude - move_max_velocity * boost_scale * walk_Scale, 0.0f, move_max_velocity_stride);
+            float x = Mathf.Clamp(Mathf.Abs(rigidbody_2d.velocity.x) - move_max_velocity * boost_scale * walk_Scale, 0.0f, move_max_velocity_stride);
             x /= move_max_velocity_stride;
             x = -(x * x) + 1.0f;
+
+            if(direction.x * rigidbody_2d.velocity.x < 0)
+            {
+                x = 1.0f;
+            }
 
             //slow down movement when in air
             x = current_jump_time > 0.01f ? x * move_air_scale : x;
@@ -128,7 +132,7 @@ public class movePlayer : MonoBehaviour
         if (jump_input && !jump_cooldown && !jump_button_down)
         {
             //increment the jump time
-            current_jump_time += Time.deltaTime;
+            current_jump_time += Time.fixedDeltaTime;
 
             //add jump force or stop jumping if max jump time is reached
             if (current_jump_time >= jumping_max_time){
@@ -178,11 +182,11 @@ public class movePlayer : MonoBehaviour
             collision.gameObject.tag.Contains("Enemy"))
         {
             Physics2D.IgnoreCollision(collision.otherCollider, collision.collider);
+            return;
         }
 
-
-            //only enable jumping if contact with ground
-            for (int i = 0; i < collision.contactCount; i++)
+        //only enable jumping if contact with ground
+        for (int i = 0; i < collision.contactCount; i++)
         {
             //get contact point normal
             Vector2 normal = collision.GetContact(i).normal;

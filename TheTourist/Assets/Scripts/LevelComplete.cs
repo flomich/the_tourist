@@ -13,12 +13,12 @@ public class LevelComplete : MonoBehaviour
     public TextMeshPro levelDurationField;
     public TextMeshPro tagsField;
     public SpriteRenderer backgroundImage;
-    public int tagsPerPolaroid = 5;
+    private int tagsPerPolaroid = 6;
     private string[] allTags = {
         "Graz", "2019", "instagraz",
         "leiwand", "gdd", "toursim",
         "Austria", "Styria", "bestcity",
-        "polaroid", "socialmedia"
+        "polaroid", "socialmedia", "l4l", "lässig"
     };
 
     List<string> GetRandomTags(int count) {
@@ -51,7 +51,7 @@ public class LevelComplete : MonoBehaviour
         float duration = SceneLoaderScript.getDurationOfLastScene();
         int minutes = (int)(duration / 60.0f);
         int seconds = (int)(duration % 60.0f);
-        levelDurationField.text = $"{minutes}:{seconds} Minutes";
+        levelDurationField.text = $"{minutes.ToString("D2")}:{seconds.ToString("D2")} Minutes";
     }
     // Start is called before the first frame update
     void Start()

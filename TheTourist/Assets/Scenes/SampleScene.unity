@@ -2391,6 +2391,7 @@ GameObject:
   - component: {fileID: 537538921}
   - component: {fileID: 537538919}
   - component: {fileID: 537538923}
+  - component: {fileID: 537538924}
   m_Layer: 0
   m_Name: PlayerObject
   m_TagString: Player
@@ -2521,7 +2522,7 @@ CapsuleCollider2D:
   m_Density: 1
   m_Material: {fileID: 6200000, guid: d50d026449a88dd479033f792b2097e0, type: 2}
   m_IsTrigger: 0
-  m_UsedByEffector: 0
+  m_UsedByEffector: 1
   m_UsedByComposite: 0
   m_Offset: {x: 0.116426796, y: 2.6421}
   m_Size: {x: 1.6284468, y: 4.7433705}
@@ -2554,6 +2555,25 @@ MonoBehaviour:
   punch_force: 250
   punch_cooldown: 1
   punch_damage: 20
+--- !u!251 &537538924
+PlatformEffector2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 537538914}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RotationalOffset: 0
+  m_UseOneWay: 0
+  m_UseOneWayGrouping: 0
+  m_SurfaceArc: 180
+  m_UseSideFriction: 0
+  m_UseSideBounce: 1
+  m_SideArc: 90
 --- !u!4 &549460788 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3231848393359721436, guid: 3562e66dc3c345443960634398881588,
@@ -3526,7 +3546,7 @@ PrefabInstance:
     - target: {fileID: 2345758367246538601, guid: 6a82f6b69be0fa24babecfedeac6b19f,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2345758368870214857, guid: 6a82f6b69be0fa24babecfedeac6b19f,
         type: 3}

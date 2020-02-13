@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &2300241665152970709
+--- !u!1 &1537971692245195066
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,38 +8,39 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2300241665152970713}
-  - component: {fileID: 2300241665152970712}
-  - component: {fileID: 2300241665152970711}
-  - component: {fileID: 3280573011195061701}
+  - component: {fileID: 1537971692245195062}
+  - component: {fileID: 1537971692245195061}
+  - component: {fileID: 1537971692245195067}
+  - component: {fileID: 1537971692245195063}
+  - component: {fileID: 1537971692245195060}
   m_Layer: 0
-  m_Name: car_gray
+  m_Name: TheaterSeats
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2300241665152970713
+--- !u!4 &1537971692245195062
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2300241665152970709}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_GameObject: {fileID: 1537971692245195066}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.7, y: 0.7, z: 1}
+  m_LocalScale: {x: 0.35, y: 0.35, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &2300241665152970712
+--- !u!212 &1537971692245195061
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2300241665152970709}
+  m_GameObject: {fileID: 1537971692245195066}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -71,31 +72,31 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1039365931
   m_SortingLayer: 4
-  m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: e4bf01cda9f1c4719a65c74e68453593, type: 3}
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: 904ce6bdbbeee2447ab77ddc139bf457, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 6.84, y: 3.47}
+  m_Size: {x: 9.82, y: 4.88}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!50 &2300241665152970711
+--- !u!50 &1537971692245195067
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2300241665152970709}
+  m_GameObject: {fileID: 1537971692245195066}
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1000
+  m_Mass: 10
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -104,19 +105,36 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!70 &3280573011195061701
+--- !u!114 &1537971692245195063
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1537971692245195066}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a628ffe5a6c3f8488f89e6054e07688, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  threshold: 800
+  boost: 800
+  bounce_angle: 90
+  particle_system: {fileID: 2480771788416060881, guid: 1c6c77e773cf2244ca2ed2f20ecd9638,
+    type: 3}
+--- !u!70 &1537971692245195060
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2300241665152970709}
+  m_GameObject: {fileID: 1537971692245195066}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.030546809, y: -0.5497479}
-  m_Size: {x: 5.740561, y: 2.4421444}
+  m_Offset: {x: -0.000000090739505, y: -0.76117826}
+  m_Size: {x: 9.820007, y: 2.2082539}
   m_Direction: 1

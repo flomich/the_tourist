@@ -31,6 +31,9 @@ public class movePlayer : MonoBehaviour
     //the time to apply jump force during one jump
     public float jumping_max_time = 0.1f;
 
+    //the maximum velocity the player can gain from jumping
+    public float jump_max_y_velocity = 20.0f;
+
     //scales the animation with the walk speed
     public float animation_speed_scale = 0.3f;
 
@@ -135,7 +138,7 @@ public class movePlayer : MonoBehaviour
             current_jump_time += Time.fixedDeltaTime;
 
             //add jump force or stop jumping if max jump time is reached
-            if (current_jump_time >= jumping_max_time){
+            if (current_jump_time >= jumping_max_time || rigidbody_2d.velocity.y > jump_max_y_velocity){
                 jump_cooldown = true;
                 jump_button_down = true;
             }

@@ -8,6 +8,8 @@ public class PuntigamerScript : MonoBehaviour
 
     public float max_impact = 7.0f;
 
+    public GameObject puntigamer_sprite;
+
     void OnCollisionEnter2D(Collision2D collison)
     {
         movePlayer move_script = collison.otherCollider.gameObject.GetComponent<movePlayer>();
@@ -18,9 +20,15 @@ public class PuntigamerScript : MonoBehaviour
             {
                 SoundEffectScript.Instance.playUpgradeSound(gameObject.transform.position);
                 inventory.addPuntigamerCount(1);
-                Destroy(gameObject);
 
+                // spwan puntigamer icon
+                Vector3 position = collison.gameObject.transform.position + new Vector3(0.0f, 2.7f, 0.0f);
+                GameObject icon = Instantiate(puntigamer_sprite, position, Quaternion.identity);
+                icon.transform.SetParent(collison.gameObject.transform);
+                Destroy(gameObject);
             }
+
+
         }
         else
         {

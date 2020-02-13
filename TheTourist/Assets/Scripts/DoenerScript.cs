@@ -7,6 +7,7 @@ public class DoenerScript : MonoBehaviour
 {
 
     public float max_impact = 10.0f;
+    public GameObject doener_sprite;
     void OnCollisionEnter2D(Collision2D collison)
     {
         if (collison.gameObject.tag.Contains("Player"))
@@ -16,9 +17,14 @@ public class DoenerScript : MonoBehaviour
             {
                 SoundEffectScript.Instance.playUpgradeSound(gameObject.transform.position);
                 inventory.addDoenerCount(1);
-                Destroy(gameObject);
 
+                // spwan doener icon
+                Vector3 position = collison.gameObject.transform.position + new Vector3(0.0f, 2.7f, 0.0f);
+                GameObject icon = Instantiate(doener_sprite, position, Quaternion.identity);
+                icon.transform.SetParent(collison.gameObject.transform);
+                Destroy(gameObject);
             }
+
         }
         else
         {
@@ -31,5 +37,6 @@ public class DoenerScript : MonoBehaviour
                 Destroy(gameObject);
             }
         }
+        
     }
 }

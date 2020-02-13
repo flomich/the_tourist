@@ -7,6 +7,7 @@ public class FrankfurterScript : MonoBehaviour
 {
 
     public float max_impact = 6.0f;
+    public GameObject frankfurter_sprite;
 
     void OnCollisionEnter2D(Collision2D collison)
     {
@@ -18,9 +19,15 @@ public class FrankfurterScript : MonoBehaviour
             {
                 SoundEffectScript.Instance.playUpgradeSound(gameObject.transform.position);
                 inventory.addFrankfurterCount(1);
-                Destroy(gameObject);
 
+                // spwan frankfurter icon
+                Vector3 position = collison.gameObject.transform.position + new Vector3(0.0f, 2.7f, 0.0f);
+                GameObject icon = Instantiate(frankfurter_sprite, position, Quaternion.identity);
+                icon.transform.SetParent(collison.gameObject.transform);
+                Destroy(gameObject);
             }
+
+
         }
         else
         {

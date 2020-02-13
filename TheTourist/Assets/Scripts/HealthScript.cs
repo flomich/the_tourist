@@ -134,7 +134,7 @@ public class HealthScript : MonoBehaviour
 
             float force = collision.GetContact(i).normalImpulse;
 
-            if (force > 10.0f) collision_damage += 1.0f;
+            if (force > 15.0f) collision_damage += 1.0f;
         }
     }
 }

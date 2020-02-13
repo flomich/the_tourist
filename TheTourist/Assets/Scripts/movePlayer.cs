@@ -181,14 +181,6 @@ public class movePlayer : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        // ignore collision between characters 
-        if (collision.gameObject.tag.Contains("Player") ||
-            collision.gameObject.tag.Contains("Enemy"))
-        {
-            Physics2D.IgnoreCollision(collision.otherCollider, collision.collider);
-            return;
-        }
-
         animator.SetInteger("JumpState", 0);
 
         //only enable jumping if contact with ground

@@ -79,7 +79,8 @@ public class CombatScript : MonoBehaviour
             // only apply forces and damage to objects in front of player
             Vector3 vec_to_other = (o.transform.position - gameObject.transform.position);
 
-            if(Vector3.Dot(vec_to_other.normalized, forward_vector) < 0.0f && vec_to_other.magnitude > 0.9)
+            if((Vector3.Dot(vec_to_other.normalized, forward_vector) < 0.0f &&
+                vec_to_other.magnitude > 0.1) || vec_to_other.magnitude > 1.25f)
             {
                 // other object is not in front of player
                 continue;

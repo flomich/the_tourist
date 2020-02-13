@@ -18,6 +18,9 @@ public class ParticleEffectsScript : MonoBehaviour
     public ParticleSystem poop_effect;
     public ParticleSystem player_damage_effect;
     public ParticleSystem enemy_damage_effect;
+    public ParticleSystem speed_boost_effect;
+    public ParticleSystem damage_boost_effect;
+    public ParticleSystem health_boost_effect;
 
     void Awake()
     {
@@ -61,6 +64,36 @@ public class ParticleEffectsScript : MonoBehaviour
     public void enemyDamageEffect(Vector3 position)
     {
         instantiate(enemy_damage_effect, position);
+    }
+
+    public void healthBoostEffect(Vector3 position, GameObject attached=null)
+    {
+        ParticleSystem system = instantiate(health_boost_effect, position);
+        
+        if (attached != null)
+        {
+            system.transform.SetParent(attached.transform);
+        }
+    }
+
+    public void damageBoostEffect(Vector3 position, GameObject attached = null)
+    {
+        ParticleSystem system = instantiate(damage_boost_effect, position);
+
+        if (attached != null)
+        {
+            system.transform.SetParent(attached.transform);
+        }
+    }
+
+    public void speedBoostEffect(Vector3 position, GameObject attached = null)
+    {
+        ParticleSystem system = instantiate(speed_boost_effect, position);
+
+        if (attached != null)
+        {
+            system.transform.SetParent(attached.transform);
+        }
     }
 
     public void createParticleSystem(ParticleSystem particle_system, Vector3 position, float lifetime)

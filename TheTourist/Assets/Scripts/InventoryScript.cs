@@ -14,36 +14,59 @@ public class InventoryScript : MonoBehaviour
 
     private movePlayer move_script;
     private HealthScript health_script;
+    private CombatScript combat_script;
+
+    private bool consume_doener;
+    private bool consume_frankfurter;
+    private bool consume_puntigamer;
 
     private void Start()
     {
         move_script = GetComponent<movePlayer>();
         health_script = GetComponent<HealthScript>();
+        combat_script = GetComponent<CombatScript>();
+
+        consume_doener = false;
+        consume_frankfurter = false;
+        consume_puntigamer = false;
     }
 
     // Update is called once per frame
     void Update()
     {
         
-        if (Input.GetKeyDown(KeyCode.Alpha1) && doener_count > 0)
+        if (consume_doener && doener_count > 0)
         {
-            //consume doener (increase damager)
+            //consume doener (increase damage)
             SoundEffectScript.Instance.playConsumeDoener(gameObject.transform.position);
+            ParticleEffectsScript.Instance.damageBoostEffect(gameObject.transform.position, gameObject);
+
             doener_count--;
+            combat_script.activateDoubleDamage(5.0f);
+            consume_doener = false;
         }
 
-        if (Input.GetKeyDown(KeyCode.Alpha2) && puntigamer_count > 0)
+        if (consume_puntigamer && puntigamer_count > 0)
         {
+            // increase speed
             SoundEffectScript.Instance.playConsumePuntigamer(gameObject.transform.position);
+            ParticleEffectsScript.Instance.speedBoostEffect(gameObject.transform.position, gameObject);
+
             puntigamer_count--;
             move_script.activateBoost(5.0f);
+            consume_puntigamer = false;
         }
 
-        if (Input.GetKeyDown(KeyCode.Alpha3) && frankfurter_count > 0 && !health_script.hasFullHealth())
+        if (consume_frankfurter && frankfurter_count > 0 && !health_script.hasFullHealth())
         {
+            // increase health
+
             SoundEffectScript.Instance.playConsumeFrankfurter(gameObject.transform.position);
+            ParticleEffectsScript.Instance.healthBoostEffect(gameObject.transform.position, gameObject);
+
             frankfurter_count--;
             health_script.addHealth(health_script.getMaxHealth() * 0.25f);
+            consume_frankfurter = false;
         }
     }
 
@@ -99,5 +122,19 @@ public class InventoryScript : MonoBehaviour
     public uint getMaxFrankfurterCount()
     {
         return max_frankfurter_count;
+    }
+
+    public void setConsumePuntigamer(bool state)
+    {
+        consume_puntigamer = state;
+    }
+
+    public void setConsumeDoener(bool state)
+    {
+        consume_doener = state;
+    }
+    public void setConsumeFrankfurter(bool state)
+    {
+        consume_frankfurter = state;
     }
 }

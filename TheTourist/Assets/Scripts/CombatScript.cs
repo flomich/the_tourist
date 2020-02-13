@@ -56,9 +56,6 @@ public class CombatScript : MonoBehaviour
 
     private void punch()
     {
-        // play punch sound
-        SoundEffectScript.Instance.playPunchSound(gameObject.transform.position);
-
         // animate punch
         animator.SetInteger("PunchState", 1);
 
@@ -102,6 +99,9 @@ public class CombatScript : MonoBehaviour
             Rigidbody2D rigid_body = o.GetComponent<Rigidbody2D>();
             if(rigid_body != null)
             {
+                // play punch sound
+                SoundEffectScript.Instance.playPunchSound(gameObject.transform.position);
+
                 rigid_body.AddForce(forward_vector * punch_force);
             }
         }

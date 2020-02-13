@@ -79,7 +79,7 @@ public class CombatScript : MonoBehaviour
             // only apply forces and damage to objects in front of player
             Vector3 vec_to_other = (o.transform.position - gameObject.transform.position);
 
-            if(Vector3.Dot(vec_to_other.normalized, forward_vector) < 0.0f && vec_to_other.magnitude > 0.5)
+            if(Vector3.Dot(vec_to_other.normalized, forward_vector) < 0.0f && vec_to_other.magnitude > 0.9)
             {
                 // other object is not in front of player
                 continue;
@@ -102,7 +102,10 @@ public class CombatScript : MonoBehaviour
                 // play punch sound
                 SoundEffectScript.Instance.playPunchSound(gameObject.transform.position);
 
-                rigid_body.AddForce(forward_vector * punch_force);
+                if (has_double_damage)
+                    rigid_body.AddForce(forward_vector * punch_force * 2.0f);
+                else
+                    rigid_body.AddForce(forward_vector * punch_force);
             }
         }
 

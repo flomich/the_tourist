@@ -19,18 +19,18 @@ public class CameraNavigator : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         Vector3 target_position = new Vector3(0.0f, y_offset, 0.0f);
         target_position += target.transform.position;
 
         Vector3 v = target_position - transform.position;
 
-        camera_velocity += v * follow_strength * Time.deltaTime;
+        camera_velocity += v * follow_strength * Time.fixedDeltaTime;
 
-        camera_velocity -= camera_velocity * follow_drag * Time.deltaTime;
+        camera_velocity -= camera_velocity * follow_drag * Time.fixedDeltaTime;
 
-        camera_position += camera_velocity * Time.deltaTime;
+        camera_position += camera_velocity * Time.fixedDeltaTime;
 
         transform.position = new Vector3(camera_position.x, camera_position.y, -10.0f);
     }

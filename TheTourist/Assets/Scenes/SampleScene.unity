@@ -1411,6 +1411,12 @@ MonoBehaviour:
     type: 3}
   enemy_damage_effect: {fileID: 924677807525466799, guid: f29b71232bba04f4399479f9f08734d9,
     type: 3}
+  speed_boost_effect: {fileID: 3202274686318556079, guid: cd794e64df3cf214fbdc077dcec42c64,
+    type: 3}
+  damage_boost_effect: {fileID: 767866487385907795, guid: e39ab32798a7a78489e4e7438cd4557e,
+    type: 3}
+  health_boost_effect: {fileID: 1913841621362650020, guid: 68696ed09763b3540a8fa0a9d279c00e,
+    type: 3}
 --- !u!4 &293290052
 Transform:
   m_ObjectHideFlags: 0

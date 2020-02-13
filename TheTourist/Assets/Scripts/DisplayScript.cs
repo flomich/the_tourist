@@ -17,13 +17,5 @@ public class DisplayScript : MonoBehaviour
         sprite_renderer = gameObject.GetComponent<SpriteRenderer>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        display_timer -= Time.deltaTime;
-        
 
-
-
-    }
 }

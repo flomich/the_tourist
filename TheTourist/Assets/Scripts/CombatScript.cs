@@ -15,6 +15,9 @@ public class CombatScript : MonoBehaviour
     private bool punch_state = false;
     private float punch_timer = 0.0f;
 
+    private float double_damage_timer = 0.0f;
+    private bool has_double_damage = false;
+
 
     private List<GameObject> objects_in_range;
 
@@ -28,8 +31,14 @@ public class CombatScript : MonoBehaviour
     void Update()
     {
         punch_timer -= Time.deltaTime;
-        
-        if(punch_state && punch_timer < 0.0f)
+        double_damage_timer -= Time.deltaTime;
+
+        if(double_damage_timer <= 0.0f)
+        {
+            has_double_damage = false;
+        }
+
+        if (punch_state && punch_timer < 0.0f)
         {
             punch();
             punch_timer = punch_cooldown;
@@ -37,6 +46,12 @@ public class CombatScript : MonoBehaviour
 
         if (punch_timer < 0.9)
             animator.SetInteger("PunchState", 0);
+    }
+
+    public void activateDoubleDamage(float seconds)
+    {
+        has_double_damage = true;
+        double_damage_timer = seconds;
     }
 
     private void punch()
@@ -77,7 +92,10 @@ public class CombatScript : MonoBehaviour
             HealthScript health_script = o.GetComponent<HealthScript>();
             if(health_script != null)
             {
-                health_script.takeHealth(punch_damage);
+                if (has_double_damage)
+                    health_script.takeHealth(punch_damage * 2.0f);
+                else
+                    health_script.takeHealth(punch_damage);
             }
 
             // add force

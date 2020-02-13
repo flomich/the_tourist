@@ -6,12 +6,14 @@ public class PlayerCommander : MonoBehaviour
 {
     private movePlayer move_script = null;
     private CombatScript combat_script = null;
+    private InventoryScript inventory_script = null;
 
     // Start is called before the first frame update
     void Start()
     {
         move_script = GetComponent<movePlayer>();
         combat_script = GetComponent<CombatScript>();
+        inventory_script = GetComponent<InventoryScript>();
     }
 
     // Update is called once per frame
@@ -26,12 +28,26 @@ public class PlayerCommander : MonoBehaviour
         // get key state for punch
         bool punch_state = Input.GetKeyDown(KeyCode.Q);
 
+        // get key state for item doener
+        bool consume_doener_state = Input.GetKeyDown(KeyCode.Alpha1);
+
+        // get key state for item doener
+        bool consume_puntigamer_state = Input.GetKeyDown(KeyCode.Alpha2);
+
+        // get key state for item doener
+        bool consume_frankfurter_state = Input.GetKeyDown(KeyCode.Alpha3);
+
         //set the move script input
         move_script.setMoveInput(horizontal_axis);
         move_script.setJumpInput(space_state);
 
         // set the combat script input
         combat_script.setPunchState(punch_state);
+
+        // set inventory script input
+        inventory_script.setConsumeDoener(consume_doener_state);
+        inventory_script.setConsumePuntigamer(consume_puntigamer_state);
+        inventory_script.setConsumeFrankfurter(consume_frankfurter_state);
 
     }
 

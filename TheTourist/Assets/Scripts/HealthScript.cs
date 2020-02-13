@@ -11,6 +11,8 @@ public class HealthScript : MonoBehaviour
 
     private float game_over_timer = 2.0f;
 
+    private float collision_damage = 0.0f;
+
     public GameObject damage_icon;
 
     public void Start()
@@ -21,6 +23,12 @@ public class HealthScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(collision_damage > 0.0f)
+        {
+            takeHealth(collision_damage);
+            collision_damage = 0.0f;
+        }
+
         //check health and destroy game object (or other stuff)
         if(health <= 0 && gameObject.tag == "Player")
         {
@@ -114,5 +122,19 @@ public class HealthScript : MonoBehaviour
     public bool hasFullHealth()
     {
         return max_health - health < 0.01f;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        //only enable jumping if contact with ground
+        for (int i = 0; i < collision.contactCount; i++)
+        {
+            //get contact point normal
+            Vector2 normal = collision.GetContact(i).normal;
+
+            float force = collision.GetContact(i).normalImpulse;
+
+            if (force > 10.0f) collision_damage += 1.0f;
+        }
     }
 }

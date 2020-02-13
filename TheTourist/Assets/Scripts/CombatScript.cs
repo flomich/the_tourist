@@ -25,6 +25,7 @@ public class CombatScript : MonoBehaviour
     void Start()
     {
         objects_in_range = new List<GameObject>();
+        punch_state = false;
     }
 
     // Update is called once per frame
@@ -44,7 +45,7 @@ public class CombatScript : MonoBehaviour
             punch_timer = punch_cooldown;
         }
 
-        if (punch_timer < 0.9)
+        if (punch_timer < 0.9 && punch_timer > 0.0f)
             animator.SetInteger("PunchState", 0);
     }
 
@@ -76,11 +77,28 @@ public class CombatScript : MonoBehaviour
             // dont apply damage or force to self
             if (gameObject.Equals(o)) continue;
 
+            
+
             // only apply forces and damage to objects in front of player
             Vector3 vec_to_other = (o.transform.position - gameObject.transform.position);
 
-            if((Vector3.Dot(vec_to_other.normalized, forward_vector) < 0.0f &&
-                vec_to_other.magnitude > 0.1) || vec_to_other.magnitude > 1.25f)
+            // get intersection distance with collider
+            float distance_to_other = Mathf.Infinity;
+            Collider2D collider = o.GetComponent<Collider2D>();
+
+            
+
+            if (collider != null)
+            {
+
+                distance_to_other = Vector3.Distance(collider.bounds.ClosestPoint(gameObject.transform.position),
+                                    gameObject.transform.position);
+            }
+
+            Debug.Log(o.name + "in range at distance " + distance_to_other);
+
+            if ((Vector3.Dot(vec_to_other.normalized, forward_vector) < 0.0f &&
+                distance_to_other > 0.1) || distance_to_other > 0.8f)
             {
                 // other object is not in front of player
                 continue;

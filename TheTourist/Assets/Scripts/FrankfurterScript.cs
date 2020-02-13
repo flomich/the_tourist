@@ -24,6 +24,8 @@ public class FrankfurterScript : MonoBehaviour
                 Vector3 position = collison.gameObject.transform.position + new Vector3(0.0f, 2.7f, 0.0f);
                 GameObject icon = Instantiate(frankfurter_sprite, position, Quaternion.identity);
                 icon.transform.SetParent(collison.gameObject.transform);
+
+                ParticleEffectsScript.Instance.healthBoostEffect(position, collison.gameObject, 1.0f);
                 Destroy(gameObject);
             }
 

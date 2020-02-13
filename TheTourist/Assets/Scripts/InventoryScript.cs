@@ -39,7 +39,7 @@ public class InventoryScript : MonoBehaviour
         {
             //consume doener (increase damage)
             SoundEffectScript.Instance.playConsumeDoener(gameObject.transform.position);
-            ParticleEffectsScript.Instance.damageBoostEffect(gameObject.transform.position, gameObject);
+            ParticleEffectsScript.Instance.damageBoostEffect(gameObject.transform.position, gameObject, 5.0f);
 
             doener_count--;
             combat_script.activateDoubleDamage(5.0f);
@@ -50,7 +50,7 @@ public class InventoryScript : MonoBehaviour
         {
             // increase speed
             SoundEffectScript.Instance.playConsumePuntigamer(gameObject.transform.position);
-            ParticleEffectsScript.Instance.speedBoostEffect(gameObject.transform.position, gameObject);
+            ParticleEffectsScript.Instance.speedBoostEffect(gameObject.transform.position, gameObject, 5.0f);
 
             puntigamer_count--;
             move_script.activateBoost(5.0f);

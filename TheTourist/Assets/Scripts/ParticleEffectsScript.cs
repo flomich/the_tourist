@@ -66,9 +66,9 @@ public class ParticleEffectsScript : MonoBehaviour
         instantiate(enemy_damage_effect, position);
     }
 
-    public void healthBoostEffect(Vector3 position, GameObject attached=null)
+    public void healthBoostEffect(Vector3 position, GameObject attached=null, float lifetime= 0.0f)
     {
-        ParticleSystem system = instantiate(health_boost_effect, position);
+        ParticleSystem system = instantiate(health_boost_effect, position, lifetime);
         
         if (attached != null)
         {
@@ -76,9 +76,9 @@ public class ParticleEffectsScript : MonoBehaviour
         }
     }
 
-    public void damageBoostEffect(Vector3 position, GameObject attached = null)
+    public void damageBoostEffect(Vector3 position, GameObject attached = null, float lifetime=0.0f)
     {
-        ParticleSystem system = instantiate(damage_boost_effect, position);
+        ParticleSystem system = instantiate(damage_boost_effect, position, lifetime);
 
         if (attached != null)
         {
@@ -86,9 +86,9 @@ public class ParticleEffectsScript : MonoBehaviour
         }
     }
 
-    public void speedBoostEffect(Vector3 position, GameObject attached = null)
+    public void speedBoostEffect(Vector3 position, GameObject attached = null, float lifetime=0.0f)
     {
-        ParticleSystem system = instantiate(speed_boost_effect, position);
+        ParticleSystem system = instantiate(speed_boost_effect, position, lifetime);
 
         if (attached != null)
         {
@@ -132,8 +132,11 @@ public class ParticleEffectsScript : MonoBehaviour
 
     private ParticleSystem instantiate(ParticleSystem prefab, Vector3 position, float lifetime)
     {
-        var main = prefab.main;
-        main.duration = lifetime;
+        if(lifetime > 0.0f)
+        {
+            var main = prefab.main;
+            main.duration = lifetime;
+        }
 
         ParticleSystem newParticleSystem = Instantiate(
           prefab,

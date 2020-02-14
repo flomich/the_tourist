@@ -18,18 +18,23 @@ public class PlatformAnimator : MonoBehaviour
     public float power = 2.0f;
 
     private Vector2 origin;
+    private float fixed_time = 0.0f;
 
     // Start is called before the first frame update
     void Start()
     {
         origin = transform.position;
 
+        fixed_time = 0.0f;
+
         rigid_body = GetComponent<Rigidbody2D>();
     }
 
     private void FixedUpdate()
     {
-        float t = Time.fixedTime;
+        fixed_time += Time.fixedDeltaTime;
+
+        float t = fixed_time;
 
         Vector2 target = origin +
             new Vector2(Mathf.Sin(x_frequency * t + x_phase * Mathf.PI) * x_scale, Mathf.Sin(y_frequency * t + y_phase * Mathf.PI) * y_scale);

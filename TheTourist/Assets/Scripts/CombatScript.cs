@@ -14,6 +14,7 @@ public class CombatScript : MonoBehaviour
 
     private bool punch_state = false;
     private float punch_timer = 0.0f;
+    public float animation_timer = 0.1f;
 
     private float double_damage_timer = 0.0f;
     private bool has_double_damage = false;
@@ -34,6 +35,7 @@ public class CombatScript : MonoBehaviour
     {
         punch_timer -= Time.deltaTime;
         double_damage_timer -= Time.deltaTime;
+        animation_timer -= Time.deltaTime;
 
         if(double_damage_timer <= 0.0f)
         {
@@ -44,9 +46,10 @@ public class CombatScript : MonoBehaviour
         {
             punch();
             punch_timer = punch_cooldown;
+            animation_timer = 0.1f;
         }
 
-        if (punch_timer < 0.9 && punch_timer > 0.0f)
+        if (animation_timer < 0.0f)
             animator.SetInteger("PunchState", 0);
     }
 
@@ -75,6 +78,7 @@ public class CombatScript : MonoBehaviour
     {
         // animate punch
         animator.SetInteger("PunchState", 1);
+        animator.speed = 8.0f;
 
         // get player forward vector from scale
         Vector3 forward_vector;

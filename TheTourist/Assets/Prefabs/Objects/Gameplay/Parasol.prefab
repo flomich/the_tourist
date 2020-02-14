@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1846822741477702410}
   - component: {fileID: 1846822741477702411}
   - component: {fileID: 1846822741477702408}
+  - component: {fileID: 2257916401568637727}
   m_Layer: 0
   m_Name: Parasol
   m_TagString: Untagged
@@ -120,3 +121,20 @@ CapsuleCollider2D:
   m_Offset: {x: 0.018662686, y: 3.938613}
   m_Size: {x: 14.822358, y: 0.51432854}
   m_Direction: 1
+--- !u!114 &2257916401568637727
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1846822741477702409}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a628ffe5a6c3f8488f89e6054e07688, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  threshold: 800
+  boost: 800
+  bounce_angle: 60
+  particle_system: {fileID: 2480771788416060881, guid: 1c6c77e773cf2244ca2ed2f20ecd9638,
+    type: 3}

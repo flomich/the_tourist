@@ -12,12 +12,15 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu.unity
     guid: 10b52bd2fe0545f42a4d4f14ac12ffb4
   - enabled: 1
+    path: Assets/Scenes/TrainStation.unity
+    guid: 40e084b7e10cbcd4ea0f8ded915eb125
+  - enabled: 1
     path: Assets/Scenes/Credits.unity
     guid: cb63c380cc6284844b64d528462b0f49
   - enabled: 1
     path: Assets/Scenes/Char.unity
     guid: 7844f0b1e64877446be20d070204f0cf
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Map.unity
     guid: bae4f3f91815c0740ba12b4e347709cb
   - enabled: 1

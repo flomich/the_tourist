@@ -15,7 +15,7 @@ public class CameraNavigator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        camera_position = target.transform.position;
     }
 
     // Update is called once per frame

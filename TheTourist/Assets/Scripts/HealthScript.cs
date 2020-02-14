@@ -17,7 +17,7 @@ public class HealthScript : MonoBehaviour
 
     public void Start()
     {
-        game_over_timer = 2.0f;
+        game_over_timer = 10.0f;
     }
 
     // Update is called once per frame

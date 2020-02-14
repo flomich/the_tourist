@@ -135,11 +135,12 @@ public class CombatScript : MonoBehaviour
             {
                 // Display punch sprite
                 playPunchEffects(forward_vector);
+                Vector3 direction = (forward_vector + new Vector3(0.0f, Random.Range(0.5f, 1.5f), 0.0f)).normalized;
 
                 if (has_double_damage)
-                    rigid_body.AddForce(forward_vector * punch_force * 2.0f);
+                    rigid_body.AddForce(direction * punch_force * 2.0f);
                 else
-                    rigid_body.AddForce(forward_vector * punch_force);
+                    rigid_body.AddForce(direction * punch_force);
             }
         }
 

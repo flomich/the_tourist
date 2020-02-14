@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 2585988826606092708}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.0026181638, y: 0.00291045, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 1.5}
+  m_LocalScale: {x: 1.3, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -47,7 +47,7 @@ ParticleSystem:
   cullingMode: 0
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
-  looping: 0
+  looping: 1
   prewarm: 0
   playOnAwake: 1
   useUnscaledTime: 0
@@ -601,7 +601,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
-    maxNumParticles: 30
+    maxNumParticles: 50
     size3D: 0
     rotation3D: 0
     gravityModifier:
@@ -4826,8 +4826,8 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 3f46779f138830847a9877bbf445ffdd, type: 2}
-  - {fileID: 2100000, guid: 3f46779f138830847a9877bbf445ffdd, type: 2}
+  - {fileID: 2100000, guid: 2dd2fbc670e7abb40a01b2bb1436e446, type: 2}
+  - {fileID: 2100000, guid: 2dd2fbc670e7abb40a01b2bb1436e446, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

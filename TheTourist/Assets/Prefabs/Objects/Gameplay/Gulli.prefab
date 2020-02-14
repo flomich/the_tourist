@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1924586819544815029}
   - component: {fileID: 1924586819544815027}
   - component: {fileID: 1924586819544815026}
-  - component: {fileID: 598684753657232738}
+  - component: {fileID: 4015355935383524377}
   m_Layer: 0
   m_Name: Gulli
   m_TagString: Untagged
@@ -131,7 +131,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3.1756124, y: 8.237177}
   m_EdgeRadius: 0
---- !u!114 &598684753657232738
+--- !u!114 &4015355935383524377
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -140,13 +140,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1924586819544815031}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a67d869984db1e8489ce7b4818a5effc, type: 3}
+  m_Script: {fileID: 11500000, guid: 7c749ec9e20fa3f4ba89b2e74c1cd94c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   particle_system: {fileID: 2585988826606092710, guid: aaf0781603a6010469dca91b6bf62672,
     type: 3}
-  audio_source: {fileID: 2018641317512991846, guid: 7750c942a5bc68f42887ddc5c2dac1f0,
-    type: 3}
-  damage: 10
+  particle_offset_x: 0
+  particle_offset_y: 0.2
+  damage: 5
   rest_interval: 2
-  damage_time: 2
+  active_interval: 2
+  randomize_start_time: 1
+  start_active: 1

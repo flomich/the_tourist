@@ -19,8 +19,13 @@ public class CombatScript : MonoBehaviour
     private float double_damage_timer = 0.0f;
     private bool has_double_damage = false;
 
+    private float double_speed_timer = 0.0f;
+    private bool has_double_speed = false;
+
     public ParticleSystem punch_particle_system;
     private List<GameObject> objects_in_range;
+
+    private float animation_speed = 4.0f;
     
 
     // Start is called before the first frame update
@@ -28,24 +33,43 @@ public class CombatScript : MonoBehaviour
     {
         objects_in_range = new List<GameObject>();
         punch_state = false;
+
+        // clamp punch cooldown to min 0.1 sec
+        punch_cooldown = Mathf.Max(0.1f, punch_cooldown);
     }
 
     // Update is called once per frame
     void Update()
     {
+        // decrement timers
         punch_timer -= Time.deltaTime;
         double_damage_timer -= Time.deltaTime;
         animation_timer -= Time.deltaTime;
+        double_speed_timer -= Time.deltaTime;
 
-        if(double_damage_timer <= 0.0f)
+        if (double_damage_timer <= 0.0f)
         {
             has_double_damage = false;
+        }
+
+        if(double_speed_timer <= 0.0f)
+        {
+            has_double_speed = false;
         }
 
         if (punch_state && punch_timer < 0.0f)
         {
             punch();
-            punch_timer = punch_cooldown;
+
+            if(has_double_speed)
+            {
+                punch_timer = punch_cooldown * 0.5f;
+            }
+            else
+            {
+                punch_timer = punch_cooldown;
+            }
+
             animation_timer = 0.1f;
         }
 
@@ -57,6 +81,12 @@ public class CombatScript : MonoBehaviour
     {
         has_double_damage = true;
         double_damage_timer = seconds;
+    }
+
+    public void activateDoubleSpeed(float seconds)
+    {
+        has_double_speed = true;
+        double_speed_timer = seconds;
     }
 
     private void playPunchEffects(Vector3 forward_vector)
@@ -78,7 +108,16 @@ public class CombatScript : MonoBehaviour
     {
         // animate punch
         animator.SetInteger("PunchState", 1);
-        animator.speed = 8.0f;
+        
+        if(has_double_speed)
+        {
+            animator.speed = animation_speed * 2.5f;
+        }
+        else
+        {
+            animator.speed = animation_speed;
+        }
+        
 
         // get player forward vector from scale
         Vector3 forward_vector;
@@ -91,7 +130,7 @@ public class CombatScript : MonoBehaviour
             forward_vector = new Vector3(-1.0f, 0.0f, 0.0f);
         }
 
-
+        bool hit = false;
         foreach (GameObject o in objects_in_range)
         {
             // dont apply damage or force to self
@@ -135,6 +174,7 @@ public class CombatScript : MonoBehaviour
             {
                 // Display punch sprite
                 playPunchEffects(forward_vector);
+                hit = true;
                 Vector3 direction = (forward_vector + new Vector3(0.0f, Random.Range(0.5f, 1.5f), 0.0f)).normalized;
 
                 if (has_double_damage)
@@ -142,6 +182,12 @@ public class CombatScript : MonoBehaviour
                 else
                     rigid_body.AddForce(direction * punch_force);
             }
+
+        }
+
+        if(!hit)
+        {
+            SoundEffectScript.Instance.playSwooshSound(transform.position);
         }
 
     }

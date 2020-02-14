@@ -169,6 +169,7 @@ MonoBehaviour:
   max_doener_count: 10
   max_puntigamer_count: 10
   max_frankfurter_count: 10
+  effect_duration: 8
 --- !u!114 &764182114482456148
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -238,7 +239,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 764182115579778986}
   punch_force: 800
-  punch_cooldown: 2
+  punch_cooldown: 1
   punch_damage: 20
   animation_timer: 0.1
   punch_particle_system: {fileID: 3762782830211903580, guid: 6921126e5392001408cffabd14bc4a58,

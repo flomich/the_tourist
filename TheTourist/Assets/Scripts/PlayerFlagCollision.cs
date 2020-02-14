@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerFlagCollision : MonoBehaviour
 {
-    public SceneLoaderScript scene_loader;
+    public string level_name = "LevelComplete";
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -12,7 +12,7 @@ public class PlayerFlagCollision : MonoBehaviour
         {
             SceneLoaderScript scene_loader = GetComponent<SceneLoaderScript>();
 
-            scene_loader.loadScene("LevelComplete");
+            scene_loader.loadScene(level_name);
         }
 
         //if (collision.tag == "Finish") {

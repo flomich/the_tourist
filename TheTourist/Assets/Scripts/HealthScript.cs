@@ -81,10 +81,14 @@ public class HealthScript : MonoBehaviour
             position.y += 1.0f;
         }
 
+        // spwan damage icon
+        GameObject icon = Instantiate(damage_icon, position, rotation);
+        icon.transform.SetParent(gameObject.transform);
+
         if (gameObject.tag == "Player")
         {
             // spawn damage paticle effect
-            ParticleEffectsScript.Instance.playerDamageEffect(position);
+            ParticleEffectsScript.Instance.playerDamageEffect(position, icon);
 
             // spawn sound effect
             SoundEffectScript.Instance.playDamageSound(gameObject.transform.position);
@@ -92,12 +96,10 @@ public class HealthScript : MonoBehaviour
         else
         {
             // spawn enemy damage paticle effect
-            ParticleEffectsScript.Instance.enemyDamageEffect(position);
+            ParticleEffectsScript.Instance.enemyDamageEffect(position, icon);
         }
 
-        // spwan damage icon
-        GameObject icon = Instantiate(damage_icon, position, rotation);
-        icon.transform.SetParent(gameObject.transform);
+        
 
         
     }

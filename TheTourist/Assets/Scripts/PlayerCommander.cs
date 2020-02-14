@@ -53,13 +53,6 @@ public class PlayerCommander : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other_collider)
     {
-        // ignore collision between characters 
-        if (other_collider.gameObject.tag.Contains("Player") ||
-            other_collider.gameObject.tag.Contains("Enemy"))
-        {
-            Collider2D collider = GetComponent<Collider2D>();
-            Physics2D.IgnoreCollision(other_collider, collider);
-        }
 
         Rigidbody2D other_rigid_body = other_collider.gameObject.GetComponent<Rigidbody2D>();
 

@@ -18,8 +18,9 @@ public class CombatScript : MonoBehaviour
     private float double_damage_timer = 0.0f;
     private bool has_double_damage = false;
 
-
+    public ParticleSystem punch_particle_system;
     private List<GameObject> objects_in_range;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -55,6 +56,21 @@ public class CombatScript : MonoBehaviour
         double_damage_timer = seconds;
     }
 
+    private void playPunchEffects(Vector3 forward_vector)
+    {
+        // play punch sound
+        SoundEffectScript.Instance.playPunchSound(gameObject.transform.position);
+
+        //Fetch the Collider from the GameObject
+        Collider2D collider = GetComponent<Collider2D>();
+
+        //Fetch the center of the Collider volume
+        Vector3 center = collider.bounds.center;
+        Vector3 position = center + forward_vector;
+        ParticleEffectsScript.Instance.createParticleSystem(punch_particle_system, position, gameObject);
+
+    }
+
     private void punch()
     {
         // animate punch
@@ -77,8 +93,6 @@ public class CombatScript : MonoBehaviour
             // dont apply damage or force to self
             if (gameObject.Equals(o)) continue;
 
-            
-
             // only apply forces and damage to objects in front of player
             Vector3 vec_to_other = (o.transform.position - gameObject.transform.position);
 
@@ -86,16 +100,12 @@ public class CombatScript : MonoBehaviour
             float distance_to_other = Mathf.Infinity;
             Collider2D collider = o.GetComponent<Collider2D>();
 
-
-
+            Vector3 closest_point = transform.position;
             if (collider != null)
             {
-                Vector3 closest_point = collider.bounds.ClosestPoint(gameObject.transform.position);
+                closest_point = collider.bounds.ClosestPoint(gameObject.transform.position);
                 distance_to_other = Mathf.Max(Vector3.Distance(closest_point,
                                     gameObject.transform.position), 0.0f);
-
-
-                Debug.Log(o.name + "in range at distance " + distance_to_other);
 
                 if ((Vector3.Dot(vec_to_other.normalized, forward_vector) < 0.0f &&
                     distance_to_other > 0.1) || distance_to_other > 1.1f )
@@ -119,8 +129,8 @@ public class CombatScript : MonoBehaviour
             Rigidbody2D rigid_body = o.GetComponent<Rigidbody2D>();
             if(rigid_body != null)
             {
-                // play punch sound
-                SoundEffectScript.Instance.playPunchSound(gameObject.transform.position);
+                // Display punch sprite
+                playPunchEffects(forward_vector);
 
                 if (has_double_damage)
                     rigid_body.AddForce(forward_vector * punch_force * 2.0f);

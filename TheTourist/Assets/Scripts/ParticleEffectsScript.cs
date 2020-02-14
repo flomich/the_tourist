@@ -56,14 +56,22 @@ public class ParticleEffectsScript : MonoBehaviour
         instantiate(frankfurter_explosion_1, position);
     }
 
-    public void playerDamageEffect(Vector3 position)
+    public void playerDamageEffect(Vector3 position, GameObject attached = null)
     {
-        instantiate(player_damage_effect, position);
+        ParticleSystem system = instantiate(player_damage_effect, position);
+        if (attached != null)
+        {
+            system.transform.SetParent(attached.transform);
+        }
     }
 
-    public void enemyDamageEffect(Vector3 position)
+    public void enemyDamageEffect(Vector3 position, GameObject attached = null)
     {
-        instantiate(enemy_damage_effect, position);
+        ParticleSystem system  = instantiate(enemy_damage_effect, position);
+        if (attached != null)
+        {
+            system.transform.SetParent(attached.transform);
+        }
     }
 
     public void healthBoostEffect(Vector3 position, GameObject attached=null, float lifetime= 0.0f)
@@ -96,20 +104,30 @@ public class ParticleEffectsScript : MonoBehaviour
         }
     }
 
-    public void createParticleSystem(ParticleSystem particle_system, Vector3 position, float lifetime)
+    public void createParticleSystem(ParticleSystem particle_system, Vector3 position, float lifetime, GameObject attached = null)
     {
         if(particle_system != null)
         {
-            instantiate(particle_system, position, lifetime);
+            ParticleSystem system = instantiate(particle_system, position, lifetime);
+            
+            if (attached != null)
+            {
+                system.transform.SetParent(attached.transform);
+            }
         }
         
     }
 
-    public void createParticleSystem(ParticleSystem particle_system, Vector3 position)
+    public void createParticleSystem(ParticleSystem particle_system, Vector3 position, GameObject attached=null)
     {
         if (particle_system != null)
         {
-            instantiate(particle_system, position);
+            ParticleSystem system = instantiate(particle_system, position);
+            
+            if (attached != null)
+            {
+                system.transform.SetParent(attached.transform);
+            }
         }
 
     }

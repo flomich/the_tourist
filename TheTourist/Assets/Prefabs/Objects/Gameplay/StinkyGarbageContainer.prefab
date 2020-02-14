@@ -146,9 +146,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   particle_system: {fileID: 569775232724971730, guid: cbe59ece86cabaf498c188190c1e2e24,
     type: 3}
+  particle_offset_x: 0
+  particle_offset_y: 1
   damage: 2
-  rest_interval: 1
-  damage_time: 20
+  rest_interval: 0
+  active_interval: 5
+  randomize_start_time: 0
+  start_active: 1
 --- !u!1 &5711102270483736435
 GameObject:
   m_ObjectHideFlags: 0
@@ -193,7 +197,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.15596294, y: 0.4403646}
+  m_Offset: {x: -0.017652512, y: 0.4403646}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -204,5 +208,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 5.2018147, y: 4.0091596}
+  m_Size: {x: 5.4784355, y: 4.0091596}
   m_EdgeRadius: 0

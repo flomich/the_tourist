@@ -118,11 +118,11 @@ public class ParticleEffectsScript : MonoBehaviour
         
     }
 
-    public void createParticleSystem(ParticleSystem particle_system, Vector3 position, GameObject attached=null)
+    public void createParticleSystem(ParticleSystem particle_system, Vector3 position, GameObject attached=null, bool loop=false)
     {
         if (particle_system != null)
         {
-            ParticleSystem system = instantiate(particle_system, position);
+            ParticleSystem system = instantiate(particle_system, position, loop);
             
             if (attached != null)
             {
@@ -132,7 +132,7 @@ public class ParticleEffectsScript : MonoBehaviour
 
     }
 
-    private ParticleSystem instantiate(ParticleSystem prefab, Vector3 position)
+    private ParticleSystem instantiate(ParticleSystem prefab, Vector3 position, bool loop=false)
     {
         ParticleSystem newParticleSystem = Instantiate(
           prefab,
@@ -140,10 +140,13 @@ public class ParticleEffectsScript : MonoBehaviour
           Quaternion.identity
         ) as ParticleSystem;
 
-
-        // Destroy Particle System when lifetime is over
-        Destroy(newParticleSystem.gameObject,
-          newParticleSystem.main.duration) ;
+        if(!loop)
+        {
+            // Destroy Particle System when lifetime is over
+            Destroy(newParticleSystem.gameObject,
+              newParticleSystem.main.duration);
+        }
+        
 
         return newParticleSystem;
     }

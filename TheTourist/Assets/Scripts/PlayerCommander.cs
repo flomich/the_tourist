@@ -63,8 +63,10 @@ public class PlayerCommander : MonoBehaviour
 
         Rigidbody2D other_rigid_body = other_collider.gameObject.GetComponent<Rigidbody2D>();
 
+        PlatformAnimator platform_animator = other_collider.gameObject.GetComponent<PlatformAnimator>();
+
         // add objects that overlap the hitbox to objects in range
-        if (other_rigid_body != null)
+        if (other_rigid_body != null && platform_animator == null)
         {
             combat_script.addObjectInRange(other_collider.gameObject);
         }

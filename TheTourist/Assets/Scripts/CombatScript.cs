@@ -86,22 +86,23 @@ public class CombatScript : MonoBehaviour
             float distance_to_other = Mathf.Infinity;
             Collider2D collider = o.GetComponent<Collider2D>();
 
-            
+
 
             if (collider != null)
             {
+                Vector3 closest_point = collider.bounds.ClosestPoint(gameObject.transform.position);
+                distance_to_other = Mathf.Max(Vector3.Distance(closest_point,
+                                    gameObject.transform.position), 0.0f);
 
-                distance_to_other = Vector3.Distance(collider.bounds.ClosestPoint(gameObject.transform.position),
-                                    gameObject.transform.position);
-            }
 
-            Debug.Log(o.name + "in range at distance " + distance_to_other);
+                Debug.Log(o.name + "in range at distance " + distance_to_other);
 
-            if ((Vector3.Dot(vec_to_other.normalized, forward_vector) < 0.0f &&
-                distance_to_other > 0.1) || distance_to_other > 0.8f)
-            {
-                // other object is not in front of player
-                continue;
+                if ((Vector3.Dot(vec_to_other.normalized, forward_vector) < 0.0f &&
+                    distance_to_other > 0.1) || distance_to_other > 1.1f )
+                {
+                    // other object is not in front of player
+                    continue;
+                }
             }
 
             // deal damage

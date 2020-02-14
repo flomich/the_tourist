@@ -29,15 +29,12 @@ public class EnemyCommander : MonoBehaviour
         }
 
         // disable movement
-        movePlayer move_script = gameObject.GetComponent<movePlayer>();
-        if (move_script != null)
-        {
-            move_script.animator.SetInteger("WalkState", 0);
-            move_script.enabled = false;
-        }
+        move_script.animator.SetInteger("WalkState", 0);
+        move_script.setMoveInput(0.0f);
 
+        // disable combat
+        combat_script.animator.SetInteger("PunchState", 0);
         combat_script.setPunchState(false);
-        combat_script.enabled = false;
     }
 
     private void idle()
@@ -80,6 +77,31 @@ public class EnemyCommander : MonoBehaviour
         }
     }
 
+    private void punchTarget()
+    {
+        if (Random.Range(0.0f, 1.0f) > 0.3f)
+        {
+            Vector3 target_pos = target.transform.position;
+            Vector3 vec_to_target = target_pos - transform.position;
+
+            // get forward vector from scale
+            Vector3 forward_vector;
+            if (gameObject.transform.localScale.x < 0.0f)
+            {
+                forward_vector = new Vector3(1.0f, 0.0f, 0.0f);
+            }
+            else
+            {
+                forward_vector = new Vector3(-1.0f, 0.0f, 0.0f);
+            }
+            // facing target?
+            if (Vector3.Dot(forward_vector, vec_to_target) > 0.0f)
+            {
+                combat_script.setPunchState(true);
+            }
+                
+        }
+    }
 
 
     void Update()
@@ -97,11 +119,8 @@ public class EnemyCommander : MonoBehaviour
                 {
                     // only follow player a little
                     followPlayer(0.1f);
+                    punchTarget();
 
-                    if (Random.Range(0.0f, 1.0f) > 0.5f)
-                    {
-                        combat_script.setPunchState(true);
-                    }
                     return;
                 }
                 // follow and attack

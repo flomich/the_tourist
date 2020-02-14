@@ -12,6 +12,8 @@ public class InventoryScript : MonoBehaviour
     public uint max_puntigamer_count = 10;
     public uint max_frankfurter_count = 10;
 
+    public float effect_duration = 8.0f;
+
     private movePlayer move_script;
     private HealthScript health_script;
     private CombatScript combat_script;
@@ -39,10 +41,10 @@ public class InventoryScript : MonoBehaviour
         {
             //consume doener (increase damage)
             SoundEffectScript.Instance.playConsumeDoener(gameObject.transform.position);
-            ParticleEffectsScript.Instance.damageBoostEffect(gameObject.transform.position, gameObject, 5.0f);
+            ParticleEffectsScript.Instance.damageBoostEffect(gameObject.transform.position, gameObject, effect_duration);
 
             doener_count--;
-            combat_script.activateDoubleDamage(5.0f);
+            combat_script.activateDoubleDamage(effect_duration);
             consume_doener = false;
         }
 
@@ -50,10 +52,11 @@ public class InventoryScript : MonoBehaviour
         {
             // increase speed
             SoundEffectScript.Instance.playConsumePuntigamer(gameObject.transform.position);
-            ParticleEffectsScript.Instance.speedBoostEffect(gameObject.transform.position, gameObject, 5.0f);
+            ParticleEffectsScript.Instance.speedBoostEffect(gameObject.transform.position, gameObject, effect_duration);
 
             puntigamer_count--;
-            move_script.activateBoost(5.0f);
+            move_script.activateBoost(effect_duration);
+            combat_script.activateDoubleSpeed(effect_duration);
             consume_puntigamer = false;
         }
 

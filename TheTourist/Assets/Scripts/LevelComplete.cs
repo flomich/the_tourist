@@ -21,14 +21,16 @@ public class LevelComplete : MonoBehaviour
         "polaroid", "socialmedia", "l4l", "lässig"
     };
 
-    List<string> GetRandomTags(int count) {
+    List<string> GetRandomTags(int count)
+    {
         List<string> all = new List<string>(allTags);
         if (count > allTags.Length)
         {
             return all;
         }
         List<string> result = new List<string>();
-        for (int i = 0; i < count; i++) {
+        for (int i = 0; i < count; i++)
+        {
             int selected = (int)UnityEngine.Random.Range(0.0f, all.Count);
             result.Add(all[selected]);
             all.RemoveAt(selected);
@@ -36,18 +38,21 @@ public class LevelComplete : MonoBehaviour
         return result;
     }
 
-    string GetRandomTagsText() {
+    string GetRandomTagsText()
+    {
         var tags = GetRandomTags(tagsPerPolaroid);
         var tagsString = "";
         bool first = true;
-        tags.ForEach(tag => {
-            tagsString += (first ? "#": ", #") + tag;
+        tags.ForEach(tag =>
+        {
+            tagsString += (first ? "#" : ", #") + tag;
             first = false;
         });
         return tagsString;
     }
 
-    void SetLevelDuration() {
+    void SetLevelDuration()
+    {
         float duration = SceneLoaderScript.getDurationOfLastScene();
         int minutes = (int)(duration / 60.0f);
         int seconds = (int)(duration % 60.0f);
@@ -57,7 +62,13 @@ public class LevelComplete : MonoBehaviour
     void Start()
     {
         flashCanvas.SetActive(true);
-        string levelName = "Schloßberg - Uhrturm";
+
+        SceneLoaderScript loader = new SceneLoaderScript();
+        string sceneName = loader.getLastSceneName();
+        LevelDatabase.LevelData level = LevelDatabase.GetLevelData(sceneName);
+        string levelName = level != null ?  level.name : "Unknown level";
+        string levelImage = level != null ? level.polaroidPath : "";
+
         DateTime time = DateTime.UtcNow.Date;
         dateField.text = time.ToShortDateString();
 
@@ -68,12 +79,13 @@ public class LevelComplete : MonoBehaviour
         tagsField.text = GetRandomTagsText();
         Debug.Log(tagsField.text);
 
-        backgroundImage.sprite = Resources.Load<Sprite>("Images/uhrturm");
+        backgroundImage.sprite = Resources.Load<Sprite>(levelImage);
 
         string levelNameForPath = levelName.Replace(' ', '_');
-        screenShot.TakeScreenShot(levelNameForPath, path => {
+        screenShot.TakeScreenShot(levelNameForPath, path =>
+        {
             GalleryEntry entry = new GalleryEntry(levelName, path);
             GalleryManager.Instance.SaveEntry(entry);
-        } );
+        });
     }
 }

@@ -80,15 +80,11 @@ public class DamageBoxScript : MonoBehaviour
             // enable particle effect
             ParticleEffectsScript.Instance.createParticleSystem(particle_system, transform.position +
                 new Vector3(particle_offset_x, particle_offset_y, 0.0f), active_interval, gameObject);
-
-            Debug.Log("Resting timer ran out");
         }
         if(active)
         {
-            Debug.Log("Active");
             if (active_interval_timer > 0.0f)
             {
-                Debug.Log("Stay Active");
                 timer -= Time.deltaTime;
 
                 if(timer <= 0.0f)
@@ -96,6 +92,7 @@ public class DamageBoxScript : MonoBehaviour
                     // deal damage
                     foreach (GameObject o in objects_in_range)
                     {
+                        
                         HealthScript health_script = o.GetComponent<HealthScript>();
 
                         if (health_script != null)
@@ -109,21 +106,22 @@ public class DamageBoxScript : MonoBehaviour
                 }
 
             }
-            else if (rest_interval > 0.0f)
-            {
-                Debug.Log("Resting");
-                // swap states
-                rest_interval_timer = rest_interval;
-                active = false;
-                resting = true;
-            }
             else
             {
-                active_interval_timer = active_interval;
+                if(rest_interval <= 0.0f)
+                {
+                    active_interval_timer = active_interval;
+                }
+                else
+                {
+                    // swap states
+                    rest_interval_timer = rest_interval;
+                    active = false;
+                    resting = true;
+                }
             }
         }
     }
-
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

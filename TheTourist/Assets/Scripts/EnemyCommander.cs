@@ -139,7 +139,6 @@ public class EnemyCommander : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other_collider)
     {
-        Debug.Log(other_collider.gameObject.name + " in hit box");
         if(other_collider.gameObject.tag == "Player")
         {
             target = other_collider.gameObject;

@@ -37,12 +37,14 @@ public class GrabScript : MonoBehaviour
             {
                 Vector3 forward_vector = getForwardVectorFromScale();
 
+                Debug.Log("Grabbed object: " + grabbed_object.name);
+
                 // get intersection distance with collider
                 float distance_to_other = Mathf.Infinity;
                 Vector3 closest_point = transform.position;
                 Collider2D collider = grabbed_object.GetComponent<Collider2D>();
 
-                if (collider != null)
+                if (collider != null && !collider.isTrigger)
                 {
                     closest_point = collider.bounds.ClosestPoint(gameObject.transform.position);
                     distance_to_other = Mathf.Max(Vector3.Distance(closest_point,
@@ -109,6 +111,10 @@ public class GrabScript : MonoBehaviour
         float min_distance = Mathf.Infinity;
         foreach (GameObject o in objects_in_range)
         {
+            if (!o.activeSelf) continue;
+
+            Debug.Log(o.name + " in Box");
+
             Vector3 forward_vector = getForwardVectorFromScale();
 
             //grab only objects in front of player

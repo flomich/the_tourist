@@ -754,7 +754,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a660921a835e165498b497619f56b195, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  grab_range: 1.5
+  grab_range: 2.5
 --- !u!1 &1795432398578951970
 GameObject:
   m_ObjectHideFlags: 0

@@ -71,12 +71,8 @@ public class PlayerCommander : MonoBehaviour
         {
             combat_script.addObjectInRange(other_collider.gameObject);
 
-            if(Vector3.Distance(transform.position, other_collider.gameObject.transform.position) 
-                <= grab_script.grab_range)
-            {
-                // add to grab objects in range
-                grab_script.AddObjectInRange(other_collider.gameObject);
-            }
+            // add to grab objects in range
+            grab_script.AddObjectInRange(other_collider.gameObject);
         }
     }
 

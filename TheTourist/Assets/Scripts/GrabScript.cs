@@ -14,6 +14,8 @@ public class GrabScript : MonoBehaviour
     private GameObject grabbed_object = null;
     private bool grab_state;
 
+    private float follow_range = 5.0f;
+
     // is the player currently grabbing something
     private bool grabbing = false;
  
@@ -33,52 +35,44 @@ public class GrabScript : MonoBehaviour
             {
                 findObjectToGrab();
             }
-            else
+            
+            if (grabbed_object == null) return;
+
+
+            Vector3 forward_vector = getForwardVectorFromScale();
+
+            // get intersection distance with collider
+            float distance_to_other = Mathf.Infinity;
+            Vector3 closest_point = transform.position;
+            Collider2D collider = grabbed_object.GetComponent<Collider2D>();
+
+            if (collider != null && !collider.isTrigger)
             {
-                Vector3 forward_vector = getForwardVectorFromScale();
+                closest_point = collider.bounds.ClosestPoint(gameObject.transform.position);
+                distance_to_other = Mathf.Max(Vector3.Distance(closest_point,
+                                    gameObject.transform.position), 0.0f);
 
-                Debug.Log("Grabbed object: " + grabbed_object.name);
-
-                // get intersection distance with collider
-                float distance_to_other = Mathf.Infinity;
-                Vector3 closest_point = transform.position;
-                Collider2D collider = grabbed_object.GetComponent<Collider2D>();
-
-                if (collider != null && !collider.isTrigger)
-                {
-                    closest_point = collider.bounds.ClosestPoint(gameObject.transform.position);
-                    distance_to_other = Mathf.Max(Vector3.Distance(closest_point,
-                                        gameObject.transform.position), 0.0f);
-
-                }
-
-                if (distance_to_other > grab_range)
-                {
-                    grabbing = false;
-                    grabbed_object = null;
-                }
-                else
-                {
-                    float rest_length = grab_range * 0.5f;
-
-                    Rigidbody2D rigidbody = grabbed_object.GetComponent<Rigidbody2D>();
-
-                    if (rigidbody != null)
-                    {
-                        if (distance_to_other <= rest_length)
-                        {
-                            rigidbody.AddForce(-forward_vector * distance_to_other);
-                        }
-                        else
-                        {
-                            rigidbody.AddForce(forward_vector * distance_to_other);
-                        }
-                    }
-
-
-                }
             }
 
+            if (distance_to_other > follow_range)
+            {
+                grabbing = false;
+                grabbed_object = null;
+            }
+            else
+            { 
+
+                Rigidbody2D rigidbody = grabbed_object.GetComponent<Rigidbody2D>();
+
+                if (rigidbody != null)
+                { 
+                    // apply force    
+                    rigidbody.velocity = gameObject.GetComponent<Rigidbody2D>().velocity;
+        
+                }
+
+
+            }
         }
         else
         {
@@ -111,9 +105,9 @@ public class GrabScript : MonoBehaviour
         float min_distance = Mathf.Infinity;
         foreach (GameObject o in objects_in_range)
         {
+            //Debug.Log(o.name + " in Box");
             if (!o.activeSelf) continue;
 
-            Debug.Log(o.name + " in Box");
 
             Vector3 forward_vector = getForwardVectorFromScale();
 
@@ -158,10 +152,6 @@ public class GrabScript : MonoBehaviour
     {
         if (objects_in_range.Contains(o))
         {
-            if(o.Equals(grabbed_object))
-            {
-                grabbed_object = null;
-            }
             objects_in_range.Remove(o);
         }
     }

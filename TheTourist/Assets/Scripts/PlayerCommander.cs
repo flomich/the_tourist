@@ -7,6 +7,7 @@ public class PlayerCommander : MonoBehaviour
     private movePlayer move_script = null;
     private CombatScript combat_script = null;
     private InventoryScript inventory_script = null;
+    private GrabScript grab_script = null;
 
     // Start is called before the first frame update
     void Start()
@@ -14,6 +15,7 @@ public class PlayerCommander : MonoBehaviour
         move_script = GetComponent<movePlayer>();
         combat_script = GetComponent<CombatScript>();
         inventory_script = GetComponent<InventoryScript>();
+        grab_script = GetComponent<GrabScript>();
     }
 
     // Update is called once per frame
@@ -37,12 +39,18 @@ public class PlayerCommander : MonoBehaviour
         // get key state for item doener
         bool consume_frankfurter_state = Input.GetKeyDown(KeyCode.Alpha3);
 
+        // get grab key state
+        bool grab_state = Input.GetKey(KeyCode.R);
+
         //set the move script input
         move_script.setMoveInput(horizontal_axis);
         move_script.setJumpInput(space_state);
 
         // set the combat script input
         combat_script.setPunchState(punch_state);
+
+        // set input for grab script
+        grab_script.setGrabState(grab_state);
 
         // set inventory script input
         inventory_script.setConsumeDoener(consume_doener_state);
@@ -62,6 +70,13 @@ public class PlayerCommander : MonoBehaviour
         if (other_rigid_body != null && platform_animator == null)
         {
             combat_script.addObjectInRange(other_collider.gameObject);
+
+            if(Vector3.Distance(transform.position, other_collider.gameObject.transform.position) 
+                <= grab_script.grab_range)
+            {
+                // add to grab objects in range
+                grab_script.AddObjectInRange(other_collider.gameObject);
+            }
         }
     }
 
@@ -69,6 +84,7 @@ public class PlayerCommander : MonoBehaviour
     {
         // object left the hitbox, remove from objects in range
         combat_script.removeObjectInRange(other_collider.gameObject);
+        grab_script.removeObjectInRange(other_collider.gameObject);
 
     }
 }

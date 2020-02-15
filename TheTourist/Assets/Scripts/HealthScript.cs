@@ -55,6 +55,7 @@ public class HealthScript : MonoBehaviour
             // display game over screen
             if (game_over_timer <= 0.0f)
             {
+                PlayerPrefs.SetString("LastScene", SceneManager.GetActiveScene().name);
                 SceneManager.LoadScene("GameOver");
             }
             

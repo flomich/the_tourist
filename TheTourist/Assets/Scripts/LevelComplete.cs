@@ -65,8 +65,10 @@ public class LevelComplete : MonoBehaviour
 
         SceneLoaderScript loader = new SceneLoaderScript();
         string sceneName = loader.getLastSceneName();
+        sceneName = sceneName != null ? sceneName : "";
+
         LevelDatabase.LevelData level = LevelDatabase.GetLevelData(sceneName);
-        string levelName = level != null ?  level.name : "Unknown level";
+        string levelName = level != null ? level.name : "Unknown level";
         string levelImage = level != null ? level.polaroidPath : "";
 
         DateTime time = DateTime.UtcNow.Date;
@@ -77,15 +79,17 @@ public class LevelComplete : MonoBehaviour
         levelNameField.text = levelName;
         selfie.GeneratePose();
         tagsField.text = GetRandomTagsText();
-        Debug.Log(tagsField.text);
 
         backgroundImage.sprite = Resources.Load<Sprite>(levelImage);
 
-        string levelNameForPath = levelName.Replace(' ', '_');
-        screenShot.TakeScreenShot(levelNameForPath, path =>
+        if (level != null)
         {
-            GalleryEntry entry = new GalleryEntry(levelName, path);
-            GalleryManager.Instance.SaveEntry(entry);
-        });
+            string levelNameForPath = levelName.Replace(' ', '_');
+            screenShot.TakeScreenShot(levelNameForPath, path =>
+            {
+                GalleryEntry entry = new GalleryEntry(levelName, path);
+                GalleryManager.Instance.SaveEntry(entry);
+            });
+        }
     }
 }

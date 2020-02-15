@@ -19,6 +19,10 @@ public class LevelDatabase
         {"Hauptplatz", new LevelData("Hauptplatz", "Images/hauptplatz")},
         {"Opernhaus", new LevelData("Opernhaus", "Images/opernhaus")},
         {"Stadtpark", new LevelData("Stadpark","Images/stadtpark")},
+        {"Schlossberg", new LevelData("Schlossberg","Images/uhrturm")},
+        // TODO: Kunsthaus polaroid image not implemented yet
+        {"Kunsthaus", new LevelData("Kunsthaus","Images/uhrturm")},
+
     };
 
     public static LevelData GetLevelData(string sceneName)

@@ -16,6 +16,7 @@ public class PlatformAnimator : MonoBehaviour
     public float stiffness = 5000.0f;
     public float damping = 10.0f;
     public float power = 2.0f;
+    public float max_force = 100000.0f;
 
     private Vector2 origin;
     private float fixed_time = 0.0f;
@@ -56,8 +57,13 @@ public class PlatformAnimator : MonoBehaviour
 
         vec2target = target - origin;
 
-        vec2target = vec2target * Mathf.Pow(vec2target.magnitude, power);
+        vec2target = vec2target * Mathf.Pow(vec2target.magnitude, power) * stiffness;
 
-        return vec2target * stiffness;
+        if(vec2target.magnitude > max_force)
+        {
+            vec2target = vec2target.normalized * max_force;
+        }
+
+        return vec2target;
     }
 }

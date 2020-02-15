@@ -38,4 +38,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GameOver.unity
     guid: 1c0c697b240cc0b429fc1afc25663c46
+  - enabled: 1
+    path: Assets/Scenes/Schlossberg.unity
+    guid: 17294325955075045a268a2485ecadd7
   m_configObjects: {}

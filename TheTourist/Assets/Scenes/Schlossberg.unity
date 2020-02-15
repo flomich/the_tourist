@@ -2202,6 +2202,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5142605968466091878, guid: 4d49b2bb4479f2e479afc9f11e61bdea,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5142605968821189165, guid: 4d49b2bb4479f2e479afc9f11e61bdea,
         type: 3}
       propertyPath: m_Text
@@ -2312,6 +2317,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 5142605968924529165, guid: 4d49b2bb4479f2e479afc9f11e61bdea,
+        type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 1781039677}
     - target: {fileID: 5142605968924529166, guid: 4d49b2bb4479f2e479afc9f11e61bdea,
         type: 3}
       propertyPath: m_Name

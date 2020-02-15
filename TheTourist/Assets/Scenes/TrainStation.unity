@@ -1543,7 +1543,7 @@ PrefabInstance:
     - target: {fileID: 2292845727860808006, guid: f951b315a6bc49346ab433019658b5e5,
         type: 3}
       propertyPath: level_name
-      value: SampleScene
+      value: Schlossberg
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f951b315a6bc49346ab433019658b5e5, type: 3}
@@ -4770,9 +4770,7 @@ PrefabInstance:
     - target: {fileID: 5142605968821189165, guid: 4d49b2bb4479f2e479afc9f11e61bdea,
         type: 3}
       propertyPath: m_Text
-      value: 'Schlossberg
-
-'
+      value: "Schlo\xDFbergplatz\n"
       objectReference: {fileID: 0}
     - target: {fileID: 5142605968924529164, guid: 4d49b2bb4479f2e479afc9f11e61bdea,
         type: 3}

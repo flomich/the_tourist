@@ -23,10 +23,10 @@ public class HudScript : MonoBehaviour
     {
         Text hud_text = hud_text_gameobject.GetComponent<Text>();
 
-        string text = "Health: " + health_script.getHealth().ToString();
-        text += "\nDoener: " + inventory_script.getDoenerCount().ToString();
-        text += "\nPuntigamer: " + inventory_script.getPuntigamerCount().ToString();
-        text += "\nFrankfurter: " + inventory_script.getFrankfurterCount().ToString();
+        string text = health_script.getHealth().ToString();
+        text += "%\nx " + inventory_script.getDoenerCount().ToString();
+        text += "\nx " + inventory_script.getPuntigamerCount().ToString();
+        text += "\nx " + inventory_script.getFrankfurterCount().ToString();
 
         hud_text.text = text;
     }

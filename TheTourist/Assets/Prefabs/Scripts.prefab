@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 4051684341439756548}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.0026181638, y: 0.00291045, z: -0.07897023}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.41244, y: 0.41244, z: 0.41244}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -105,4 +105,6 @@ MonoBehaviour:
   step_audio_source: {fileID: 2146709679052000572, guid: 9741b76160c03e14dbac5e484fc9b23a,
     type: 3}
   damage_audio_source: {fileID: 333618009673440947, guid: d24e719a711e7d64292826fdd0259bab,
+    type: 3}
+  swoosh_audio_source: {fileID: 1068234031752861592, guid: a53b07c8d5241a54d9414bd0f7d740fd,
     type: 3}

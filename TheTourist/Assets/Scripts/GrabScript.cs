@@ -6,6 +6,9 @@ using UnityEngine;
 
 public class GrabScript : MonoBehaviour
 {
+    //the animator of the player
+    public Animator animator;
+	
     private List<GameObject> objects_in_range;
     // grab range in meters
     public float grab_range = 1.5f;
@@ -24,6 +27,7 @@ public class GrabScript : MonoBehaviour
     void Start()
     {
         objects_in_range = new List<GameObject>();
+		animator = gameObject.GetComponentInChildren<Animator>();
     }
 
     // Update is called once per frame
@@ -56,6 +60,7 @@ public class GrabScript : MonoBehaviour
 
             if (distance_to_other > follow_range)
             {
+				animator.SetInteger("GrabState", 0);
                 grabbing = false;
                 grabbed_object = null;
             }
@@ -77,6 +82,7 @@ public class GrabScript : MonoBehaviour
         else
         {
             grabbed_object = null;
+			animator.SetInteger("GrabState", 0);
             grabbing = false;
         }
 
@@ -129,6 +135,7 @@ public class GrabScript : MonoBehaviour
             {
                 min_distance = distance_to_other;
                 grabbed_object = o;
+				animator.SetInteger("GrabState", 1);
                 grabbing = true;
             }
         }

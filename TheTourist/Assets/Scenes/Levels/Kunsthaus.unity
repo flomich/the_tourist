@@ -5692,6 +5692,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3562e66dc3c345443960634398881588, type: 3}
+--- !u!1 &1729877407 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2808152040328368480, guid: 8e0ffc6d54f2bc8438b8fe4cfb239fee,
+    type: 3}
+  m_PrefabInstance: {fileID: 1338817710}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1825109924
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6632,6 +6638,11 @@ PrefabInstance:
       propertyPath: player_gamer_object
       value: 
       objectReference: {fileID: 740338477}
+    - target: {fileID: 2345758367246538594, guid: 6a82f6b69be0fa24babecfedeac6b19f,
+        type: 3}
+      propertyPath: vignette_game_object
+      value: 
+      objectReference: {fileID: 1729877407}
     - target: {fileID: 2345758367246538596, guid: 6a82f6b69be0fa24babecfedeac6b19f,
         type: 3}
       propertyPath: m_Camera

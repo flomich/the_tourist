@@ -23,6 +23,8 @@ public class SoundEffectScript : MonoBehaviour
     public AudioSource step_audio_source;
     public AudioSource damage_audio_source;
     public AudioSource swoosh_audio_source;
+    public AudioSource grab_audio_source;
+    public AudioSource release_audio_source;
 
     private GameObject player;
 
@@ -101,6 +103,16 @@ public class SoundEffectScript : MonoBehaviour
     public void playSwooshSound(Vector3 position)
     {
         instantiate(swoosh_audio_source, position);
+    }
+
+    public void playGrabSound(Vector3 position)
+    {
+        instantiate(grab_audio_source, position);
+    }
+
+    public void playReleaseSound(Vector3 position)
+    {
+        instantiate(release_audio_source, position);
     }
 
     public void playAudioSource(AudioSource audio_source, Vector3 position)

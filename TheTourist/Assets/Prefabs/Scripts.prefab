@@ -108,3 +108,7 @@ MonoBehaviour:
     type: 3}
   swoosh_audio_source: {fileID: 1068234031752861592, guid: a53b07c8d5241a54d9414bd0f7d740fd,
     type: 3}
+  grab_audio_source: {fileID: 8845529487643368846, guid: a7385e55141b65c45aa363d8cdae1b8b,
+    type: 3}
+  release_audio_source: {fileID: 6672670994674961368, guid: 2b976c254bfac7344ac0f908e9820513,
+    type: 3}

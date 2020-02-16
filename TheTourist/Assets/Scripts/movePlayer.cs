@@ -73,9 +73,10 @@ public class movePlayer : MonoBehaviour
     {
         //accumulates movement forces (walk, jump)
         Vector2 current_movement_force = new Vector2(0.0f, 0.0f);
+        GrabScript grab_script = GetComponent<GrabScript>();
 
         //clamp velocity
-        if(rigidbody_2d.velocity.magnitude > air_max_velocity)
+        if (rigidbody_2d.velocity.magnitude > air_max_velocity)
         {
             rigidbody_2d.velocity *= (1.0f / rigidbody_2d.velocity.magnitude) * air_max_velocity;
         }
@@ -89,7 +90,10 @@ public class movePlayer : MonoBehaviour
         //flip player based on horizontal input
         if (Mathf.Abs(moveHorizontal) > 0.1f)
         {
-            transform.localScale = new Vector3(moveHorizontal < 0.0f ? 0.4f : -0.4f, 0.4f, 0.4f);
+            if (grab_script == null || grab_script.getGrabbedObject() == null)
+            {
+                transform.localScale = new Vector3(moveHorizontal < 0.0f ? 0.4f : -0.4f, 0.4f, 0.4f);
+            }  
         }
 
         //if there is movement input
@@ -160,11 +164,7 @@ public class movePlayer : MonoBehaviour
             animator.SetInteger("JumpState", 1);
         }
 
-        
-
-
         // apply move force to grabbed object
-        GrabScript grab_script = GetComponent<GrabScript>();
         if(grab_script != null)
         {
             GameObject grabbed_object = grab_script.getGrabbedObject();
@@ -182,7 +182,6 @@ public class movePlayer : MonoBehaviour
                 {
                     rigidbody_2d.AddForce(new Vector3(d.x, 0.0f, 0.0f) * distance * current_movement_force.magnitude);
                 }
-
             }
         }
 

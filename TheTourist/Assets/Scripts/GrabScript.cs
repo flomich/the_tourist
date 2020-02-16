@@ -7,7 +7,7 @@ using UnityEngine;
 public class GrabScript : MonoBehaviour
 {
     //the animator of the player
-    public Animator animator;
+    public Animator boneAnimator;
 	
     private List<GameObject> objects_in_range;
     // grab range in meters
@@ -27,7 +27,7 @@ public class GrabScript : MonoBehaviour
     void Start()
     {
         objects_in_range = new List<GameObject>();
-		animator = gameObject.GetComponentInChildren<Animator>();
+		boneAnimator = gameObject.GetComponentInChildren<Animator>();
     }
 
     // Update is called once per frame
@@ -60,7 +60,7 @@ public class GrabScript : MonoBehaviour
 
             if (distance_to_other > follow_range)
             {
-				animator.SetInteger("GrabState", 0);
+				boneAnimator.SetInteger("GrabState", 0);
                 grabbing = false;
                 grabbed_object = null;
                 SoundEffectScript.Instance.playReleaseSound(transform.position);
@@ -86,7 +86,7 @@ public class GrabScript : MonoBehaviour
             if(grabbing)
             {
                 grabbed_object = null;
-				animator.SetInteger("GrabState", 0);
+				boneAnimator.SetInteger("GrabState", 0);
                 grabbing = false;
                 SoundEffectScript.Instance.playReleaseSound(transform.position);
             }
@@ -143,7 +143,7 @@ public class GrabScript : MonoBehaviour
             {
                 min_distance = distance_to_other;
                 grabbed_object = o;
-				animator.SetInteger("GrabState", 1);
+				boneAnimator.SetInteger("GrabState", 1);
                 grabbing = true;
                 SoundEffectScript.Instance.playGrabSound(transform.position);
             }

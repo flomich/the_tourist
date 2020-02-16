@@ -19,6 +19,7 @@ public class PlatformScript : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.DownArrow))
         {
             timer = 0.2f;
+            effector.rotationalOffset = 0.0f;
         }
         if (Input.GetKey(KeyCode.DownArrow))
         {
@@ -32,9 +33,9 @@ public class PlatformScript : MonoBehaviour
                 timer -= Time.deltaTime;
             }
         }
-        if (Input.anyKey && !Input.GetKey(KeyCode.DownArrow))
+        /*if (Input.anyKey && !Input.GetKey(KeyCode.DownArrow))
         {
             effector.rotationalOffset = 0.0f;
-        }
+        }*/
     }
 }

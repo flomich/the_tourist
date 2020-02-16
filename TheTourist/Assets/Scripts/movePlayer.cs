@@ -171,7 +171,7 @@ public class movePlayer : MonoBehaviour
             if (grabbed_object != null)
             {
                 Rigidbody2D rigidbody = grabbed_object.GetComponent<Rigidbody2D>();
-                rigidbody.AddForce(current_movement_force);
+                rigidbody.AddForce(new Vector3(current_movement_force.x, 0.0f, 0.0f));
 
                 // attach player to grabbed object
                 float distance = grab_script.getDistanceToOther(grabbed_object);

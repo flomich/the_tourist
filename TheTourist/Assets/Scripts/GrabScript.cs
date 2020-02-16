@@ -58,7 +58,7 @@ public class GrabScript : MonoBehaviour
 
             }
 
-            if (distance_to_other > follow_range)
+            if (distance_to_other > grab_range * 2.0f)
             {
 				boneAnimator.SetInteger("GrabState", 0);
                 grabbing = false;
@@ -66,20 +66,6 @@ public class GrabScript : MonoBehaviour
                 SoundEffectScript.Instance.playReleaseSound(transform.position);
 
             }
-           /* else
-            { 
-
-                Rigidbody2D rigidbody = grabbed_object.GetComponent<Rigidbody2D>();
-
-                if (rigidbody != null)
-                { 
-                    // apply force    
-                    rigidbody.velocity = gameObject.GetComponent<Rigidbody2D>().velocity;
-        
-                }
-
-
-            }*/
         }
         else
         {
@@ -89,6 +75,11 @@ public class GrabScript : MonoBehaviour
 				boneAnimator.SetInteger("GrabState", 0);
                 grabbing = false;
                 SoundEffectScript.Instance.playReleaseSound(transform.position);
+            }
+            else
+            {
+                grabbed_object = null;
+                grabbing = false;
             }
         }
 

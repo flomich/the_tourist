@@ -19,7 +19,7 @@ public class SceneLoaderScript : MonoBehaviour
     }
 
     public string getLastSceneName() {
-        return PlayerPrefs.GetString("LastScene", "");
+        return PlayerPrefs.GetString("LastScene", null);
     }
 
     public void quitApplication()

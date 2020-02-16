@@ -20,8 +20,7 @@ public class LevelDatabase
         {"Opernhaus", new LevelData("Opernhaus", "Images/opernhaus")},
         {"Stadtpark", new LevelData("Stadpark","Images/stadtpark")},
         {"Schlossberg", new LevelData("Schlossberg","Images/uhrturm")},
-        // TODO: Kunsthaus polaroid image not implemented yet
-        {"Kunsthaus", new LevelData("Kunsthaus","Images/uhrturm")},
+        {"Kunsthaus", new LevelData("Kunsthaus","Images/kunsthaus")},
 
     };
 

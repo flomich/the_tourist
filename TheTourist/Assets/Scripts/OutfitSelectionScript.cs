@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class OutfitSelectionScript : MonoBehaviour
 {
     //the total number of outfits
-    private int num_outfits = 3;
+    private int num_outfits = 6;
     
     public void incHead(int inc)
     {

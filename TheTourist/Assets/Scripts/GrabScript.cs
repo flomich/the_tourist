@@ -6,6 +6,9 @@ using UnityEngine;
 
 public class GrabScript : MonoBehaviour
 {
+    //the animator of the player
+    public Animator boneAnimator;
+	
     private List<GameObject> objects_in_range;
     // grab range in meters
     public float grab_range = 1.5f;
@@ -24,6 +27,7 @@ public class GrabScript : MonoBehaviour
     void Start()
     {
         objects_in_range = new List<GameObject>();
+		boneAnimator = gameObject.GetComponentInChildren<Animator>();
     }
 
     // Update is called once per frame
@@ -56,8 +60,11 @@ public class GrabScript : MonoBehaviour
 
             if (distance_to_other > follow_range)
             {
+				boneAnimator.SetInteger("GrabState", 0);
                 grabbing = false;
                 grabbed_object = null;
+                SoundEffectScript.Instance.playReleaseSound(transform.position);
+
             }
            /* else
             { 
@@ -76,8 +83,13 @@ public class GrabScript : MonoBehaviour
         }
         else
         {
-            grabbed_object = null;
-            grabbing = false;
+            if(grabbing)
+            {
+                grabbed_object = null;
+				boneAnimator.SetInteger("GrabState", 0);
+                grabbing = false;
+                SoundEffectScript.Instance.playReleaseSound(transform.position);
+            }
         }
 
 
@@ -109,6 +121,8 @@ public class GrabScript : MonoBehaviour
         {
             //Debug.Log(o.name + " in Box");
             if (!o.activeSelf) continue;
+            PlatformAnimator animator = o.GetComponent<PlatformAnimator>();
+            if (animator != null) continue;
 
 
             Vector3 forward_vector = getForwardVectorFromScale();
@@ -117,8 +131,8 @@ public class GrabScript : MonoBehaviour
             Vector3 vec_to_other = (o.transform.position - gameObject.transform.position);
             distance_to_other = getDistanceToOther(o);
 
-            if ((Vector3.Dot(vec_to_other.normalized, forward_vector) < 0.0f &&
-                distance_to_other > 0.1) || distance_to_other > grab_range)
+            if (Vector3.Dot(vec_to_other.normalized, forward_vector) < 0.7f || 
+                distance_to_other > grab_range)
             {
                 // other object is not in front of player
                 continue;
@@ -129,20 +143,9 @@ public class GrabScript : MonoBehaviour
             {
                 min_distance = distance_to_other;
                 grabbed_object = o;
+				boneAnimator.SetInteger("GrabState", 1);
                 grabbing = true;
-            }
-        }
-
-        if (grabbed_object != null)
-        {
-            if(distance_to_other != 0.5f)
-            {
-                Vector3 vec_to_other = (gameObject.transform.position - grabbed_object.transform.position).normalized;
-
-                Rigidbody2D rigidbody = grabbed_object.GetComponent<Rigidbody2D>();
-
-                rigidbody.AddForce(vec_to_other * distance_to_other * 100.0f);
-
+                SoundEffectScript.Instance.playGrabSound(transform.position);
             }
         }
     }
@@ -175,6 +178,12 @@ public class GrabScript : MonoBehaviour
     {
         if (objects_in_range.Contains(o))
         {
+            if (o.Equals(grabbed_object))
+            {
+                grabbed_object = null;
+                grabbing = false;
+                SoundEffectScript.Instance.playReleaseSound(transform.position);
+            }
             objects_in_range.Remove(o);
         }
     }

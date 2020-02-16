@@ -178,9 +178,9 @@ public class movePlayer : MonoBehaviour
 
                 Vector3 d = (grabbed_object.transform.position - transform.position).normalized;
 
-                if(distance != 0.0f)
+                if(distance > 0.0f)
                 {
-                    rigidbody_2d.AddForce(new Vector3(d.x, 0.0f, 0.0f) * distance * current_movement_force.magnitude);
+                    rigidbody_2d.AddForce(new Vector3(d.x, 0.0f, 0.0f) * distance * current_movement_force.magnitude * 2.0f);
                 }
             }
         }

@@ -44,4 +44,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Levels/Kunsthaus.unity
     guid: 0bbbc79ebcfa8f6469d826d30aca9554
+  - enabled: 1
+    path: Assets/Scenes/Levels/Tutorial.unity
+    guid: 95c1d61d1641911498be4c59ce6c3cdd
   m_configObjects: {}

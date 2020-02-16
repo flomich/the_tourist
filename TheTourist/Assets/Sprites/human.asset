@@ -40,6 +40,10 @@ MonoBehaviour:
       m_Hash: -2068763730
       m_Sprite: {fileID: 5687192380283015091, guid: ea5db55d3643b31469570e5ab787fb8a,
         type: 3}
+    - m_Name: 6
+      m_Hash: 498629140
+      m_Sprite: {fileID: -1627849831986887942, guid: bb1c3af0526280d4ea6382e87b295ce1,
+        type: 3}
   - m_Name: body
     m_Hash: -609743950
     m_CategoryList:
@@ -66,6 +70,10 @@ MonoBehaviour:
     - m_Name: 5
       m_Hash: -2068763730
       m_Sprite: {fileID: -1400203674295105051, guid: ea5db55d3643b31469570e5ab787fb8a,
+        type: 3}
+    - m_Name: 6
+      m_Hash: 498629140
+      m_Sprite: {fileID: 1006023627292611527, guid: bb1c3af0526280d4ea6382e87b295ce1,
         type: 3}
   - m_Name: arm_left
     m_Hash: 1470022308
@@ -94,6 +102,10 @@ MonoBehaviour:
       m_Hash: -2068763730
       m_Sprite: {fileID: 3233608176615488623, guid: ea5db55d3643b31469570e5ab787fb8a,
         type: 3}
+    - m_Name: 6
+      m_Hash: 498629140
+      m_Sprite: {fileID: 4715442412928027077, guid: bb1c3af0526280d4ea6382e87b295ce1,
+        type: 3}
   - m_Name: arm_right
     m_Hash: 641008298
     m_CategoryList:
@@ -120,6 +132,10 @@ MonoBehaviour:
     - m_Name: 5
       m_Hash: -2068763730
       m_Sprite: {fileID: -3933856383437743733, guid: ea5db55d3643b31469570e5ab787fb8a,
+        type: 3}
+    - m_Name: 6
+      m_Hash: 498629140
+      m_Sprite: {fileID: -4373778037030890398, guid: bb1c3af0526280d4ea6382e87b295ce1,
         type: 3}
   - m_Name: leg_left
     m_Hash: -814131629
@@ -148,6 +164,10 @@ MonoBehaviour:
       m_Hash: -2068763730
       m_Sprite: {fileID: 6082214466917490753, guid: ea5db55d3643b31469570e5ab787fb8a,
         type: 3}
+    - m_Name: 6
+      m_Hash: 498629140
+      m_Sprite: {fileID: -4275686256312527383, guid: bb1c3af0526280d4ea6382e87b295ce1,
+        type: 3}
   - m_Name: leg_right
     m_Hash: 91521665
     m_CategoryList:
@@ -174,4 +194,8 @@ MonoBehaviour:
     - m_Name: 5
       m_Hash: -2068763730
       m_Sprite: {fileID: 7987687593036813773, guid: ea5db55d3643b31469570e5ab787fb8a,
+        type: 3}
+    - m_Name: 6
+      m_Hash: 498629140
+      m_Sprite: {fileID: -4098390403179106315, guid: bb1c3af0526280d4ea6382e87b295ce1,
         type: 3}

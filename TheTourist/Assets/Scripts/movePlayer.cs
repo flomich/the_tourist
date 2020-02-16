@@ -160,6 +160,32 @@ public class movePlayer : MonoBehaviour
             animator.SetInteger("JumpState", 1);
         }
 
+        
+
+
+        // apply move force to grabbed object
+        GrabScript grab_script = GetComponent<GrabScript>();
+        if(grab_script != null)
+        {
+            GameObject grabbed_object = grab_script.getGrabbedObject();
+            if (grabbed_object != null)
+            {
+                Rigidbody2D rigidbody = grabbed_object.GetComponent<Rigidbody2D>();
+                rigidbody.AddForce(current_movement_force);
+
+                // attach player to grabbed object
+                float distance = grab_script.getDistanceToOther(grabbed_object);
+
+                Vector3 d = (grabbed_object.transform.position - transform.position).normalized;
+
+                if(distance != 0.0f)
+                {
+                    rigidbody_2d.AddForce(new Vector3(d.x, 0.0f, 0.0f) * distance * current_movement_force.magnitude);
+                }
+
+            }
+        }
+
         //add the force to the physics object
         rigidbody_2d.AddForce(current_movement_force);
     }

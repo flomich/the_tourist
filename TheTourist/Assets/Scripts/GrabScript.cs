@@ -59,7 +59,7 @@ public class GrabScript : MonoBehaviour
                 grabbing = false;
                 grabbed_object = null;
             }
-            else
+           /* else
             { 
 
                 Rigidbody2D rigidbody = grabbed_object.GetComponent<Rigidbody2D>();
@@ -72,7 +72,7 @@ public class GrabScript : MonoBehaviour
                 }
 
 
-            }
+            }*/
         }
         else
         {
@@ -103,6 +103,8 @@ public class GrabScript : MonoBehaviour
     private void findObjectToGrab()
     {
         float min_distance = Mathf.Infinity;
+        float distance_to_other = Mathf.Infinity;
+
         foreach (GameObject o in objects_in_range)
         {
             //Debug.Log(o.name + " in Box");
@@ -113,24 +115,13 @@ public class GrabScript : MonoBehaviour
 
             //grab only objects in front of player
             Vector3 vec_to_other = (o.transform.position - gameObject.transform.position);
+            distance_to_other = getDistanceToOther(o);
 
-            // get intersection distance with collider
-            float distance_to_other = Mathf.Infinity;
-            Vector3 closest_point = transform.position;
-            Collider2D collider = o.GetComponent<Collider2D>();
-
-            if (collider != null)
+            if ((Vector3.Dot(vec_to_other.normalized, forward_vector) < 0.0f &&
+                distance_to_other > 0.1) || distance_to_other > grab_range)
             {
-                closest_point = collider.bounds.ClosestPoint(gameObject.transform.position);
-                distance_to_other = Mathf.Max(Vector3.Distance(closest_point,
-                                    gameObject.transform.position), 0.0f);
-
-                if ((Vector3.Dot(vec_to_other.normalized, forward_vector) < 0.0f &&
-                    distance_to_other > 0.1) || distance_to_other > grab_range)
-                {
-                    // other object is not in front of player
-                    continue;
-                }
+                // other object is not in front of player
+                continue;
             }
 
             // grab the closest object in front of player
@@ -141,6 +132,38 @@ public class GrabScript : MonoBehaviour
                 grabbing = true;
             }
         }
+
+        if (grabbed_object != null)
+        {
+            if(distance_to_other != 0.5f)
+            {
+                Vector3 vec_to_other = (gameObject.transform.position - grabbed_object.transform.position).normalized;
+
+                Rigidbody2D rigidbody = grabbed_object.GetComponent<Rigidbody2D>();
+
+                rigidbody.AddForce(vec_to_other * distance_to_other * 100.0f);
+
+            }
+        }
+    }
+
+    public float getDistanceToOther(GameObject o)
+    {
+        // get intersection distance with collider
+        float distance_to_other = Mathf.Infinity;
+        Vector3 closest_point = transform.position;
+        Collider2D[] colliders = o.GetComponentsInChildren<Collider2D>();
+
+        foreach (Collider2D collider in colliders)
+        {
+            if (collider.isTrigger) continue;
+
+            closest_point = collider.bounds.ClosestPoint(gameObject.transform.position);
+            distance_to_other = Mathf.Max(Vector3.Distance(closest_point,
+                                gameObject.transform.position), 0.0f);
+        }
+
+        return distance_to_other;
     }
 
     public void AddObjectInRange(GameObject o)
@@ -159,5 +182,11 @@ public class GrabScript : MonoBehaviour
     public void setGrabState(bool state)
     {
         grab_state = state;
+    }
+
+    // if true, o holds a reference to the grabbed object
+    public GameObject getGrabbedObject()
+    {
+        return grabbed_object;
     }
 }

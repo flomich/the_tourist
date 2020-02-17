@@ -37,7 +37,7 @@ public class PlatformDamageScript : MonoBehaviour
 
         if(rigidbody != null)
         {
-            if(rigidbody.velocity.magnitude < 100.0f)
+            if(rigidbody.velocity.magnitude < 800.0f)
             {
                 Vector3 normal = collision.GetContact(0).normal;
                 rigidbody.AddForce(-normal * (repulsion_force));

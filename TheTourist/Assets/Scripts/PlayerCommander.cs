@@ -43,7 +43,7 @@ public class PlayerCommander : MonoBehaviour
         bool grab_state = Input.GetKey(KeyCode.R);
 
         //set the move script input
-        move_script.setMoveInput(horizontal_axis);
+        move_script.setMoveInput(horizontal_axis * (grab_state ? 0.5f : 1.0f));
         move_script.setJumpInput(space_state);
 
         // set the combat script input

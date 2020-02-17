@@ -18,7 +18,7 @@ public class SceneLoaderScript : MonoBehaviour
         SceneManager.LoadScene(PlayerPrefs.GetString("LastScene", "Menu"));
     }
 
-    public string getLastSceneName() {
+    public static string getLastSceneName() {
         return PlayerPrefs.GetString("LastScene", null);
     }
 

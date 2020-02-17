@@ -9,12 +9,22 @@ public class EnemyCommander : MonoBehaviour
     public WayBoxScript left_wall = null;
     public WayBoxScript right_wall = null;
 
+    public float max_stand_time = 5.0f;
+    public float min_stand_time = 1.0f;
+
+    public float max_move_time = 5.0f;
+    public float min_move_time = 2.0f;
+
+    public float move_speed = 0.25f;
+
     private movePlayer move_script = null;
     private HealthScript health_script = null;
     private CombatScript combat_script = null;
     private GameObject target = null;
 
     private float move_direction = -1.0f;
+    private float stand_timer = 1.0f;
+    private float move_timer = 0.0f;
 
     void Start()
     {
@@ -51,7 +61,7 @@ public class EnemyCommander : MonoBehaviour
         WayBoxScript lwall = left_wall;
         WayBoxScript rwall = right_wall;
 
-        if(gameObject.transform.localScale.x > 0.0f)
+        if (gameObject.transform.localScale.x > 0.0f)
         {
             lway = right_way;
             rway = left_way;
@@ -59,30 +69,55 @@ public class EnemyCommander : MonoBehaviour
             rwall = left_wall;
         }
 
+        if (stand_timer > 0.0f)
+        {
+            stand_timer -= Time.deltaTime;
+            move_script.setMoveInput(0.0f);
 
-        //moving left or right?
-        if(move_direction > 0.0f)
-        {
-            //is there something we can walk on?
-            if (rway.isBlocked() && !rwall.isBlocked())
+            if (stand_timer < 0.0f)
             {
-                move_script.setMoveInput(move_direction * 0.25f);
+                move_timer = Random.Range(min_stand_time, max_stand_time);
             }
-            else
-            {
-                move_direction *= -1.0f;
-            }
+
+            return;
         }
-        else
+
+        if (move_timer > 0.0f)
         {
-            //is there something we can walk on?
-            if (lway.isBlocked() && !lwall.isBlocked())
+            move_timer -= Time.deltaTime;
+
+            //moving left or right?
+            if (move_direction > 0.0f)
             {
-                move_script.setMoveInput(move_direction * 0.25f);
+                //is there something we can walk on?
+                if (rway.isBlocked() && !rwall.isBlocked())
+                {
+                    move_script.setMoveInput(move_direction * move_speed);
+                }
+                else
+                {
+                    stand_timer = Random.Range(min_stand_time, max_stand_time);
+                    move_direction *= -1.0f;
+                }
             }
             else
             {
-                move_direction *= -1.0f;
+                //is there something we can walk on?
+                if (lway.isBlocked() && !lwall.isBlocked())
+                {
+                    move_script.setMoveInput(move_direction * move_speed);
+                }
+                else
+                {
+                    stand_timer = Random.Range(min_stand_time, max_stand_time);
+                    move_direction *= -1.0f;
+                }
+            }
+
+            if(move_timer < 0.0f)
+            {
+                stand_timer = Random.Range(min_stand_time, max_stand_time);
+                move_direction = Random.Range(-1.0f, 1.0f) < 0.0f ? -1.0f : 1.0f;
             }
         }
 

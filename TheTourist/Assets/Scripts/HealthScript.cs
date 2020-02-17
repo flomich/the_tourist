@@ -39,7 +39,7 @@ public class HealthScript : MonoBehaviour
             Rigidbody2D rigidbody = gameObject.GetComponent<Rigidbody2D>();
             if(rigidbody != null)
             {
-                Vector3 force = new Vector3(1.0f, 0.0f, 0.0f);
+                Vector3 force = new Vector3(0.01f, 0.0f, 0.0f);
                 rigidbody.AddForce(force);
                 rigidbody.freezeRotation = false;
             }

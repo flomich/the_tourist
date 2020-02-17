@@ -17,8 +17,6 @@ public class GrabScript : MonoBehaviour
     private GameObject grabbed_object = null;
     private bool grab_state;
 
-    private float follow_range = 5.0f;
-
     // is the player currently grabbing something
     private bool grabbing = false;
  

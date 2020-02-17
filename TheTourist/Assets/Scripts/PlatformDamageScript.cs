@@ -22,15 +22,20 @@ public class PlatformDamageScript : MonoBehaviour
         
     }
 
-    private void OnCollisionStay2D(Collision2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         // deal damage
         HealthScript health_script = collision.gameObject.GetComponent<HealthScript>();
 
-        if(health_script != null)
+        if (health_script != null)
         {
             health_script.takeHealth(damage);
         }
+    }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+
 
         // apply force along collision normal
         Rigidbody2D rigidbody = collision.gameObject.GetComponent<Rigidbody2D>();

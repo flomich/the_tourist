@@ -62,9 +62,7 @@ public class LevelComplete : MonoBehaviour
     void Start()
     {
         flashCanvas.SetActive(true);
-
-        SceneLoaderScript loader = new SceneLoaderScript();
-        string sceneName = loader.getLastSceneName();
+        string sceneName = SceneLoaderScript.getLastSceneName();
         sceneName = sceneName != null ? sceneName : "";
 
         LevelDatabase.LevelData level = LevelDatabase.GetLevelData(sceneName);

@@ -4854,7 +4854,9 @@ PrefabInstance:
     - target: {fileID: 5142605968821189165, guid: 4d49b2bb4479f2e479afc9f11e61bdea,
         type: 3}
       propertyPath: m_Text
-      value: "Schlo\xDFbergplatz\n"
+      value: 'Schlossbergplatz
+
+'
       objectReference: {fileID: 0}
     - target: {fileID: 5142605968924529164, guid: 4d49b2bb4479f2e479afc9f11e61bdea,
         type: 3}

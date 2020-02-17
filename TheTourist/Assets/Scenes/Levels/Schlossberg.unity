@@ -2294,7 +2294,7 @@ PrefabInstance:
     - target: {fileID: 5142605968821189165, guid: 4d49b2bb4479f2e479afc9f11e61bdea,
         type: 3}
       propertyPath: m_Text
-      value: "Schlo\xDFbergplatz"
+      value: Schlossbergplatz
       objectReference: {fileID: 0}
     - target: {fileID: 5142605968924529164, guid: 4d49b2bb4479f2e479afc9f11e61bdea,
         type: 3}
@@ -5782,6 +5782,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 302039852, guid: 6a82f6b69be0fa24babecfedeac6b19f, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 32.400024
+      objectReference: {fileID: 0}
+    - target: {fileID: 302039852, guid: 6a82f6b69be0fa24babecfedeac6b19f, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -24.099976
+      objectReference: {fileID: 0}
+    - target: {fileID: 657067744, guid: 6a82f6b69be0fa24babecfedeac6b19f, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -128.40002
+      objectReference: {fileID: 0}
+    - target: {fileID: 1091705254, guid: 6a82f6b69be0fa24babecfedeac6b19f, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -59.099976
+      objectReference: {fileID: 0}
+    - target: {fileID: 1133137806, guid: 6a82f6b69be0fa24babecfedeac6b19f, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -92.53003
+      objectReference: {fileID: 0}
     - target: {fileID: 2345758367246538594, guid: 6a82f6b69be0fa24babecfedeac6b19f,
         type: 3}
       propertyPath: player_gamer_object
@@ -5911,6 +5931,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2345758368198358603, guid: 6a82f6b69be0fa24babecfedeac6b19f,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -24.099976
+      objectReference: {fileID: 0}
+    - target: {fileID: 2345758368198358603, guid: 6a82f6b69be0fa24babecfedeac6b19f,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 150.09998
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a82f6b69be0fa24babecfedeac6b19f, type: 3}

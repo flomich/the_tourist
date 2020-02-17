@@ -22,7 +22,7 @@ public class PlatformDamageScript : MonoBehaviour
         
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionStay2D(Collision2D collision)
     {
         // deal damage
         HealthScript health_script = collision.gameObject.GetComponent<HealthScript>();
@@ -37,11 +37,11 @@ public class PlatformDamageScript : MonoBehaviour
 
         if(rigidbody != null)
         {
-            if(rigidbody.velocity.magnitude < 800.0f)
-            {
-                Vector3 normal = collision.GetContact(0).normal;
-                rigidbody.AddForce(-normal * (repulsion_force));
-            }
+
+            Vector3 direction = new Vector2(7.0f * Random.Range(-1.0f, 1.0f), 0.0f) * 
+                repulsion_force * 0.5f + 
+                -collision.GetContact(0).normal * (repulsion_force);
+            rigidbody.AddForce(direction);
             
         }
     }

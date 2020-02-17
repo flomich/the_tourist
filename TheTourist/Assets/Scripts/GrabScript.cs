@@ -35,6 +35,7 @@ public class GrabScript : MonoBehaviour
     {
         if(grab_state)
         {
+            boneAnimator.SetInteger("GrabState", 1);
             if (!grabbing)
             {
                 findObjectToGrab();
@@ -78,6 +79,7 @@ public class GrabScript : MonoBehaviour
             }
             else
             {
+                boneAnimator.SetInteger("GrabState", 0);
                 grabbed_object = null;
                 grabbing = false;
             }
@@ -134,7 +136,6 @@ public class GrabScript : MonoBehaviour
             {
                 min_distance = distance_to_other;
                 grabbed_object = o;
-				boneAnimator.SetInteger("GrabState", 1);
                 grabbing = true;
                 SoundEffectScript.Instance.playGrabSound(transform.position);
             }

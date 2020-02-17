@@ -4,10 +4,17 @@ using UnityEngine;
 
 public class EnemyCommander : MonoBehaviour
 {
+    public WayBoxScript left_way = null;
+    public WayBoxScript right_way = null;
+    public WayBoxScript left_wall = null;
+    public WayBoxScript right_wall = null;
+
     private movePlayer move_script = null;
     private HealthScript health_script = null;
     private CombatScript combat_script = null;
     private GameObject target = null;
+
+    private float move_direction = -1.0f;
 
     void Start()
     {
@@ -39,16 +46,56 @@ public class EnemyCommander : MonoBehaviour
 
     private void idle()
     {
-        float move = Mathf.Sin(Time.time * 0.75f);
+        WayBoxScript lway = left_way;
+        WayBoxScript rway = right_way;
+        WayBoxScript lwall = left_wall;
+        WayBoxScript rwall = right_wall;
 
-        if (Mathf.Abs(move) > 0.5f)
+        if(gameObject.transform.localScale.x > 0.0f)
         {
-            move_script.setMoveInput(move * 0.5f);
+            lway = right_way;
+            rway = left_way;
+            lwall = right_wall;
+            rwall = left_wall;
+        }
+
+
+        //moving left or right?
+        if(move_direction > 0.0f)
+        {
+            //is there something we can walk on?
+            if (rway.isBlocked() && !rwall.isBlocked())
+            {
+                move_script.setMoveInput(move_direction * 0.25f);
+            }
+            else
+            {
+                move_direction *= -1.0f;
+            }
         }
         else
         {
-            move_script.setMoveInput(0.0f);
+            //is there something we can walk on?
+            if (lway.isBlocked() && !lwall.isBlocked())
+            {
+                move_script.setMoveInput(move_direction * 0.25f);
+            }
+            else
+            {
+                move_direction *= -1.0f;
+            }
         }
+
+        //float move = Mathf.Sin(Time.time * 0.75f);
+
+        //if (Mathf.Abs(move) > 0.5f)
+        //{
+        //    move_script.setMoveInput(move * 0.5f);
+        //}
+        //else
+        //{
+        //    move_script.setMoveInput(0.0f);
+        //}
     }
 
     private void followPlayer(float speed_scale)

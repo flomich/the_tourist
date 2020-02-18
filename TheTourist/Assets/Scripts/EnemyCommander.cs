@@ -76,7 +76,7 @@ public class EnemyCommander : MonoBehaviour
 
             if (stand_timer < 0.0f)
             {
-                move_timer = Random.Range(min_stand_time, max_stand_time);
+                move_timer = Random.Range(min_move_time, max_move_time);
             }
 
             return;

@@ -199,7 +199,11 @@ public class CombatScript : MonoBehaviour
 
     public void addObjectInRange(GameObject game_object)
     {
-        objects_in_range.Add(game_object);
+        if(!objects_in_range.Contains(game_object))
+        {
+            objects_in_range.Add(game_object);
+        }
+        
     }
 
     public void removeObjectInRange(GameObject game_object)

@@ -161,7 +161,11 @@ public class GrabScript : MonoBehaviour
 
     public void AddObjectInRange(GameObject o)
     {
-        objects_in_range.Add(o);
+        if(!objects_in_range.Contains(o))
+        {
+            objects_in_range.Add(o);
+        }
+        
     }
 
     public void removeObjectInRange(GameObject o)

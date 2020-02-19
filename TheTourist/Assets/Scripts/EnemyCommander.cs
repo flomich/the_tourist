@@ -26,6 +26,9 @@ public class EnemyCommander : MonoBehaviour
     private float stand_timer = 1.0f;
     private float move_timer = 0.0f;
 
+    private bool disabled = false;
+
+
     void Start()
     {
         move_script = GetComponent<movePlayer>();
@@ -36,22 +39,32 @@ public class EnemyCommander : MonoBehaviour
     
     void disable()
     {
-        // dead enemies fall down and just lie there for now
-        Rigidbody2D rigidbody = gameObject.GetComponent<Rigidbody2D>();
-
-        // unfreeze rotation so that character falls down
-        if (rigidbody != null)
+        if(!disabled)
         {
-            rigidbody.freezeRotation = false;
+            // dead enemies fall down and just lie there for now
+            Rigidbody2D rigidbody = gameObject.GetComponent<Rigidbody2D>();
+
+            // unfreeze rotation so that character falls down
+            if (rigidbody != null)
+            {
+                rigidbody.freezeRotation = false;
+                rigidbody.AddForce(new Vector3(0.1f, 0.1f, 0.0f));
+                rigidbody.AddTorque(45.0f);
+            }
+
+            // disable movement
+            move_script.animator.SetInteger("WalkState", 0);
+            move_script.enabled = false;
+
+            // disable combat
+            combat_script.animator.SetInteger("PunchState", 0);
+            combat_script.enabled = false;
+
+            disabled = true;
+
         }
 
-        // disable movement
-        move_script.animator.SetInteger("WalkState", 0);
-        move_script.setMoveInput(0.0f);
-
-        // disable combat
-        combat_script.animator.SetInteger("PunchState", 0);
-        combat_script.setPunchState(false);
+        // disable health script
     }
 
     private void idle()

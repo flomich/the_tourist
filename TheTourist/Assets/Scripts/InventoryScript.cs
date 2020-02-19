@@ -36,41 +36,45 @@ public class InventoryScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-        if (consume_doener && doener_count > 0)
+        if (health_script.health > 0.0f)
         {
-            //consume doener (increase damage)
-            SoundEffectScript.Instance.playConsumeDoener(gameObject.transform.position);
-            ParticleEffectsScript.Instance.damageBoostEffect(gameObject.transform.position, gameObject, effect_duration);
 
-            doener_count--;
-            combat_script.activateDoubleDamage(effect_duration);
-            consume_doener = false;
+            if (consume_doener && doener_count > 0)
+            {
+                //consume doener (increase damage)
+                SoundEffectScript.Instance.playConsumeDoener(gameObject.transform.position);
+                ParticleEffectsScript.Instance.damageBoostEffect(gameObject.transform.position, gameObject, effect_duration);
+
+                doener_count--;
+                combat_script.activateDoubleDamage(effect_duration);
+                consume_doener = false;
+            }
+
+            if (consume_puntigamer && puntigamer_count > 0)
+            {
+                // increase speed
+                SoundEffectScript.Instance.playConsumePuntigamer(gameObject.transform.position);
+                ParticleEffectsScript.Instance.speedBoostEffect(gameObject.transform.position, gameObject, effect_duration);
+
+                puntigamer_count--;
+                move_script.activateBoost(effect_duration);
+                combat_script.activateDoubleSpeed(effect_duration);
+                consume_puntigamer = false;
+            }
+
+            if (consume_frankfurter && frankfurter_count > 0 && !health_script.hasFullHealth())
+            {
+                // increase health
+
+                SoundEffectScript.Instance.playConsumeFrankfurter(gameObject.transform.position);
+                ParticleEffectsScript.Instance.healthBoostEffect(gameObject.transform.position, gameObject);
+
+                frankfurter_count--;
+                health_script.addHealth(health_script.getMaxHealth() * 0.25f);
+                consume_frankfurter = false;
+            }
         }
-
-        if (consume_puntigamer && puntigamer_count > 0)
-        {
-            // increase speed
-            SoundEffectScript.Instance.playConsumePuntigamer(gameObject.transform.position);
-            ParticleEffectsScript.Instance.speedBoostEffect(gameObject.transform.position, gameObject, effect_duration);
-
-            puntigamer_count--;
-            move_script.activateBoost(effect_duration);
-            combat_script.activateDoubleSpeed(effect_duration);
-            consume_puntigamer = false;
-        }
-
-        if (consume_frankfurter && frankfurter_count > 0 && !health_script.hasFullHealth())
-        {
-            // increase health
-
-            SoundEffectScript.Instance.playConsumeFrankfurter(gameObject.transform.position);
-            ParticleEffectsScript.Instance.healthBoostEffect(gameObject.transform.position, gameObject);
-
-            frankfurter_count--;
-            health_script.addHealth(health_script.getMaxHealth() * 0.25f);
-            consume_frankfurter = false;
-        }
+       
     }
 
     public void addDoenerCount(uint count)

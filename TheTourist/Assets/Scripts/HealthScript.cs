@@ -52,6 +52,7 @@ public class HealthScript : MonoBehaviour
                 move_script.enabled = false;
             }
 
+
             // display game over screen
             if (game_over_timer <= 0.0f)
             {
@@ -107,7 +108,11 @@ public class HealthScript : MonoBehaviour
 
     public void takeHealth(float health_decrement)
     {
-        playDamageEffects();
+        if(health > 0.0f)
+        {
+            playDamageEffects();
+        }
+        
 
         health = Mathf.Max(health - health_decrement, 0.0f);
     }

@@ -42,7 +42,7 @@ public class PlatformDamageScript : MonoBehaviour
             if (rigidbody != null)
             {
 
-                Vector3 direction = new Vector2(7.0f * Random.Range(-1.0f, 1.0f), 7.0f * Random.Range(-1.0f, 1.0f)) *
+                Vector3 direction = new Vector2(0.25f * Random.Range(-1.0f, 1.0f), 0.25f * Random.Range(-1.0f, 1.0f)) *
                     repulsion_force * 0.5f +
                     -collision.GetContact(0).normal;
                 rigidbody.AddForce(direction.normalized * (repulsion_force));

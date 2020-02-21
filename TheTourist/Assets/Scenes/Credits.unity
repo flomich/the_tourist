@@ -479,7 +479,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 34
+    m_FontSize: 20
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -490,17 +490,10 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Big thanks to justgrazthings on Instagram for so many used polaroid images.
-
-    Hauptplatz:
-    CC by Isiwal on Wikipedia
-
-    Zentralfriedhof: CC by Tokfo on Wikipedia
-
-    Stadthalle:
-    CC by Jacktd on Wikipedia
-
-'
+  m_Text: "Big thanks to justgrazthings on Instagram for all the used polaroid images.\nHauptplatz
+    image: CC by Isiwal on Wikipedia\nZentralfriedhof image: CC by Tokfo on Wikipedia\nStadthalle
+    image: CC by Jacktd on Wikipedia\n\nWe also thank freesound.org and textures.com
+    for the awesome free-to-use sounds and textures \n\n"
 --- !u!222 &245126587
 CanvasRenderer:
   m_ObjectHideFlags: 0

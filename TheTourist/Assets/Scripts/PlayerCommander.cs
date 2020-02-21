@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerCommander : MonoBehaviour
 {
@@ -56,6 +57,12 @@ public class PlayerCommander : MonoBehaviour
         inventory_script.setConsumeDoener(consume_doener_state);
         inventory_script.setConsumePuntigamer(consume_puntigamer_state);
         inventory_script.setConsumeFrankfurter(consume_frankfurter_state);
+
+        //reload scene on backspace
+        if (Input.GetKeyDown(KeyCode.Backspace))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
 
     }
 

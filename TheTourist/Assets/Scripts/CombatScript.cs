@@ -36,6 +36,11 @@ public class CombatScript : MonoBehaviour
 
         // clamp punch cooldown to min 0.1 sec
         punch_cooldown = Mathf.Max(0.1f, punch_cooldown);
+
+        if(tag.Contains("Enemy"))
+        {
+            punch_timer = punch_cooldown;
+        }
     }
 
     // Update is called once per frame

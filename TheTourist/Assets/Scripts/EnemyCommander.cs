@@ -214,13 +214,21 @@ public class EnemyCommander : MonoBehaviour
             }
             else
             {
-                // disable movement
-                move_script.animator.SetInteger("WalkState", 0);
-                move_script.setMoveInput(0.0f);
+                if(move_script != null)
+                {
+                    // disable movement
+                    move_script.animator.SetInteger("WalkState", 0);
+                    move_script.setMoveInput(0.0f);
+                }
+                
+                if(combat_script != null)
+                {
+                    // disable combat
+                    combat_script.animator.SetInteger("PunchState", 0);
+                    combat_script.setPunchState(false);
+                }
 
-                // disable combat
-                combat_script.animator.SetInteger("PunchState", 0);
-                combat_script.setPunchState(false);
+                
             }
 
             return;

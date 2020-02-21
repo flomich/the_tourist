@@ -26,6 +26,12 @@ public class EnemyCommander : MonoBehaviour
     private float stand_timer = 1.0f;
     private float move_timer = 0.0f;
 
+    private bool stunned = false;
+    private float stun_timer = 0.0f;
+    public float stun_time = 1.0f;
+
+    public GameObject stun_icon;
+
     void Start()
     {
         move_script = GetComponent<movePlayer>();
@@ -188,34 +194,53 @@ public class EnemyCommander : MonoBehaviour
 
     void Update()
     {
+
         if (health_script.health <= 0.0f)
         {
             disable();
+            return;
         }
-        else
-        {
-            if(target != null)
-            {
-                float distance = Vector3.Distance(target.transform.position, transform.position);
-                if (distance < 1.0f)
-                {
-                    // only follow player a little
-                    followPlayer(0.1f);
-                    punchTarget();
 
-                    return;
-                }
-                // follow and attack
-                combat_script.setPunchState(false);
-                followPlayer(0.5f);
+        if(stunned)
+        {
+            stun_timer -= Time.deltaTime;
+
+            // still stunned?
+            if(stun_timer <= 0.0f)
+            {
+                stunned = false;
+            }
+
+            // disable movement
+            move_script.animator.SetInteger("WalkState", 0);
+            move_script.setMoveInput(0.0f);
+
+            // disable combat
+            combat_script.animator.SetInteger("PunchState", 0);
+            combat_script.setPunchState(false);
+            return;
+        }
+
+        if(target != null)
+        {
+            float distance = Vector3.Distance(target.transform.position, transform.position);
+            if (distance < 1.0f)
+            {
+                // only follow player a little
+                followPlayer(0.1f);
+                punchTarget();
+
                 return;
             }
+            // follow and attack
             combat_script.setPunchState(false);
-            // idle if there is no target
-            idle();
-
-
+            followPlayer(0.5f);
+            return;
         }
+        combat_script.setPunchState(false);
+        // idle if there is no target
+        idle();
+
        
     }
 
@@ -235,5 +260,37 @@ public class EnemyCommander : MonoBehaviour
             target = null;
             combat_script.removeObjectInRange(other_collider.gameObject);
         }
+    }
+
+    public void stun()
+    {
+        if(!stunned)
+        {
+            // Instantiate damage icon
+            Quaternion rotation = Quaternion.identity;
+            rotation.z = Random.Range(0.0f, 0.7f);
+            Vector3 position = gameObject.transform.position + new Vector3(0.0f, 2.0f, 0.0f);
+
+            CapsuleCollider2D collider = gameObject.GetComponent<CapsuleCollider2D>();
+
+            if (collider != null)
+            {
+                position.y += 1.0f;
+            }
+            // spwan damage icon
+            GameObject icon = Instantiate(stun_icon, position, rotation);
+            icon.transform.SetParent(gameObject.transform);
+        }
+        else
+        {
+            DisplayScript display_script = stun_icon.GetComponent<DisplayScript>();
+
+            if(display_script != null)
+            {
+                display_script.addDisplayTime(stun_time);
+            }
+        }
+        stunned = true;
+        stun_timer = stun_time;
     }
 }

@@ -285,6 +285,10 @@ MonoBehaviour:
   max_move_time: 1
   min_move_time: 0
   move_speed: 0.75
+  stunned: 0
+  stun_time: 1
+  stun_icon: {fileID: 8220220474623723156, guid: 137e834577beb004f98dadaa206d2c5a,
+    type: 3}
 --- !u!114 &4903996624427712964
 MonoBehaviour:
   m_ObjectHideFlags: 0

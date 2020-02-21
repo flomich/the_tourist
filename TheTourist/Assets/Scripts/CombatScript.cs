@@ -166,6 +166,17 @@ public class CombatScript : MonoBehaviour
                     health_script.takeHealth(punch_damage * 2.0f);
                 else
                     health_script.takeHealth(punch_damage);
+
+                // stun if enemy
+                if(o.tag.Contains("Enemy"))
+                {
+                    EnemyCommander commander = o.GetComponent<EnemyCommander>();
+
+                    if(commander != null)
+                    {
+                        commander.stun();
+                    }
+                }
             }
 
             // add force

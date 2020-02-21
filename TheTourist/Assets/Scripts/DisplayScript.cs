@@ -8,14 +8,28 @@ public class DisplayScript : MonoBehaviour
     private float display_timer;
 
     SpriteRenderer sprite_renderer = null;
+    Rigidbody2D rigidbody = null;
 
     // Start is called before the first frame update
     void Start()
     {
-        Destroy(gameObject, display_time);
         display_timer = display_time;
         sprite_renderer = gameObject.GetComponent<SpriteRenderer>();
     }
 
+    private void Update()
+    {
+        display_timer -= Time.deltaTime;
 
+        if(display_timer <= 0.0f)
+        {
+            Destroy(gameObject);
+        }
+ 
+    }
+
+    public void addDisplayTime(float inc)
+    {
+        display_timer += inc;
+    }
 }

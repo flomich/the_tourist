@@ -423,8 +423,7 @@ MonoBehaviour:
   max_move_time: 5
   min_move_time: 2
   move_speed: 0.25
-  stunned: 0
-  stun_time: 1
+  stun_time: 0.5
   stun_icon: {fileID: 8220220474623723156, guid: 137e834577beb004f98dadaa206d2c5a,
     type: 3}
 --- !u!114 &6318473982393448145

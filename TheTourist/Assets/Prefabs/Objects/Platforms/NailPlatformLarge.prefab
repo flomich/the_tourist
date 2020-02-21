@@ -178,7 +178,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94d4c932d6f96a346a0d924339a5870c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 8
+  damage: 5
+  damage_interval: 0.2
   repulsion_force: 800
 --- !u!61 &2682048449139853891
 BoxCollider2D:

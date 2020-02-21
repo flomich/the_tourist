@@ -7,6 +7,8 @@ public class PlatformDamageScript : MonoBehaviour
 
     public float damage = 8.0f;
 
+    public float damage_interval = 0.2f;
+
     // repulsion force in newton
     public float repulsion_force = 8000.0f;
 
@@ -37,7 +39,7 @@ public class PlatformDamageScript : MonoBehaviour
                 }
             }
 
-            timer = 0.5f;
+            timer = damage_interval;
         }
     }
 

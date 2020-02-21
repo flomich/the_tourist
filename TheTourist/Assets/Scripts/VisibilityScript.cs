@@ -11,7 +11,7 @@ public class VisibilityScript : MonoBehaviour
         foreach (GameObject g in game_objects)
         {
             g.SetActive(false);
-            Debug.Log("Disable");
+            //Debug.Log("Disable");
         }
     }
 
@@ -20,7 +20,7 @@ public class VisibilityScript : MonoBehaviour
         foreach(GameObject g in game_objects)
         {
             g.SetActive(true);
-            Debug.Log("Enable");
+            //Debug.Log("Enable");
         }
     }
 
@@ -29,7 +29,7 @@ public class VisibilityScript : MonoBehaviour
         foreach (GameObject g in game_objects)
         {
             g.SetActive(false);
-            Debug.Log("Disable");
+            //Debug.Log("Disable");
         }
     }
 }

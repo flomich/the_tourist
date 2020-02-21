@@ -370,7 +370,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 4903996625472671800}
-  punch_force: 800
+  punch_force: 400
   punch_cooldown: 1
   punch_damage: 10
   animation_timer: 0.1

@@ -670,8 +670,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 9206266810225195776}
-  punch_force: 800
-  punch_cooldown: 1
+  punch_force: 100
+  punch_cooldown: 2
   punch_damage: 10
   animation_timer: 0.1
   punch_particle_system: {fileID: 3762782830211903580, guid: 6921126e5392001408cffabd14bc4a58,

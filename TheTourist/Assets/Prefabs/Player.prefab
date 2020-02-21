@@ -593,7 +593,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 1795432396809721125}
   move_force: 100
-  move_slowdown_force: 15
+  move_slowdown_force: 2
   move_max_velocity: 8
   move_max_velocity_stride: 1
   air_max_velocity: 18
@@ -626,7 +626,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fbda95752f13594e87b347699387c3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 90
+  health: 100
   max_health: 100
   damage_icon: {fileID: 5655760886641617546, guid: a3d01d08a5748ef49b6659703d78d473,
     type: 3}
@@ -642,9 +642,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff8e2ff9eddcb8e43a2c785b0a645e84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doener_count: 5
-  puntigamer_count: 5
-  frankfurter_count: 5
+  doener_count: 0
+  puntigamer_count: 0
+  frankfurter_count: 0
   max_doener_count: 10
   max_puntigamer_count: 10
   max_frankfurter_count: 10

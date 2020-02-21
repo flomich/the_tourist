@@ -17,11 +17,12 @@ public class LevelDatabase
 
     private static Dictionary<string, LevelData> levels = new Dictionary<string, LevelData>(){
         {"Hauptplatz", new LevelData("Hauptplatz", "Images/hauptplatz")},
-        {"Opernhaus", new LevelData("Opernhaus", "Images/opernhaus")},
+        {"Oper", new LevelData("Oper", "Images/opernhaus")},
         {"Stadtpark", new LevelData("Stadpark","Images/stadtpark")},
         {"Schlossberg", new LevelData("Schlossberg","Images/uhrturm")},
         {"Kunsthaus", new LevelData("Kunsthaus","Images/kunsthaus")},
         {"Stadthalle", new LevelData("Stadthalle","Images/kunsthaus")},
+        {"Zentralfriedhof", new LevelData("Zentralfiedhof","Images/kunsthaus")},
 
     };
 

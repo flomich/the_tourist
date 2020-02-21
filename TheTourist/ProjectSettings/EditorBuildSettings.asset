@@ -53,4 +53,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Levels/Oper.unity
     guid: 7ef4d6913e74f73449536073fabc05fe
+  - enabled: 1
+    path: Assets/Scenes/Levels/Zentralfriedhof.unity
+    guid: f69f09378fd6f80408242d471c395270
+  - enabled: 1
+    path: Assets/Scenes/Levels/Stadthalle.unity
+    guid: a4d53eec46b338648868d0557c28dcb3
   m_configObjects: {}

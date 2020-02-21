@@ -21,8 +21,8 @@ public class LevelDatabase
         {"Stadtpark", new LevelData("Stadpark","Images/stadtpark")},
         {"Schlossberg", new LevelData("Schlossberg","Images/uhrturm")},
         {"Kunsthaus", new LevelData("Kunsthaus","Images/kunsthaus")},
-        {"Stadthalle", new LevelData("Stadthalle","Images/kunsthaus")},
-        {"Zentralfriedhof", new LevelData("Zentralfiedhof","Images/kunsthaus")},
+        {"Stadthalle", new LevelData("Stadthalle","Images/Stadthalle")},
+        {"Zentralfriedhof", new LevelData("Zentralfriedhof","Images/Zentralfriedhof")},
 
     };
 

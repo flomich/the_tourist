@@ -30,6 +30,6 @@ public class DisplayScript : MonoBehaviour
 
     public void addDisplayTime(float inc)
     {
-        display_timer += inc;
+        display_timer = inc;
     }
 }

@@ -32,6 +32,8 @@ public class EnemyCommander : MonoBehaviour
 
     public GameObject stun_icon;
 
+    private GameObject icon = null;
+
     void Start()
     {
         move_script = GetComponent<movePlayer>();
@@ -210,14 +212,17 @@ public class EnemyCommander : MonoBehaviour
             {
                 stunned = false;
             }
+            else
+            {
+                // disable movement
+                move_script.animator.SetInteger("WalkState", 0);
+                move_script.setMoveInput(0.0f);
 
-            // disable movement
-            move_script.animator.SetInteger("WalkState", 0);
-            move_script.setMoveInput(0.0f);
+                // disable combat
+                combat_script.animator.SetInteger("PunchState", 0);
+                combat_script.setPunchState(false);
+            }
 
-            // disable combat
-            combat_script.animator.SetInteger("PunchState", 0);
-            combat_script.setPunchState(false);
             return;
         }
 
@@ -278,12 +283,12 @@ public class EnemyCommander : MonoBehaviour
                 position.y += 1.0f;
             }
             // spwan damage icon
-            GameObject icon = Instantiate(stun_icon, position, rotation);
+            icon = Instantiate(stun_icon, position, rotation);
             icon.transform.SetParent(gameObject.transform);
         }
         else
         {
-            DisplayScript display_script = stun_icon.GetComponent<DisplayScript>();
+            DisplayScript display_script = icon.GetComponent<DisplayScript>();
 
             if(display_script != null)
             {

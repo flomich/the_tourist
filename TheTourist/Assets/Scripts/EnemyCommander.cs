@@ -194,7 +194,7 @@ public class EnemyCommander : MonoBehaviour
     }
 
 
-    void Update()
+    private void Update()
     {
 
         if (health_script.health <= 0.0f)
@@ -252,7 +252,7 @@ public class EnemyCommander : MonoBehaviour
         }
         combat_script.setPunchState(false);
         // idle if there is no target
-        idle();
+        if(!stunned)idle();
 
        
     }
@@ -294,15 +294,21 @@ public class EnemyCommander : MonoBehaviour
             icon = Instantiate(stun_icon, position, rotation);
             icon.transform.SetParent(gameObject.transform);
         }
-        else
+
+        if(icon != null)
         {
+            //get display script
             DisplayScript display_script = icon.GetComponent<DisplayScript>();
 
-            if(display_script != null)
+            //if display script
+            if (display_script != null)
             {
+                //set display time to stun time
                 display_script.addDisplayTime(stun_time);
             }
         }
+
+        //reset stun time and set stunned
         stunned = true;
         stun_timer = stun_time;
     }

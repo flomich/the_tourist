@@ -58,10 +58,24 @@ public class PlayerCommander : MonoBehaviour
         inventory_script.setConsumePuntigamer(consume_puntigamer_state);
         inventory_script.setConsumeFrankfurter(consume_frankfurter_state);
 
-        //reload scene on backspace
+        //reload scene or jump to menu on backspace
         if (Input.GetKeyDown(KeyCode.Backspace))
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            //get current scene name
+            string current_scene = SceneManager.GetActiveScene().name;
+
+            //jump to menu if in train statiion or tutorial
+            if(current_scene.Equals("TrainStation") || current_scene.Equals("Tutorial"))
+            {
+                //load menu scene
+                SceneManager.LoadScene("Menu");
+            }
+            else
+            {
+                //reload current scene
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            }
+            
         }
 
     }

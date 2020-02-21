@@ -14,7 +14,9 @@ public class DamageBoxScript : MonoBehaviour
     public bool randomize_start_time = false;
     public bool start_active = true;
 
-    
+    public float damage_interval = 0.2f;
+
+
 
     private float rest_interval_timer = 0.0f;
     private float active_interval_timer = 2.0f;
@@ -102,7 +104,7 @@ public class DamageBoxScript : MonoBehaviour
                         }
                     }
 
-                    timer = 0.5f;
+                    timer = damage_interval;
                 }
 
             }

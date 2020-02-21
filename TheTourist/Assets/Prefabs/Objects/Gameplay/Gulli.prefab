@@ -147,7 +147,7 @@ MonoBehaviour:
     type: 3}
   particle_offset_x: 0
   particle_offset_y: 0.2
-  damage: 5
+  damage: 10
   rest_interval: 2
   active_interval: 2
   randomize_start_time: 1

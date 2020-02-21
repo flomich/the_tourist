@@ -3950,6 +3950,11 @@ PrefabInstance:
       propertyPath: vignette_game_object
       value: 
       objectReference: {fileID: 876795698}
+    - target: {fileID: 2345758367246538596, guid: 6a82f6b69be0fa24babecfedeac6b19f,
+        type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 1226790248}
     - target: {fileID: 2345758367246538597, guid: 6a82f6b69be0fa24babecfedeac6b19f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4063,7 +4068,7 @@ PrefabInstance:
     - target: {fileID: 2345758367246538601, guid: 6a82f6b69be0fa24babecfedeac6b19f,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a82f6b69be0fa24babecfedeac6b19f, type: 3}
@@ -9464,7 +9469,7 @@ PrefabInstance:
     - target: {fileID: 2808152040328368480, guid: 8e0ffc6d54f2bc8438b8fe4cfb239fee,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2808152040328368484, guid: 8e0ffc6d54f2bc8438b8fe4cfb239fee,
         type: 3}

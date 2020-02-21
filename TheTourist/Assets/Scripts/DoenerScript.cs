@@ -19,7 +19,7 @@ public class DoenerScript : MonoBehaviour
                 inventory.addDoenerCount(1);
 
                 // spwan doener icon
-                Vector3 position = collison.gameObject.transform.position + new Vector3(0.0f, 2.7f, 0.0f);
+                Vector3 position = collison.gameObject.transform.position + new Vector3(0.0f, 3.0f, 0.0f);
                 GameObject icon = Instantiate(doener_sprite, position, Quaternion.identity);
                 icon.transform.SetParent(collison.gameObject.transform);
 
@@ -35,7 +35,7 @@ public class DoenerScript : MonoBehaviour
             {
                 SoundEffectScript.Instance.playBreakingDoener(gameObject.transform.position);
                 Collider2D collider = gameObject.GetComponent<Collider2D>();
-                Vector3 offset = new Vector3(0.0f, collider.bounds.max.y, 0.0f);
+                Vector3 offset = new Vector3(0.0f, collider.bounds.max.y * 0.5f, 0.0f);
                 ParticleEffectsScript.Instance.doenerExplosion(transform.position + offset);
                 Destroy(gameObject);
             }

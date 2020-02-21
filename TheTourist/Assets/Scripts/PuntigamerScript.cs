@@ -22,7 +22,7 @@ public class PuntigamerScript : MonoBehaviour
                 inventory.addPuntigamerCount(1);
 
                 // spwan puntigamer icon
-                Vector3 position = collison.gameObject.transform.position + new Vector3(0.0f, 2.7f, 0.0f);
+                Vector3 position = collison.gameObject.transform.position + new Vector3(0.0f, 3.0f, 0.0f);
                 GameObject icon = Instantiate(puntigamer_sprite, position, Quaternion.identity);
                 icon.transform.SetParent(collison.gameObject.transform);
 
@@ -39,7 +39,7 @@ public class PuntigamerScript : MonoBehaviour
             {
                 SoundEffectScript.Instance.playBreakingGlass(gameObject.transform.position);
                 Collider2D collider = gameObject.GetComponent<Collider2D>();
-                Vector3 offset = new Vector3(0.0f, collider.bounds.max.y, 0.0f);
+                Vector3 offset = new Vector3(0.0f, collider.bounds.max.y * 0.5f, 0.0f);
                 ParticleEffectsScript.Instance.beerExplosion(transform.position + offset);
                 Destroy(gameObject);
             }

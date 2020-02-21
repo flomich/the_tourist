@@ -141,6 +141,9 @@ public class CombatScript : MonoBehaviour
             // dont apply damage or force to self
             if (gameObject.Equals(o)) continue;
 
+            if (o == null) continue;
+
+
             // only apply forces and damage to objects in front of player
             Vector3 vec_to_other = (o.transform.position - gameObject.transform.position);
 
@@ -167,6 +170,8 @@ public class CombatScript : MonoBehaviour
             HealthScript health_script = o.GetComponent<HealthScript>();
             if(health_script != null)
             {
+                if (health_script.health <= 0.0f) continue;
+
                 if (has_double_damage)
                     health_script.takeHealth(punch_damage * 2.0f);
                 else

@@ -1,0 +1,188 @@
+\documentclass[a4paper]{article}
+
+%% Language and font encodings
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+
+%% Sets page size and margins
+\usepackage[a4paper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+%% Useful packages
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+
+\providecommand{\keywords}[1]{\textbf{\textit{Tags:}} #1}
+\providecommand{\talkurl}[1]{\textbf{\textit{Url:}} #1}
+\providecommand{\track}[1]{\textbf{\textit{Track:}} #1}
+\providecommand{\speaker}[1]{\textbf{\textit{Speaker:}} #1}
+
+
+
+\title{	Exploring the Tech and Design of 'Noita' by Petri Purho}
+\author{Author: Florian Michelic}
+
+\begin{document}
+\maketitle
+
+\begin{keywords} 2D, physics simulation, pixel based, procedural \end{keywords}
+
+\begin{track} 	Independent Games Summit \end{track}
+
+\begin{talkurl}  \url{https://www.gdcvault.com/play/1025695/Exploring-the-Tech-and-Design} \end{talkurl}
+
+\begin{speaker}Petri Purho, Nolla Games \end{speaker}
+
+
+\begin{abstract}
+
+
+\end{abstract}
+
+\section{Summary of Talk}
+
+%Your summary of the talk goes here! (in your own words!) 
+%Describe the main points / lessons learned of the talk, the relevance for game development. 
+
+The Talk "Exploring the Tech and Desing of Noita" by Petri Purho explains the development process of the game Noita. The game features procedural
+generated 2D worlds, a rogue-lite gameplay with permanent death and a completely dynamic physics simulation. The talk focuses on two aspects of the development. The implementation and technical details of
+the physics engine and the design choices that made up the gameplay of the game's current state. 
+
+
+\subsection{Physics}
+
+The game uses a custom game engine that is called "Falling everything". It's main feature is a physics simulation on a per-pixel basis where each pixel may represent sand, liquids like water or all sorts of gases.
+
+\subsubsection{Pixel simulation}
+
+The simulation takes place on a per pixel basis. In a first version of the system, pixels are either marked as sand or empty. In each frame, a sand pixels is moved one pixel below if the pixel below is empty. If the pixel below is already occupied by sand, the sand pixel can either move down-left or down-right. Water can also be easily made by moving water pixels either left or right if all other three pixels below are occupied. Gases are simulated by inverting the movement so that gas pixels try to move upwards in each frame.
+
+\subsubsection{Particle Simulation}
+
+Instead of only having the simulation based on pixels, it is combined with a particle simulation where each particle has properties like position, mass and velocity. Whenever a pixel from the simulation leaves the surface, i.e, all surrounding cells are empty, it is taken out of the simulation and added to the particle simulation. Once the particle hits a non-empty cell it is inserted back into the pixel simulation. This allows for much more dynamic behaviour as the particles do not need to move into predefined directions and can follow the rules of gravity.
+
+\subsubsection{Rigid body simulation}
+
+The physics library Box2D is used to enable rigid body simulation.
+At first, a set of pixels is selected that together make up a single
+rigid body. Then a marching square algorithm is applied to detect silhouette edges. These edges are then decimated and triangulated to a mesh which is then used to simulate a rigid body with Box2D.
+For one simulation frame, all rigid body pixels are taken out from the pixel simulation. Then the simulation of the pixels is carried out and the rigid bodies are simulated with Box2D. After both simulations the updated pixels of the rigid bodies are again inserted into the pixel simulation.
+Overlapping with existing pixels (e.g water pixels) is solved by simply spawning them as particles.
+
+\subsubsection{Performance and Procedural Generation}
+To achieve real-time performance using high resolutions the world is divided into chunks of $64 \times 64$ pixels. Each chunk keeps track of bounding box regions that contain pixels that
+need to be simulated which significantly improves the performance.
+To allow for multi threading, the chunks are simulated in a checkerboard pattern
+over four simulation passes. Each pass only updates every fourth chunk in each direction. All of this chunks are then simulated on multiple threads as they are far enough away to ensure that different threads do not write the same pixels.\par\noindent
+Gameplay elements of the world are procedurally generated on the fly for each chunk as the camera moves. A predefined number of chunks is held in memory while chunks that are too far away are stored on disk in order to load them again later when the camera moves back.
+
+%Simulation limited to low resolution (256 x 256)
+%Not fast enough for high resolution using a single thread.
+%Solution: Multithreading
+%Divide world into 64 x 64 chunks (grid of tiles)
+%Each chunk keeps track of bounding box regions that contain pixels that
+%need to be simulated.
+%Update chunks of 64 x 64 pixels in four iterations on multiple threads.
+%To prevent threads from modifing the same pixel, update 
+
+
+
+%Building procedural big worlds.
+%Generate new chunks on the fly as the camera moves.
+%Keep a number of chunks in memory and store chunks that are far away
+%on disk in order to read it back when the player comes back.
+
+
+\subsection{Design}
+
+The physical simulation provides immersive behaviour but is too dynamic to
+build a reliable gameplay. 
+A first prototype featured a playable character with a drill tool that allows to dig through the world. This has a negative side effect on the combat system as the player can dig a hole and easily shoot at enemies through it without getting damage.\par\noindent
+To fix this issue they decided to make a rogue-lite game with permanent death and procedural generation of
+the world. This decision had a number of positive side effects. 
+The drill is available as a collectable item with lower drilling power. The issue with the combat is still there but does not dominate the entire game due to the rouge-lite mechanics and the procedural generated world.
+However, the procedural generation does not allow the player to pick up lost items as the death location could
+be blocked. This also happens with progress related gameplay elements like portals. If the player manages to block a portal with lava he can never go through it if the system is persistent. With procedural generation
+and permanent death this is no problem as the player always has a new chance to act smarter next time.\par\par\noindent
+As the physics engine allows destruction of everything in a powerful and immersive way, the choice
+of how much power the player has is essential for a fun gameplay. Given too much power the game quickly feels boring and the physics simulation rather acts as a sort of visual effect.
+In the current game state, the physics simulation plays a major role at the beginning of the game as the player has to pay attention to the dangerous physics dominated world but can get powerful as he progresses.
+
+%Problem: Physics glitches cause player to die -> annoying if no reason seen.
+%Solution -> fix glitches or take buggy things out (rigid body does not damage player)
+%Secondly -> lava drops out of nowhere and kills player (thinsk glitch, random thing) -> angry
+%Solution: wooden plank, lava on top of it. Player walks underneath, plank sets on fire and lava drops -> player sees that and blames himself rather then the game.
+%Lesson learned -> communicate what happens in the world
+%Player can get stained by liquids (water, oil, blood). Adds effects like player is not likley to set on fire if wet or is likelier to set fire if covered with oil. 
+%Problem: When effect is not communicated through e.g icons than players can only assume effects. (developers did not recognize when they brake the effect of beeing wet)
+
+\section{Overview and Relevance}
+
+\subsection{Similar Games}
+Games related to the technology and style used in Noita are Terraria~\cite{terraria} and Clonk~\cite{clonk} among others.
+Terraria features less rouge-like mechanics and a more restricted physics simulation which allows for persistent 
+gameplay elements. In contrast to Noita, the game focuses on persistent world. The game Clonk has a similar physics simulation as Noita. Rather than permanent death it allows the player to have multiple characters which can be switched any time.
+The player can then continue with another character upon death and the game only ends if the player fails to have a backup character.\newline\newline\noindent
+
+\subsection{Related Work}
+
+A state of the art solution for fluid simulation is given by the NVIDIA Flow framework~\cite{nvidia_flow}.
+Simulating fluids and gases as particles is a common technique~\cite{gdc_green}~\cite{shallow_water_simulation}. Solid particles like sand can also be simulated as water~\cite{sand_as_fluid}. The performance of particle based simulation can be improved by merging particles ~\cite{adaptive_particle_water}. As shown in~\cite{gpu_solids}, rigid bodies can also be represented as particles and simulated on the GPU.
+
+\renewcommand{\refname}{\section{References and Further Sources}}
+\begin{thebibliography}{1}
+  
+\bibitem{sand_as_fluid}
+    Zhu, Yongning and Bridson, Robert,
+    \emph{Animating Sand As a Fluid},
+    ACM SIGGRAPH 2005 Papers, 
+    Los Angeles, California,
+    2005.
+    
+\bibitem{shallow_water_simulation}
+    Solenthaler, Barbara and Bucher, Peter and Chentanez, Nuttapong and Müller, Matthias and Gross, Markus
+    \emph{SPH Based Shallow Water Simulation.},
+    VRIPHYS 2011 - 8th Workshop on Virtual Reality Interactions and Physical Simulations, 
+    2011.
+    
+\bibitem{adaptive_particle_water}
+    Yan, He and Wang, Zhangye and He, Jian and Chen, Xi and Wang, Changbo and Peng, Qunsheng
+    \emph{Real-time Fluid Simulation with Adaptive SPH},
+    Comput. Animat. Virtual Worlds, 
+    2009.   
+    
+\bibitem{gdc_green}
+    Simon Green
+    \emph{Particle Based Fluid Simulation},
+    Game Developers Converence, 
+    2008.    
+    
+\bibitem{terraria}
+    Re-Logic
+    \emph{Terraria},
+    \url{https://terraria.org/}, 
+    visited: 20.12.2019.  
+    
+\bibitem{clonk}
+    RedWolf Design and Matthes Bender
+    \emph{Clonk},
+    \url{http://www.clonk.de/}, 
+    visited: 20.12.2019. 
+    
+\bibitem{nvidia_flow}
+    NVIDIA,
+    \emph{NVIDIA Flow}
+    \url{https://developer.nvidia.com/nvidia-flow}
+    visited: 20.12.2019. 
+    
+\bibitem{gpu_solids}
+    Takahiro Harada,
+    \emph{Real-Time Rigid Body Simulation on GPUs},
+    GPU Gems 3,
+    2007.
+    
+\end{thebibliography}
+
+\end{document}

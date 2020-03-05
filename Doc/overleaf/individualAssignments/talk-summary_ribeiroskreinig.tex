@@ -1,0 +1,86 @@
+\documentclass[a4paper]{article}
+
+%% Language and font encodings
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{dirtytalk}
+
+%% Sets page size and margins
+\usepackage[a4paper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+%% Useful packages
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+
+\providecommand{\keywords}[1]{\textbf{\textit{Tags:}} #1}
+\providecommand{\talkurl}[1]{\textbf{\textit{Url:}} #1}
+\providecommand{\track}[1]{\textbf{\textit{Track:}} #1}
+\providecommand{\speaker}[1]{\textbf{\textit{Speaker:}} #1}
+
+
+
+\title{A Guide to Developing on Stadia (Presented by Google)\\by Pawel Siarkiewicz}
+\author{Author: Lucchas Alois Ribeiro Skreinig}
+
+\begin{document}
+\maketitle
+
+\begin{keywords} GDC 2019, Pawel Siarkiewicz, Stadia Developer Tools and Graphics, free content, Programming \end{keywords}
+
+\begin{track} GDC 2019 - Programming \end{track}
+
+\begin{talkurl}  \url{https://www.gdcvault.com/play/1026499/A-Guide-to-Developing-on} \end{talkurl}
+
+\begin{speaker}	Pawel Siarkiewicz, Stadia Developer Tools and Graphics \end{speaker}
+
+
+\begin{abstract}
+Pawel Siarkiewicz' talk at the Game Developers Conference in 2019 outlined Google's Stadia from a developer's point-of-view. The talk covered the fundamentals of using Stadia's various interfaces and the benefits of each of them, as well as the motivations behind some of Stadia's exclusive features.
+
+\end{abstract}
+
+\section{Summary of Talk}
+
+The talk began by focusing on why Stadia, Google's new cloud gaming platform, was designed to be intuitive and friendly to newcomers. In many ways, Stadia was built to integrate into current solutions, and in this fashion accommodate newcomers to the system.
+
+\subsection{Stadia Fundamentals}
+Stadia is a system for developing games, but more than that, it includes tools for building, publishing, monitoring, and monetizing a game, even after launch. The Stadia resource center is an online hub for receiving support, as well as applying to become a developer and downloading the software development kit (SDK) for Stadia. This includes all the tools needed to start developing software for the platform, as well as the application programming interface (API) needed for Stadia games to achieve compatibilty with the cloud service, and handle fundamentals like saving, input, and others.\\
+A game running on Stadia starts as what is called an "instance", which runs on the cloud service. Rendered frames are streamed to the device connected to said instance and the input from the player is streamed to the cloud service. This fundamental change to the way games are handled is one of the major benefits of Stadia. For a developer, this means that multiple instances of a game can be "reserved" and the game output can be managed by a single device, which aids in developing multiplayer games, for example. In addition to running games on the cloud service, instances can also be started on dedicated hardware called a "developer node", which can be installed in a dedicated server, or in a workstation form factor, a sort of "private cloud" for running instances of a game locally. These instances have the added benefit of being a sort of "virtual devkit", meaning developers can push changes or assets to specific instances of a game, without the need of creating a new build every time, making the development process much more iterative.\\One of the unique benefits of running games on a cloud service, is in the deployment of packages. Where previously, to share a game build with a colleague, potentially large packages had to be distributed, now the package only needs to be uploaded the cloud, and only a link needs to be shared. \\
+Siarkiewicz addressed the potential issue of privacy when running code on the cloud. Stadia was developed with many of the same core concepts as "Google Cloud", Google's enterprise grade public cloud service. Developers can fully control who inside an organization or studio has access to which projects running on the cloud service.
+
+\subsection{Getting Things Done}
+The speaker then proceeded to demonstrate the functionality of the web browser-based user interface for Google Stadia projects, which is divided into tools for developers, publishers, and administrators. The process of choosing a package and reserving an instance of a game was showcased, both using the web UI as well as command line tools. Integration tools for Visual Studio were mentioned, which can perform the same tasks.
+
+\subsection{Tools you will use}
+In Siarkiewicz' final addressed topic, he listed some of the tools, which Stadia uses internally, as well as tools for working with Stadia, such as integration tools for Visual Studio, GAPID, and RenderDoc. Some further functionality of the Chrome Test Client were presented, such as the integrated recording feature, the buffered recording feature, and the tool for simulating gameplay at different network speeds.
+
+\section{Overview and Relevance}
+Having been released just weeks ago, Stadia, and cloud gaming in and of itself, are still very up-and-coming new technologies.
+\subsection{Explanation and Demystification}
+This talk does a lot in terms of presenting Stadia in practice, and demystifying the cloud gaming aspect of the platform. As the technology is picking up more steam from the games industry, it is important for Google to present the exactitude of their workflow with such transparency. 
+\subsection{Stadia and the future of cloud gaming}
+\say{As the technology evolves to be cloud, and as download speeds increase, what it means is you’re going to be able to play any game on any device at any time}\cite{filsaime}\rm --- Reggie Fils-Aime, The Game Awards, December 2019 \newline\\
+With many seeing cloud gaming as the next big step in the industry\cite{birise}, it is helpful for developers to see what this step entails in general. As other companies take steps towards cloud gaming\cite{bifacebook}, receiving firsthand knowledge from Google, which specifically highlights the advantages of working with their platform, might sway potentially interested developers towards working with Stadia.
+
+
+\renewcommand{\refname}{\section{References and Further Sources}}
+\begin{thebibliography}{1}
+
+\bibitem{filsaime}
+Reggie Fils-Aime, former president, Nintendo of America\\The Game Awards, 2019
+\\\texttt{https://www.hollywoodreporter.com/heat-vision/\\nintendo-president-reggie-fils-aim-weighs-future-gaming-1262489}
+
+\bibitem{birise}
+Business Insider, 2019
+\\\texttt{https://www.businessinsider.com/rise-of-cloud-gaming-report-2019-10}
+
+\bibitem{bifacebook}
+Business Insider, 2019
+\\\texttt{https://www.businessinsider.com/facebook-enters-cloud-gaming-market-2019-12}
+
+\end{thebibliography}
+
+\end{document}

@@ -1,0 +1,179 @@
+\documentclass[a4paper]{article}
+
+%% Language and font encodings
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+
+%% Sets page size and margins
+\usepackage[a4paper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+%% Useful packages
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+
+\providecommand{\keywords}[1]{\textbf{\textit{Tags:}} #1}
+\providecommand{\talkurl}[1]{\textbf{\textit{Url:}} #1}
+\providecommand{\track}[1]{\textbf{\textit{Track:}} #1}
+\providecommand{\speaker}[1]{\textbf{\textit{Speaker:}} #1}
+
+\usepackage{comment}
+
+\usepackage{natbib}
+\setlength{\bibsep}{4.0pt}
+
+\title{'Mooncrash': Resetting the Immersive Simulation by Rich Wilson}
+\author{Author: Irena Ruprecht}
+
+\begin{document}
+\maketitle
+
+\begin{keywords} Immersive Sim, Roguelike, DLC, Experimental Gameplay \end{keywords}
+
+\begin{track} GDC San Francisco 2019 - Design \end{track}
+
+\begin{talkurl}  \url{https://www.gdcvault.com/play/1025732/-Mooncrash-Resetting-the-Immersive} \end{talkurl}
+
+\begin{speaker} Rich Wilson, Arkane Studios \end{speaker}
+
+
+\begin{abstract}
+'Mooncrash' is a mechanical extension of 'Prey' featuring multiple playable characters a roguelike framework. The DLC is set in a moon base simulation which the player has to escape in order to win the game. The core design idea is biased towards systemic design, meaning that certain circumstances and problems emerge from dynamic interaction of systems rather than scripted gameplay. The player is therefore required to come up with individual solutions to defeat this dynamically responding hostile environment. 
+\end{abstract}
+
+\section{Summary of Talk}
+Level design lead Rich Wilson talks about 'Mooncrash', which began as a DLC follow-up to Arkane's title 'Prey' released in 2016. The focus lies on the design decisions the team made in order to break the traditional linear narrative structure. The game mechanics were jazzed up by adding roguelike elements, multiple playable characters and an immersive simulation environment with experimental gameplay elements to the mix. Rich Wilson decomposes the driving factors for 'Mooncrash' into motivation to evolve, the preservation of core values and adaption to new problems. 
+
+\subsection{Motivation to evolve}
+The primary goal was to step out of the linear narrative structure, meaning that 'Mooncrash' was intended to incorporate more than just an extension of the main story. The smaller scope of the DLC encouraged the level designers to sort of break with known forms and concepts, take risks and experiment. The goal was to grow beyond their known domain and start a cross genre exploration. They decided to bring in more roguelike elements which set the tone for the rest of the design process. This roguelike framework lead to according considerations such as persistence, respawning, difficulty acceleration and character variety. Since roguelike games allow for dynamically emerging situations, the designers could consistently incorporate those mechanics into their immersive simulation setting. \newline
+
+\noindent As a major step in the process, the design team decomposed their own games into their essential parts to reevaluate them. The goal was to review each component on its own to reassess its value and get a more focused image in general. Rich Wilson emphasizes that DLC provides a stable launchpad for new experiences since it does not take a lot of time to see certain ideas in action as the core mechanics are already established. To motivate the team and drive everyone out of their box, the studio organized a game jam which served as an incubator for ideas regarding the DLC 'Mooncrash', where some pitches even made it into the final product. 
+
+\subsection{Preservation of core values}
+Rich Wilson emphasizes, that preserving core values does not mean to adopt known game elements out of blind dogma. He instead suggests keeping elements due to conscious design decisions. Arkane, for instance decided to hold on to environmental storytelling, despite the roguelike genre they were targeting where heavy storytelling is rather untypical. Most of Arkane's story focuses on the environment and finding out what happened to it. The story is therefore centered around the environment rather than the player, which turned out to pair well with the roguelike framework. \newline
+
+\noindent To align the idea of immersive sims with the roguelike elements, the level designers rely on systemic design. This means, that moment-to-moment drama emerges from systems interacting with each other rather than scripted gameplay. Therefore, the environment is completely dynamic and each element interacts with different systems, which certainly gives life to the virtual world. On the other hand this may obviously create chaos, since we deal with a setting where anything can happen.
+Aside from bending genre boundaries, the 'Mooncrash' design team focused on aligning level design with the core idea of immersive sims. Concerning process intensity theory, this results in a game that heavily leans towards process intensity rather than data intensity. Process intensive games tend to feature dynamic environments that react to player choice, which in the case of 'Mooncrash' is aligned with immersive sims. 
+
+\subsection{Adaptation to new problems}
+Problems such as player variety arose from the previously made design decisions, since equipping one single player with various items and skills seemed not to pair well with the roguelike immersive sim framework. The team therefore took on the challenge to offer multiple playable characters, each equipped with their own personality and abilities. Numerous further game style and mechanics naturally came together due to these character attributes. Supporting multiple playable characters the player has to engage with also turned out to bring players out of their play style comfort zone. 
+
+\subsection{Lessons learned and relevance for game development}
+The first important lesson might be that game development is a dynamic process, where it is constantly necessary to decompose everything there is, evaluate each component on its own and make use of this new focused picture you obtained. This basically means taking something you love, break it into pieces, keep what is still valuable and throw out the rest - which is supposedly easier said than done. Another lesson learned from the talk is that bending the boundaries of different genres and bringing them together in a meaningful way will bring the virtual world to life, but will also bring new challenges for players as well as developers and designers. 
+
+
+\section{Overview and Relevance}
+The following section focuses on research, relevance and development within the main genres combined in 'Mooncrash', namely immersive sims and roguelike.
+
+\subsection{Immersive Sims}
+Immersive sims can be considered as a rather exclusive game genre due to the involved complexity, where a thorough discussion on the genre and its characteristics is provided by Maxim Samoylenko~\cite{samoylenko}. Throughout the last decade, however, various game studios faced the challenge of modelling highly complex dynamically interacting environments. For instance, 'The Elder Scrolls IV: Oblivion' and 'Dishonored'/'Dishonored 2' by Bethesda Softworks or earlier projects from Arkane such as 'Arx Fatalis' and 'Dark Messiah' incorporate the idea of immersive sims~\cite{lane}. Early immersive sims tended to have their small dedicated audience, where the genre nowadays also features top-sellers such as the 'Bioshock' franchise or 'Prey'~\cite{baker}. This popularity can be attributed to the highly dynamic interactions that force the player to adapt and make the genre special. We also see values of immersive sims adopted in games like 'The Legend of Zelda: Breath of the Wild' and increasingly in indie games as well~\cite{mckeand}. In the interest of space, the interested reader may be referred to various comprehensive discussions on immersive sims~\cite{moss, lane:2019, immersive_sim, gomes}. Video game documentary maker NoClip features an interview with the game and design directors of 'Prey', where designing an immersive sim is disussed~\cite{kerr}.\newline
+
+\subsection{Roguelike} 
+Since 'roguelike' is a rather contested term, a concerning discussion would go beyond the scope of this document. The interested reader may, however, be referred to various in-depth discussions on the term roguelike and consequent game characteristics~\cite{zapata, McHugh, harris}. Roguelike games have been popular for many years and there are dozens of games that can be attributed to the genre~\cite{roguelike, coles}. In research, Amari et al~\cite{amari}. used a rouguelike framework to develop their artificial chemistry. Cerny et al.~\cite{cerny} developed an evolutionary Artificial Intelligence playing roguelike games algorithmically.
+
+\renewcommand{\refname}{\section{References and Further Sources}}
+\begin{thebibliography}{1}
+
+\bibitem{lane}
+Rick Lane,
+  \emph{History of the best immersive sims}, 2016,
+  {\url{https://www.pcgamer.com/history-of-the-best-immersive-sims/}},
+  {Accessed: 2019-12-18}.
+  
+  \bibitem{baker}
+Chris Baker,
+  \emph{The Godfather of the immersive sim genre explains how he helped create a world where players can author their own experiences}, 2017,
+  {\url{https://web.archive.org/web/20170707043400/http://www.glixel.com/news/how-warren-spector-created-a-genre-and-set-games-free-w485404}},
+  {Accessed: 2019-12-18}.
+  
+  
+    \bibitem{mckeand}
+Kirk McKeand,
+  \emph{Dishonored’s Harvey Smith expects an explosion of indie-made immersive sims},
+  {\url{  https://www.pcgamesn.com/dishonored-2/harvey-smith-immersive-sims-future}},
+  {Accessed: 2019-12-18}.
+  
+     \bibitem{moss}
+   Richard Moss,
+  \emph{7 influential immersive sims that all devs should play}, 2018,
+  {\url{  https://www.gamasutra.com/view/news/313302/7_influential_immersive_sims_that_all_devs_should_play.php}},
+  {Accessed: 2019-12-18}.
+  
+  
+       \bibitem{lane:2019}
+   Rick Lane,
+  \emph{The 10 Best Immersive Sims Ever}, 2019,
+  {\url{ https://bit-tech.net/reviews/gaming/pc/the-10-best-immersive-sims-ever/1/}},
+  {Accessed: 2019-12-18}.
+  
+         \bibitem{samoylenko}
+   Maxim Samoylenko,
+  \emph{Five Pillars of Immersive Sims}, 2018,
+  {\url{https://medium.com/@maximsamoylenko/five-pillars-of-immersive-sims-7263167e7258}},
+  {Accessed: 2019-12-18}.
+  
+           \bibitem{kerr}
+  Chris Kerr,
+  \emph{Prey devs explore the tenets of immersive sim design}, 2018,
+  {\url{https://www.gamasutra.com/view/news/312753/Prey_devs_explore_the_tenets_of_immersive_sim_design.php}},
+  {Accessed: 2019-12-18}.
+  
+\bibitem{immersive_sim}
+  \emph{Immersive Sim},
+  {\url{https://tvtropes.org/pmwiki/pmwiki.php/Main/ImmersiveSim}},
+  {Accessed: 2019-12-18}.
+  
+\bibitem{gomes}
+{Gomes Renata},
+\emph{The Design of Narrative as an Immersive Simulation},
+{Proceedings of the 2005 DiGRA International Conference: Changing Views: Worlds in Play},
+{2005}.
+
+
+  
+\bibitem{zapata}
+  Santiago Zapata,
+  \emph{On the Historical Origin of the “Roguelike” Term}, 2017,
+  {\url{https://blog.slashie.net/on-the-historical-origin-of-the-roguelike-term/}},
+  {Accessed: 2019-12-18}.
+  
+  \bibitem{McHugh}
+  Alex McHugh,
+  \emph{What is a Roguelike?}, 2018,
+  {\url{https://www.greenmangaming.com/blog/what-is-a-roguelike/}},
+  {Accessed: 2019-12-18}.
+  
+    \bibitem{harris}
+  John Harris,
+  \emph{Analysis: The Eight Rules Of Roguelike Design}, 2011,
+  {\url{https://www.gamasutra.com/view/news/123031/Analysis_The_Eight_Rules_Of_Roguelike_Design.php}},
+  {Accessed: 2019-12-18}.
+
+
+\bibitem{cerny}
+ {Cerny, Vojtech and Děchtěrenko, Filip},
+\emph{Rogue-Like Games as a Playground for Artificial Intelligence – Evolutionary Approach},
+9353:{261-271}, {2015}.
+
+\bibitem{amari}
+ {Amari, Noriyuki and Tominaga, Kazuto},
+\emph{Simulation Minus One Makes a Game},
+273-282, {2009}.
+
+    \bibitem{roguelike}
+  \emph{Best Roguelike Games 2019 – The Ultimate List}, 2019,
+  {\url{https://www.gamingscan.com/best-roguelike-games/}},
+  {Accessed: 2019-12-18}.
+
+    \bibitem{coles}
+    Jason Coles
+  \emph{Best roguelike games: a beginner's guide to the die-a-lot genre}, 2019,
+  {\url{https://www.techradar.com/news/best-roguelike-games-a-beginners-guide-to-the-die-a-lot-genre}},
+  {Accessed: 2019-12-18}.
+
+
+\end{thebibliography}
+
+\end{document}
